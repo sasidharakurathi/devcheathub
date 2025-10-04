@@ -14,10 +14,10 @@ db.sqlite3
 db.sqlite3-journal
 
 # Static files
-/static/
+# /static/
 
 # Media files
-/media/
+# /media/
 
 # IDE settings
 .vscode/
