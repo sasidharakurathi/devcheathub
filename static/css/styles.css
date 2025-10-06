@@ -20,3 +20,99 @@ body {
 main {
     padding: 2rem;
 }
+
+/* static/css/styles.css */
+
+/* Append this to your existing CSS */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.page-title {
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 2rem;
+}
+
+/* Category List Styles */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+.card-link { text-decoration: none; }
+.card {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+.card-title {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-primary);
+}
+.card-count {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Cheatsheet List Styles */
+.list-item-link { text-decoration: none; }
+.list-item {
+    background-color: var(--secondary-bg);
+    padding: 1rem 1.5rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    border-left: 3px solid transparent;
+    transition: border-left-color 0.2s ease;
+}
+.list-item:hover {
+    border-left-color: var(--accent-color);
+}
+.list-item-title {
+    margin: 0 0 0.25rem 0;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+}
+.list-item-description {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* Cheatsheet Detail Styles */
+.breadcrumb {
+    color: var(--text-secondary);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+.breadcrumb:hover { color: var(--accent-color); }
+.cheatsheet-description { color: var(--text-secondary); font-size: 1.1rem; }
+.timestamp { color: var(--text-secondary); font-style: italic; }
+.separator { border: none; height: 1px; background-color: var(--border-color); margin: 2rem 0; }
+.snippet-title { color: var(--text-primary); }
+.code-block, .output-block {
+    background-color: var(--code-bg);
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    overflow-x: auto;
+}
+.output-title { font-size: 1rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
+
+/* highlight.js uses 'hljs' class, but we target pre code */
+pre code {
+    padding: 0;
+    background: none;
+}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}{{ cheatsheet.title }} - DevCheatHub{% endblock %}
+
+{% block content %}
+<div class="container">
+    <a href="{% url 'cheatsheet_list' cheatsheet.category.slug %}" class="breadcrumb">&larr; Back to {{ cheatsheet.category.name }}</a>
+    <h1 class="page-title">{{ cheatsheet.title }}</h1>
+    <p class="cheatsheet-description">{{ cheatsheet.description }}</p>
+    <small class="timestamp">Last updated: {{ cheatsheet.updated_at|date:"F j, Y" }}</small>
+
+    <hr class="separator">
+
+    {% for snippet in cheatsheet.snippets.all %}
+    <div class="snippet-container">
+        <h3 class="snippet-title">{{ snippet.title }}</h3>
+        <div class="code-block">
+            <pre><code class="language-{{ snippet.language }}">{{ snippet.code }}</code></pre>
+        </div>
+        
+        {% if snippet.output %}
+        <h4 class="output-title">Output:</h4>
+        <div class="output-block">
+            <pre><code>{{ snippet.output }}</code></pre>
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

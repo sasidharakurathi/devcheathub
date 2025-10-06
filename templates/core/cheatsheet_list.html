@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}{{ category.name }} Cheatsheets - DevCheatHub{% endblock %}
+
+{% block content %}
+<div class="container">
+    <a href="{% url 'category_list' %}" class="breadcrumb">&larr; Back to Categories</a>
+    <h1 class="page-title">{{ category.name }}</h1>
+    <div class="list-container">
+        {% for sheet in cheatsheets %}
+        <a href="{% url 'cheatsheet_detail' sheet.slug %}" class="list-item-link">
+            <div class="list-item">
+                <h2 class="list-item-title">{{ sheet.title }}</h2>
+                <p class="list-item-description">{{ sheet.description }}</p>
+            </div>
+        </a>
+        {% empty %}
+        <p>There are no cheatsheets in this category yet.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

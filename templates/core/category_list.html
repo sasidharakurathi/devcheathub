@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}All Categories - DevCheatHub{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="page-title">Browse by Category</h1>
+    <div class="card-grid">
+        {% for category in categories %}
+        <a href="{% url 'cheatsheet_list' category.slug %}" class="card-link">
+            <div class="card">
+                <h2 class="card-title">{{ category.name }}</h2>
+                <p class="card-count">{{ category.cheatsheets.count }} Cheatsheet{{ category.cheatsheets.count|pluralize }}</p>
+            </div>
+        </a>
+        {% empty %}
+        <p>No categories have been added yet. Please add some in the admin panel.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
