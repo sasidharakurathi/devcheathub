@@ -1,11 +1,25 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block title %}DevCheatHub - The Developer's Ultimate Reference{% endblock %}
+{% block body_class %}landing-page-body{% endblock %}
+
+{% block title %}DevCheatHub - Coming Soon{% endblock %}
+
+{% block header %}{% endblock header %}
 
 {% block content %}
-<div style="text-align: center; padding: 100px 20px;">
-    <h1 style="font-size: 4rem; color: var(--accent-color);">DevCheatHub</h1>
-    <p style="font-size: 1.5rem; color: var(--text-secondary);">Find any command, snippet, or concept in milliseconds.</p>
-    <p style="margin-top: 50px; font-size: 1.2rem;">Our awesome platform is coming soon!</p>
+
+<div class="landing-content">
+    <div class="floating-icons">
+        <img src="{% static 'img/icons/python.svg' %}" class="icon icon-1" alt="Python">
+        <img src="{% static 'img/icons/django.svg' %}" class="icon icon-2" alt="Django">
+        <img src="{% static 'img/icons/react.svg' %}" class="icon icon-3" alt="React">
+        <img src="{% static 'img/icons/docker.svg' %}" class="icon icon-4" alt="Docker">
+        <img src="{% static 'img/icons/git.svg' %}" class="icon icon-5" alt="Git">
+    </div>
+
+    <h1 class="landing-title">DevCheatHub</h1>
+    <p class="landing-tagline">The Developer's Ultimate Reference. Coming Soon.</p>
+    <a href="{% url 'category_list' %}" class="btn btn-primary" style="margin-top: 3rem;">Explore Cheatsheets</a>
 </div>
 {% endblock %}

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block title %}{{ cheatsheet.title }} - DevCheatHub{% endblock %}
 
 {% block content %}
@@ -13,16 +15,27 @@
 
     {% for snippet in cheatsheet.snippets.all %}
     <div class="snippet-container">
-        <h3 class="snippet-title">{{ snippet.title }}</h3>
-        <div class="code-block">
-            <pre><code class="language-{{ snippet.language }}">{{ snippet.code }}</code></pre>
+        <h2>{{ snippet.title }}</h2>
+        <div class="code-block-wrapper">
+            <button class="copy-btn" title="Copy to clipboard">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copy</span>
+            </button>
+            <div class="code-block">
+                <pre><code class="language-{{ snippet.language }}">{{ snippet.code }}</code></pre>
+            </div>
         </div>
-        
         {% if snippet.output %}
-        <h4 class="output-title">Output:</h4>
-        <div class="output-block">
-            <pre><code>{{ snippet.output }}</code></pre>
-        </div>
+            <h3>Output:</h3>
+            <div class="code-block-wrapper">
+                <button class="copy-btn" title="Copy to clipboard">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    <span>Copy</span>
+                </button>
+                <div class="code-block output-block"> {# Added output-block class #}
+                    <pre><code>{{ snippet.output }}</code></pre>
+                </div>
+            </div>
         {% endif %}
     </div>
     {% endfor %}

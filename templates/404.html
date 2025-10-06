@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Page Not Found - DevCheatHub{% endblock %}
+
+{% block content %}
+<div class="error-page-container">
+    <div class="error-content">
+        <h1 class="error-code">404</h1>
+        <h2 class="error-title">Oops! Page Not Found.</h2>
+        <p class="error-text">
+            Sorry, the page you are looking for doesn't exist. It might have been moved, renamed, or you may have typed a wrong URL.
+        </p>
+        <a href="{% url 'category_list' %}" class="btn btn-primary">Go to Home Page</a>
+    </div>
+</div>
+{% endblock %}

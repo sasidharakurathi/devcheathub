@@ -28,3 +28,21 @@ def cheatsheet_detail(request, cheatsheet_slug):
         'cheatsheet': cheatsheet
     }
     return render(request, 'core/cheatsheet_detail.html', context)
+
+def under_development(request):
+    return render(request, 'core/under_development.html')
+
+
+def register(request):
+    pass
+
+def login(request):
+    pass
+
+def logout(request):
+    pass
+
+
+def custom_page_not_found_view(request, exception):
+    
+    return render(request, "404.html", status=404)

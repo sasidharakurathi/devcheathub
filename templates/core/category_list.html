@@ -1,21 +1,46 @@
 {% extends "base.html" %}
 
-{% block title %}All Categories - DevCheatHub{% endblock %}
+{% load static %}
+
+{% block title %}DevCheatHub - The Developer's Ultimate Reference Platform{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1 class="page-title">Browse by Category</h1>
-    <div class="card-grid">
-        {% for category in categories %}
-        <a href="{% url 'cheatsheet_list' category.slug %}" class="card-link">
-            <div class="card">
-                <h2 class="card-title">{{ category.name }}</h2>
-                <p class="card-count">{{ category.cheatsheets.count }} Cheatsheet{{ category.cheatsheets.count|pluralize }}</p>
+<section class="hero-section">
+    <div class="container hero-content">
+        <div class="hero-text">
+            <p class="hero-intro stagger-visual">Introducing DevCheatHub</p>
+            <h1 class="hero-headline stagger-visual">The Developer's <br>Ultimate Reference</h1>
+            <p class="hero-tagline stagger-visual">Find any command, snippet, or concept in milliseconds. Optimized for quick lookups and learning.</p>
+            <div class="hero-cta-buttons stagger-visual">
+                <a href="{% url 'register' %}" class="btn btn-primary">Get Started - It's Free</a>
+                <a href="#browse-categories" class="btn btn-secondary">Browse All Cheatsheets</a>
             </div>
-        </a>
-        {% empty %}
-        <p>No categories have been added yet. Please add some in the admin panel.</p>
-        {% endfor %}
+        </div>
+        <div class="hero-graphic stagger-visual">
+            <video autoplay loop muted playsinline class="hero-video">
+                <source src="{% static 'videos/hero-animation.mp4' %}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
     </div>
-</div>
+</section>
+
+<section class="categories-section" id="browse-categories">
+    <div class="container">
+        <h2 class="section-title animate-on-scroll">Explore Categories</h2>
+        
+        <div class="card-grid">
+            {% for category in categories %}
+                <a href="{% url 'cheatsheet_list' category.slug %}" class="card-link animate-on-scroll">
+                    <div class="card category-card">
+                        <h3 class="card-title">{{ category.name }}</h3>
+                        <p class="card-count">{{ category.cheatsheets.count }} Cheatsheet{{ category.cheatsheets.count|pluralize }}</p>
+                    </div>
+                </a>
+            {% empty %}
+                <p class="text-secondary">No categories have been added yet. Please add some in the admin panel.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 {% endblock %}
