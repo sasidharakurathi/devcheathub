@@ -2,6 +2,7 @@ import json
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Category, CheatSheet
 from django.db.models import Q, Count
+from django.db import transaction
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.forms import inlineformset_factory
@@ -102,38 +103,42 @@ def contribute(request):
         if form.is_valid():
             json_string = form.cleaned_data['json_data']
             try:
-                data = json.loads(json_string)
+                # Use a transaction to ensure all or nothing is saved
+                with transaction.atomic():
+                    data_list = json.loads(json_string)
 
-                # --- Basic Validation of the JSON structure ---
-                if not all(k in data for k in ['category', 'title', 'description', 'snippets']):
-                    raise ValueError("JSON is missing required keys: category, title, description, or snippets.")
+                    # Check if the uploaded data is a list
+                    if not isinstance(data_list, list):
+                        raise ValueError("The provided JSON must be a list of cheatsheet objects.")
 
-                # Get or create the category
-                category, _ = Category.objects.get_or_create(name=data['category'])
+                    # Loop through each cheatsheet object in the list
+                    for item in data_list:
+                        if not all(k in item for k in ['category', 'title', 'description', 'snippets']):
+                            raise ValueError("A cheatsheet object is missing required keys.")
+
+                        category, _ = Category.objects.get_or_create(name=item['category'])
+                        
+                        cheatsheet = CheatSheet.objects.create(
+                            author=request.user,
+                            category=category,
+                            title=item['title'],
+                            description=item['description'],
+                            status='PENDING'
+                        )
+
+                        for snippet_data in item['snippets']:
+                            if not all(k in snippet_data for k in ['title', 'language', 'code']):
+                                raise ValueError("A snippet is missing required keys.")
+                            
+                            CodeSnippet.objects.create(
+                                cheatsheet=cheatsheet,
+                                title=snippet_data['title'],
+                                language=snippet_data['language'],
+                                code=snippet_data['code'],
+                                output=snippet_data.get('output')
+                            )
                 
-                # Create the CheatSheet, setting author and status
-                cheatsheet = CheatSheet.objects.create(
-                    author=request.user,
-                    category=category,
-                    title=data['title'],
-                    description=data['description'],
-                    status='PENDING' # Explicitly set to PENDING for review
-                )
-
-                # Create the associated CodeSnippets
-                for snippet_data in data['snippets']:
-                    if not all(k in snippet_data for k in ['title', 'language', 'code']):
-                        raise ValueError("A snippet is missing required keys: title, language, or code.")
-                    
-                    CodeSnippet.objects.create(
-                        cheatsheet=cheatsheet,
-                        title=snippet_data['title'],
-                        language=snippet_data['language'],
-                        code=snippet_data['code'],
-                        output=snippet_data.get('output') # Safely get output
-                    )
-                
-                messages.success(request, 'Thank you! Your JSON has been submitted for review.')
+                messages.success(request, f'Thank you! Your submission of {len(data_list)} cheatsheet(s) is awaiting review.')
                 return redirect('category_list')
 
             except json.JSONDecodeError:
