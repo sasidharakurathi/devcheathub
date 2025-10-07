@@ -1,6 +1,10 @@
 from django.contrib import admin
 from .models import Category, CheatSheet, CodeSnippet
 
+@admin.action(description='Approve selected cheatsheets')
+def make_approved(modeladmin, request, queryset):
+    queryset.update(status='APPROVED')
+
 class CodeSnippetInline(admin.StackedInline):
     model = CodeSnippet
     extra = 1
@@ -20,3 +24,4 @@ class CheatSheetAdmin(admin.ModelAdmin):
     search_fields = ('title', 'description')
     prepopulated_fields = {'slug': ('title', )}
     inlines = [CodeSnippetInline]
+    actions = [make_approved]

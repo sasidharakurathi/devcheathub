@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1 class="page-title">Contribute via JSON</h1>
+        <p class="text-secondary">Paste your cheatsheet data in the required JSON format below. It will be submitted for admin review.</p>
+    </div>
+    
+    <div class="json-contribution-layout">
+        <div class="form-section json-input-section">
+            <form method="post" novalidate>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="contribution-actions">
+                    <button type="submit" class="btn btn-primary">Submit for Review</button>
+                    <label for="json-file-input" class="btn btn-secondary">Load from File</label>
+                    <input type="file" id="json-file-input" accept=".json" style="display: none;">
+                </div>
+            </form>
+        </div>
+
+        <div class="form-section json-example-section">
+            <h2 class="form-section-title">Required JSON Format</h2>
+            <pre><code class="language-json nohighlight">[
+    {
+        "category": "Your Category Name",
+        "title": "Your Cheatsheet Title",
+        "description": "A brief description of the cheatsheet.",
+        "snippets": [
+            {
+            "title": "First Snippet Title",
+            "language": "python",
+            "code": "print(\"Your code here.\\nUse \\n for new lines.\")",
+            "output": "Your output here. (or null)"
+            },
+            {
+            "title": "Second Snippet Title",
+            "language": "bash",
+            "code": "echo \"Another snippet\"",
+            "output": "Another snippet"
+            }
+        ]
+    }, ...
+]
+</code></pre>
+        </div>
+    </div>
+</div>
+{% endblock %}

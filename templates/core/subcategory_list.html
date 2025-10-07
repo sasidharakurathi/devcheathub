@@ -4,8 +4,8 @@
 
 {% block content %}
 <div class="container">
-    <a href="{% url 'category_list' %}" class="breadcrumb">&larr; Back to All Categories</a>
-    <h1 class="page-title">{{ category.name }} Topics</h1>
+    <a href="{% url 'category_list' %}#browse-categories" class="breadcrumb">&larr; Back to All Categories</a>
+    <h1 class="page-title">{{ category.name }} cheatsheet</h1>
     <div class="card-grid">
         {% for sub in subcategories %}
             <a href="{% url 'category_detail' sub.slug %}" class="card-link">

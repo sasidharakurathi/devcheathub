@@ -3,25 +3,31 @@
 {% block content %}
 <div class="container">
     {% if query %}
-        <h1>Search Results for "{{ query }}"</h1>
-        <hr>
-        
-        {% if results %}
-            <p>{{ results.count }} result{{ results.count|pluralize }} found.</p>
-            <ul>
-                {% for cheatsheet in results %}
-                    <li>
-                        <h3><a href="{% url 'cheatsheet_detail' cheatsheet.slug %}">{{ cheatsheet.title }}</a></h3>
-                        <p>{{ cheatsheet.description }}</p>
-                    </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>No results found for your query. Try searching for something else.</p>
-        {% endif %}
-        
+        <h1 class="page-title">Search Results for "{{ query }}"</h1>
+        <p class="text-secondary">{{ results.count }} result{{ results.count|pluralize }} found.</p>
     {% else %}
-        <h1>Please enter a search term.</h1>
+        <h1 class="page-title">Search DevCheatHub</h1>
+    {% endif %}
+
+    <hr class="separator">
+    
+    {% if page_obj %}
+        <div class="list-container">
+            {% for cheatsheet in page_obj %}
+                <a href="{% url 'cheatsheet_detail' cheatsheet.slug %}" class="list-item-link">
+                    <div class="list-item">
+                        <h2 class="list-item-title">{{ cheatsheet.title }}</h2>
+                        <p class="list-item-description">{{ cheatsheet.description }}</p>
+                    </div>
+                </a>
+            {% endfor %}
+
+            {% include 'partials/pagination.html' %}
+        </div>
+    {% elif query %}
+        <p>No cheatsheets found matching your query. Please try a different search term.</p>
+    {% else %}
+        <p>Use the search bar in the header to find cheatsheets by title or description.</p>
     {% endif %}
 </div>
 {% endblock %}

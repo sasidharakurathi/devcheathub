@@ -51,16 +51,93 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Mobile Navigation Toggle ---
-const navToggle = document.querySelector('.nav-toggle');
-const navMenu = document.querySelector('.nav-menu');
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
 
-if (navToggle && navMenu) {
-    navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('is-active');
-        navToggle.classList.toggle('is-active');
-        
-        // Add/remove class to the body to prevent scrolling
-        document.body.classList.toggle('nav-open');
-    });
-}
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('is-active');
+            navToggle.classList.toggle('is-active');
+            
+            // Add/remove class to the body to prevent scrolling
+            document.body.classList.toggle('nav-open');
+        });
+    }
+
+    // --- Dynamic Formset for Contribution Page ---
+    const addSnippetButton = document.getElementById('add-snippet-form');
+    
+    if (addSnippetButton) {
+        const formContainer = document.getElementById('snippet-forms-container');
+        const formTemplate = document.getElementById('snippet-form-template');
+        const totalFormsInput = document.querySelector('input[name="snippets-TOTAL_FORMS"]');
+
+        addSnippetButton.addEventListener('click', () => {
+            // Get the current number of forms
+            let formIndex = parseInt(totalFormsInput.value);
+
+            // Clone the template's content
+            const newForm = formTemplate.content.cloneNode(true);
+            
+            // Find all input/select/textarea elements in the new form
+            const formFields = newForm.querySelectorAll('input, select, textarea');
+            
+            // Update the 'name' and 'id' attributes to use the new form index
+            formFields.forEach(field => {
+                field.name = field.name.replace('__prefix__', formIndex);
+                field.id = field.id.replace('__prefix__', formIndex);
+            });
+
+            // Append the new form to the container
+            formContainer.appendChild(newForm);
+
+            // Increment the total forms count
+            totalFormsInput.value = formIndex + 1;
+        });
+    }
+
+
+    // --- Initialize CodeMirror & File Upload on Contribution Page ---
+    const jsonTextarea = document.getElementById('id_json_data');
+    let codeMirrorEditor = null; // To hold our editor instance
+
+    if (jsonTextarea) {
+        // Create the CodeMirror editor
+        codeMirrorEditor = CodeMirror.fromTextArea(jsonTextarea, {
+            mode: { name: "javascript", json: true },
+            theme: "dracula",
+            lineNumbers: true,
+            lineWrapping: true,
+            autoCloseBrackets: true
+        });
+    }
+
+    const jsonFileInput = document.getElementById('json-file-input');
+    
+    // Check if both the file input and the editor exist on the page
+    if (jsonFileInput && codeMirrorEditor) {
+        jsonFileInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                // Define what happens after the file is read
+                reader.onload = (e) => {
+                    const fileContent = e.target.result;
+                    // Set the CodeMirror editor's value to the file content
+                    codeMirrorEditor.setValue(fileContent);
+                };
+                
+                // Define what happens if there's an error
+                reader.onerror = (e) => {
+                    console.error("Error reading file:", e);
+                    alert("Failed to read the file.");
+                };
+                
+                // Start reading the file as text
+                reader.readAsText(file);
+            }
+        });
+    }
 });

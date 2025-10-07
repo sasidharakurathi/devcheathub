@@ -1,0 +1,230 @@
+[
+  {
+    "category": "Git",
+    "title": "Setup & Configuration",
+    "description": "Commands for initial setup and configuring your Git identity.",
+    "snippets": [
+      {
+        "title": "Configure your user name",
+        "language": "bash",
+        "code": "git config --global user.name \"Your Name\"",
+        "output": "Sets the name that will be attached to your commits and tags."
+      },
+      {
+        "title": "Configure your user email",
+        "language": "bash",
+        "code": "git config --global user.email \"youremail@example.com\"",
+        "output": "Sets the email address that will be attached to your commits."
+      },
+      {
+        "title": "Initialize a new local repository",
+        "language": "bash",
+        "code": "git init",
+        "output": "Creates a new Git repository in the current directory."
+      },
+      {
+        "title": "Clone an existing repository",
+        "language": "bash",
+        "code": "git clone <repository_url>",
+        "output": "Creates a local copy of a remote repository."
+      }
+    ]
+  },
+  {
+    "category": "Git",
+    "title": "Basic Workflow",
+    "description": "The most common commands used in the day-to-day Git workflow.",
+    "snippets": [
+      {
+        "title": "Check the status of your repository",
+        "language": "bash",
+        "code": "git status",
+        "output": "Shows the state of the working directory and the staging area (modified, staged, and untracked files)."
+      },
+      {
+        "title": "Add a file to the staging area",
+        "language": "bash",
+        "code": "git add <file_name>",
+        "output": "Stages changes in a specific file, preparing it for the next commit."
+      },
+      {
+        "title": "Add all modified files to staging",
+        "language": "bash",
+        "code": "git add .",
+        "output": "Stages all new and modified files in the current directory and subdirectories."
+      },
+      {
+        "title": "Commit staged changes",
+        "language": "bash",
+        "code": "git commit -m \"Your commit message\"",
+        "output": "Saves the staged changes to the local repository with a descriptive message."
+      },
+      {
+        "title": "Add and commit in one step",
+        "language": "bash",
+        "code": "git commit -a -m \"Your commit message\"",
+        "output": "Stages all tracked (not new) files and commits them in a single command."
+      }
+    ]
+  },
+  {
+    "category": "Git",
+    "title": "Branching & Merging",
+    "description": "Commands for managing branches to work on features in isolation.",
+    "snippets": [
+      {
+        "title": "List all local branches",
+        "language": "bash",
+        "code": "git branch",
+        "output": "Lists all branches in your local repository. The current branch is marked with an asterisk (*)."
+      },
+      {
+        "title": "Create a new branch",
+        "language": "bash",
+        "code": "git branch <branch_name>",
+        "output": "Creates a new branch based on your current HEAD."
+      },
+      {
+        "title": "Switch to a different branch",
+        "language": "bash",
+        "code": "git switch <branch_name>",
+        "output": "Switches your working directory to the specified branch. (Modern alternative to 'git checkout')."
+      },
+      {
+        "title": "Create and switch to a new branch",
+        "language": "bash",
+        "code": "git switch -c <new_branch_name>",
+        "output": "Creates a new branch and immediately switches to it."
+      },
+      {
+        "title": "Merge a branch into your current branch",
+        "language": "bash",
+        "code": "git merge <branch_name>",
+        "output": "Combines the history of the specified branch into your current branch."
+      },
+      {
+        "title": "Delete a local branch",
+        "language": "bash",
+        "code": "git branch -d <branch_name>",
+        "output": "Deletes the specified branch. Use '-D' to force delete an unmerged branch."
+      }
+    ]
+  },
+  {
+    "category": "Git",
+    "title": "Working with Remotes",
+    "description": "Commands for collaborating with others using remote repositories like GitHub.",
+    "snippets": [
+      {
+        "title": "List remote repositories",
+        "language": "bash",
+        "code": "git remote -v",
+        "output": "Shows the URLs of the remote repositories you've configured."
+      },
+      {
+        "title": "Add a new remote repository",
+        "language": "bash",
+        "code": "git remote add <name> <url>",
+        "output": "Adds a new remote repository with a specified name (e.g., 'origin')."
+      },
+      {
+        "title": "Fetch changes from a remote",
+        "language": "bash",
+        "code": "git fetch <remote_name>",
+        "output": "Downloads changes from the remote repository but does not merge them into your working branch."
+      },
+      {
+        "title": "Pull changes from a remote",
+        "language": "bash",
+        "code": "git pull <remote_name> <branch_name>",
+        "output": "Fetches changes from the remote and automatically merges them into your current branch. Equivalent to 'git fetch' followed by 'git merge'."
+      },
+      {
+        "title": "Push changes to a remote",
+        "language": "bash",
+        "code": "git push <remote_name> <branch_name>",
+        "output": "Uploads your committed changes to the specified remote branch."
+      },
+      {
+        "title": "Push a new branch to a remote",
+        "language": "bash",
+        "code": "git push -u <remote_name> <branch_name>",
+        "output": "Pushes a new local branch to the remote and sets it up to track upstream changes."
+      }
+    ]
+  },
+  {
+    "category": "Git",
+    "title": "Inspecting & Comparing",
+    "description": "Commands to view history, logs, and differences between commits.",
+    "snippets": [
+      {
+        "title": "View commit history",
+        "language": "bash",
+        "code": "git log",
+        "output": "Shows a detailed log of commits in reverse chronological order."
+      },
+      {
+        "title": "View compact commit history",
+        "language": "bash",
+        "code": "git log --oneline --graph --decorate",
+        "output": "Shows a condensed, one-line view of the commit history with a graph of branches."
+      },
+      {
+        "title": "Show changes in unstaged files",
+        "language": "bash",
+        "code": "git diff",
+        "output": "Displays the differences between your working directory and the staging area."
+      },
+      {
+        "title": "Show changes in staged files",
+        "language": "bash",
+        "code": "git diff --staged",
+        "output": "Displays the differences between the staging area and your last commit."
+      },
+      {
+        "title": "Show changes between two commits",
+        "language": "bash",
+        "code": "git diff <commit1_hash> <commit2_hash>",
+        "output": "Displays the differences between any two commits in the repository's history."
+      }
+    ]
+  },
+  {
+    "category": "Git",
+    "title": "Undoing Changes",
+    "description": "Commands to revert mistakes and manage your project's history.",
+    "snippets": [
+      {
+        "title": "Unstage a file",
+        "language": "bash",
+        "code": "git restore --staged <file_name>",
+        "output": "Removes a file from the staging area but keeps the changes in your working directory."
+      },
+      {
+        "title": "Discard changes in a file",
+        "language": "bash",
+        "code": "git restore <file_name>",
+        "output": "Reverts a file in your working directory to its state at the last commit. Warning: This permanently deletes your changes."
+      },
+      {
+        "title": "Amend the last commit",
+        "language": "bash",
+        "code": "git commit --amend -m \"New commit message\"",
+        "output": "Replaces the most recent commit with a new one. Useful for fixing typos in the commit message or adding forgotten files."
+      },
+      {
+        "title": "Revert a commit",
+        "language": "bash",
+        "code": "git revert <commit_hash>",
+        "output": "Creates a new commit that is the inverse of the specified commit, safely undoing its changes without altering history."
+      },
+      {
+        "title": "Reset to a previous commit",
+        "language": "bash",
+        "code": "git reset --hard <commit_hash>",
+        "output": "Resets your current branch's HEAD to a specified commit, permanently deleting all commits and changes made after it. Use with extreme caution."
+      }
+    ]
+  }
+]

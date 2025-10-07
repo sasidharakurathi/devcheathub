@@ -32,10 +32,19 @@ class Category(models.Model):
     
 
 class CheatSheet(models.Model):
+    
+    STATUS_CHOICES = [
+        ('PENDING', 'Pending Review'),
+        ('APPROVED', 'Approved'),
+        ('REJECTED', 'Rejected'),
+    ]
+    
+    
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, related_name="cheatsheets", on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.TextField(help_text="A brief description of the cheatsheet.")
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='PENDING')
     slug = models.SlugField(max_length=200, unique=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

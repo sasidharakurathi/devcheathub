@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}About - DevCheatHub{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <center><h1 class="page-title">About DevCheatHub</h1></center>
+        <p class="text-secondary" style="max-width: 700px; margin: 0 auto;">
+            Our mission is to provide a fast, modern, and community-driven reference platform for developers of all levels.
+        </p>
+    </div>
+
+    <hr class="separator">
+
+    <div class="about-section">
+        <h2>Our Philosophy</h2>
+        <p>DevCheatHub was built on the principle that finding the right command or code snippet shouldn't slow you down. We believe in the power of open-source and community collaboration. This project is built by developers, for developers, and we welcome contributions of all kinds to make this the best possible resource for everyone.</p>
+    </div>
+
+    <div class="about-section">
+        <h2>How to Contribute</h2>
+        <p>This project thrives on community support. Whether you're fixing a typo, submitting a new cheatsheet, or improving the design, your help is valuable. Check out our contribution page to share your knowledge, or visit our GitHub repository to get involved with the code.</p>
+        <div class="about-cta">
+            <a href="{% url 'contribute' %}" class="btn btn-primary">Submit a Cheatsheet</a>
+            <a href="https://github.com/sasidharakurathi/devcheathub" target="_blank" class="btn btn-secondary">View on GitHub</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

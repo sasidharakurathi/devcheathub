@@ -12,7 +12,9 @@
             <h1 class="hero-headline stagger-visual">The Developer's <br>Ultimate Reference</h1>
             <p class="hero-tagline stagger-visual">Find any command, snippet, or concept in milliseconds. Optimized for quick lookups and learning.</p>
             <div class="hero-cta-buttons stagger-visual">
-                <a href="{% url 'register' %}" class="btn btn-primary">Get Started - It's Free</a>
+                {% if not user.is_authenticated %}
+                    <a href="{% url 'register' %}" class="btn btn-primary">Get Started - It's Free</a>
+                {% endif %}
                 <a href="#browse-categories" class="btn btn-secondary">Browse All Cheatsheets</a>
             </div>
         </div>

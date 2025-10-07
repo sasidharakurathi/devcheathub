@@ -6,10 +6,14 @@
 
 {% block content %}
 <div class="container">
-    <a href="{% url 'category_list' %}" class="breadcrumb">&larr; Back to Categories</a>
+    {% if category.parent %}
+        <a href="{% url 'category_detail' category.parent.slug %}" class="breadcrumb">&larr; Back to {{ category.parent.name }} Topics</a>
+    {% else %}
+        <a href="{% url 'category_list' %}" class="breadcrumb">&larr; Back to All Categories</a>
+    {% endif %}
     <h1 class="page-title">{{ category.name }}</h1>
     <div class="list-container">
-        {% for sheet in cheatsheets %}
+        {% for sheet in page_obj  %}
         <a href="{% url 'cheatsheet_detail' sheet.slug %}" class="list-item-link">
             <div class="list-item">
                 <h2 class="list-item-title">{{ sheet.title }}</h2>
@@ -20,5 +24,7 @@
         <p>There are no cheatsheets in this category yet.</p>
         {% endfor %}
     </div>
+
+    {% include 'partials/pagination.html' %}
 </div>
 {% endblock %}
