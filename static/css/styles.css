@@ -76,7 +76,7 @@ input[type="password"] {
 /* ==      3. Header & Navigation         == */
 /* ========================================= */
 .main-header {
-    padding: 1.5rem 0;
+    /* padding: 1.5rem 0; */
     position: relative;
     z-index: 100;
 }
@@ -214,8 +214,14 @@ input[type="password"] {
 /* --- Cards & List Items --- */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr); /* This creates 4 equal-width columns */
     gap: 1.8rem;
+}
+
+@media (max-width: 768px) {
+    .card-grid {
+        grid-template-columns: 1fr; /* Stacks the cards into a single column on mobile */
+    }
 }
 
 .card-link { text-decoration: none; }
@@ -816,4 +822,18 @@ pre code {
 
 .list-item-description {
     color: var(--text-secondary);
+}
+
+/* -- Styles for Category Card Icons -- */
+.card-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    object-fit: contain; /* Add this line */
+}
+
+.card:hover .card-icon {
+    opacity: 1;
 }

@@ -8,8 +8,10 @@ class CodeSnippetInline(admin.StackedInline):
     
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name' , 'slug')
-    prepopulated_fields = {'slug': ('name', )}
+    list_display = ('name', 'parent', 'order', 'slug')
+    list_editable = ('order',)
+    prepopulated_fields = {'slug': ('name',)}
+    fields = ('name', 'slug', 'parent', 'order', 'icon')
     
 @admin.register(CheatSheet)
 class CheatSheetAdmin(admin.ModelAdmin):

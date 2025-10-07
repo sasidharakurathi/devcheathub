@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="container">
-    <a href="{% url 'cheatsheet_list' cheatsheet.category.slug %}" class="breadcrumb">&larr; Back to {{ cheatsheet.category.name }}</a>
+    <a href="{% url 'category_detail' cheatsheet.category.slug %}" class="breadcrumb">&larr; Back to {{ cheatsheet.category.name }}</a>
     <h1 class="page-title">{{ cheatsheet.title }}</h1>
     <p class="cheatsheet-description">{{ cheatsheet.description }}</p>
     <small class="timestamp">Last updated: {{ cheatsheet.updated_at|date:"F j, Y" }}</small>

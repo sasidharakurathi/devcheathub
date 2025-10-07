@@ -31,10 +31,13 @@
         
         <div class="card-grid">
             {% for category in categories %}
-                <a href="{% url 'cheatsheet_list' category.slug %}" class="card-link animate-on-scroll">
+                <a href="{% url 'category_detail' category.slug %}" class="card-link animate-on-scroll">
                     <div class="card category-card">
+                        {% if category.icon %}
+                            <img src="{{ category.icon.url }}" alt="{{ category.name }} logo" class="card-icon">
+                        {% endif %}
                         <h3 class="card-title">{{ category.name }}</h3>
-                        <p class="card-count">{{ category.cheatsheets.count }} Cheatsheet{{ category.cheatsheets.count|pluralize }}</p>
+                        {% comment %} <p class="card-count">{{ category.cheatsheets.count }} Cheatsheet{{ category.cheatsheets.count|pluralize }}</p> {% endcomment %}
                     </div>
                 </a>
             {% empty %}

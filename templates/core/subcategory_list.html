@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}{{ category.name }} Topics - DevCheatHub{% endblock %}
+
+{% block content %}
+<div class="container">
+    <a href="{% url 'category_list' %}" class="breadcrumb">&larr; Back to All Categories</a>
+    <h1 class="page-title">{{ category.name }} Topics</h1>
+    <div class="card-grid">
+        {% for sub in subcategories %}
+            <a href="{% url 'category_detail' sub.slug %}" class="card-link">
+                <div class="card">
+
+                    {% if sub.icon %}
+                        <img src="{{ sub.icon.url }}" alt="{{ sub.name }} logo" class="card-icon">
+                    {% endif %}
+
+                    <h2 class="card-title">{{ sub.name }}</h2>
+                    <p class="card-count">{{ sub.cheatsheets.count }} Cheatsheet{{ sub.cheatsheets.count|pluralize }}</p>
+                </div>
+            </a>
+        {% empty %}
+            <p>No topics found in this category.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

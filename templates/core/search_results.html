@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    {% if query %}
+        <h1>Search Results for "{{ query }}"</h1>
+        <hr>
+        
+        {% if results %}
+            <p>{{ results.count }} result{{ results.count|pluralize }} found.</p>
+            <ul>
+                {% for cheatsheet in results %}
+                    <li>
+                        <h3><a href="{% url 'cheatsheet_detail' cheatsheet.slug %}">{{ cheatsheet.title }}</a></h3>
+                        <p>{{ cheatsheet.description }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No results found for your query. Try searching for something else.</p>
+        {% endif %}
+        
+    {% else %}
+        <h1>Please enter a search term.</h1>
+    {% endif %}
+</div>
+{% endblock %}
