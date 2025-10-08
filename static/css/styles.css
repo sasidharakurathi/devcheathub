@@ -343,6 +343,7 @@ textarea {
     width: 100%;
     margin-right: 2rem;
     padding: 1rem; /* Changed from 1rem 1.2rem to reduce side padding */
+    box-sizing: border-box; 
     background-color: var(--primary-bg);
     border: 1px solid var(--border-color);
     border-radius: 8px;
@@ -802,7 +803,19 @@ pre code {
     .landing-tagline { font-size: 1.1rem; max-width: 90%; }
 
     /* Forms & Placeholders */
-    .form-container, .placeholder-content { padding: 1.5rem; }
+    .placeholder-content { padding: 1.5rem; }
+
+    .form-container {
+        width: 100%;                  /* Make the form use the full width available inside its parent */
+        box-sizing: border-box;       /* IMPORTANT: Prevents padding from making the box too wide */
+        margin: 2rem auto;            /* Reduces vertical margin and keeps it centered */
+        padding: 2.5rem 1.5rem;       /* Adjusts internal spacing for mobile */
+    }
+
+    .form-container .page-title {
+        font-size: 2rem;              /* Reduces the title's font size to better fit mobile screens */
+        margin-bottom: 2rem;
+    }
 
     /* Error Page */
     .error-code { font-size: 6rem; }
