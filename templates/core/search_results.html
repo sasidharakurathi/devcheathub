@@ -4,7 +4,7 @@
 <div class="container">
     {% if query %}
         <h1 class="page-title">Search Results for "{{ query }}"</h1>
-        <p class="text-secondary">{{ results.count }} result{{ results.count|pluralize }} found.</p>
+        {% comment %} <p class="text-secondary">{{ results.count }} result{{ results.count|pluralize }} found.</p> {% endcomment %}
     {% else %}
         <h1 class="page-title">Search DevCheatHub</h1>
     {% endif %}

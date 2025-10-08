@@ -408,7 +408,8 @@ textarea {
 
 .code-block pre {
     margin: 0;
-    /* padding: 0.8rem 1rem; Correct compact padding */
+    /* top, right, bottom, left */
+    padding: 0.8rem 3.5rem 0.8rem 1rem;
     font-size: 0.95rem;
     line-height: 1.5;
     font-family: 'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
