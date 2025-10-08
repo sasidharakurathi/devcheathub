@@ -312,7 +312,7 @@ textarea {
 
 /* --- Forms --- */
 .form-container {
-    max-width: 550px;
+    max-width: 480px; /* Changed from 550px to make the form narrower */
     margin: 4rem auto;
     padding: 3rem;
     background-color: var(--secondary-bg);
@@ -329,7 +329,7 @@ textarea {
 }
 
 .form-container p {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
 }
 
 .form-container label {
@@ -341,7 +341,8 @@ textarea {
 
 .form-container input {
     width: 100%;
-    padding: 1rem 1.2rem;
+    margin-right: 2rem;
+    padding: 1rem; /* Changed from 1rem 1.2rem to reduce side padding */
     background-color: var(--primary-bg);
     border: 1px solid var(--border-color);
     border-radius: 8px;
@@ -368,6 +369,31 @@ textarea {
     margin-top: 0.5rem;
     color: #FF6B6B;
     font-size: 0.9rem;
+}
+
+.form-container button[type="submit"] {
+    width: 100%;
+    margin-top: 1.5rem; /* Adds space above the button */
+    padding: 1rem;      /* Makes the button a bit taller */
+    font-size: 1.1rem;
+}
+
+/* Style for the text below the form (e.g., "Don't have an account?") */
+.form-footer-text {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--text-secondary);
+}
+
+.form-footer-text a {
+    color: var(--accent-color);
+    font-weight: 600;
+    text-decoration: none;
+    pointer-events: auto; /* Ensure link is clickable */
+}
+
+.form-footer-text a:hover {
+    text-decoration: underline;
 }
 
 /* --- Code Snippets --- */

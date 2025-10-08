@@ -22,3 +22,5 @@ local_settings.py
 # IDE settings
 .vscode/
 .idea/
+
+Pipfile
