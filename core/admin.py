@@ -19,7 +19,7 @@ class CategoryAdmin(admin.ModelAdmin):
     
 @admin.register(CheatSheet)
 class CheatSheetAdmin(admin.ModelAdmin):
-    list_display = ('title', 'category', 'updated_at')
+    list_display = ('author','title', 'category','status', 'updated_at')
     list_filter = ('category', )
     search_fields = ('title', 'description')
     prepopulated_fields = {'slug': ('title', )}

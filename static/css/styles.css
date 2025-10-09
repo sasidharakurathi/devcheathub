@@ -1216,3 +1216,18 @@ pre code {
     justify-content: center;
     gap: 1.5rem;
 }
+
+/* -- Sticky Footer Fix -- */
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Make the body at least the height of the screen */
+}
+
+main {
+    flex-grow: 1; /* Make the main content area grow to fill empty space */
+}

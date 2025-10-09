@@ -1,11 +1,13 @@
 from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth.models import User
+import random
+import string
 
 # Create your models here.
 
 class Category(models.Model):
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100, unique=True, blank=True)
     
     parent = models.ForeignKey(
@@ -21,10 +23,18 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = "Categories"
         ordering = ['order']
+        unique_together = ('parent', 'name')
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.name)
+            base_slug = slugify(self.name)
+            slug = base_slug
+            # Check if a category with this slug already exists
+            while Category.objects.filter(slug=slug).exists():
+                # If it exists, append a random 4-character string
+                random_string = ''.join(random.choices(string.ascii_lowercase + string.digits, k=4))
+                slug = f'{base_slug}-{random_string}'
+            self.slug = slug
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -52,8 +62,14 @@ class CheatSheet(models.Model):
     
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)
-        
+            base_slug = slugify(self.title)
+            slug = base_slug
+            # Check if a cheatsheet with this slug already exists
+            while CheatSheet.objects.filter(slug=slug).exists():
+                # If it exists, append a random 4-character string
+                random_string = ''.join(random.choices(string.ascii_lowercase + string.digits, k=4))
+                slug = f'{base_slug}-{random_string}'
+            self.slug = slug
         super().save(*args, **kwargs)
     
     def __str__(self):

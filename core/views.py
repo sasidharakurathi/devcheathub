@@ -116,11 +116,33 @@ def contribute(request):
                         if not all(k in item for k in ['category', 'title', 'description', 'snippets']):
                             raise ValueError("A cheatsheet object is missing required keys.")
 
-                        category, _ = Category.objects.get_or_create(name=item['category'])
+                        parent_category_name = item.get('parent_category')
+                        category_name = item['category']
+                        
+                        final_category = None
+                        if parent_category_name:
+                            # Get or create the parent (ensuring it's a top-level category)
+                            parent_cat, _ = Category.objects.get_or_create(
+                                name=parent_category_name, 
+                                parent=None
+                            )
+                            # Get or create the child category, linking it to the parent
+                            child_cat, _ = Category.objects.get_or_create(
+                                name=category_name, 
+                                parent=parent_cat
+                            )
+                            final_category = child_cat
+                        else:
+                            # If no parent, get or create a top-level category
+                            top_level_cat, _ = Category.objects.get_or_create(
+                                name=category_name, 
+                                parent=None
+                            )
+                            final_category = top_level_cat
                         
                         cheatsheet = CheatSheet.objects.create(
                             author=request.user,
-                            category=category,
+                            category=final_category,
                             title=item['title'],
                             description=item['description'],
                             status='PENDING'

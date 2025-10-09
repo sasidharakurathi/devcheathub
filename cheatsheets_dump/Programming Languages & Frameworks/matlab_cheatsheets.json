@@ -1,0 +1,784 @@
+[
+  {
+    "parent_category": "MATLAB",
+    "category": "Getting Started",
+    "title": "Introduction",
+    "description": "MATLAB is short for matrix laboratory - a scientific computing language for matrix and array operations.",
+    "snippets": [
+      {
+        "title": "What is MATLAB",
+        "language": "matlab",
+        "code": "% MATLAB is short for 'matrix laboratory'\n% It's designed for matrix and array operations\ndisp('Welcome to MATLAB!')",
+        "output": "Welcome to MATLAB!"
+      },
+      {
+        "title": "Basic Matrix Operations",
+        "language": "matlab",
+        "code": "a = [1 3 5; 2 4 6; 7 8 10];\na + 10",
+        "output": "ans =\n    11    13    15\n    12    14    16\n    17    18    20"
+      },
+      {
+        "title": "Matrix Functions",
+        "language": "matlab",
+        "code": "a = [1 3 5; 2 4 6; 7 8 10];\nsin(a)",
+        "output": "ans =\n    0.8415    0.1411   -0.9589\n    0.9093   -0.7568   -0.2794\n    0.6570    0.9894   -0.5440"
+      },
+      {
+        "title": "Matrix Transpose",
+        "language": "matlab",
+        "code": "a = [1 3 5; 2 4 6; 7 8 10];\na'",
+        "output": "ans =\n     1     2     7\n     3     4     8\n     5     6    10"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Matrices and Arrays",
+    "title": "Matrix Creation",
+    "description": "Different methods to create matrices and arrays in MATLAB.",
+    "snippets": [
+      {
+        "title": "Row Vector",
+        "language": "matlab",
+        "code": "a = [1 2 3 4]",
+        "output": "a =\n     1     2     3     4"
+      },
+      {
+        "title": "Matrix with Multiple Rows",
+        "language": "matlab",
+        "code": "a = [1 3 5; 2 4 6; 7 8 10]",
+        "output": "a =\n     1     3     5\n     2     4     6\n     7     8    10"
+      },
+      {
+        "title": "Column Vector of Zeros",
+        "language": "matlab",
+        "code": "z = zeros(5, 1)",
+        "output": "z =\n     0\n     0\n     0\n     0\n     0"
+      },
+      {
+        "title": "Ones Matrix",
+        "language": "matlab",
+        "code": "ones_matrix = ones(3, 3)",
+        "output": "ones_matrix =\n     1     1     1\n     1     1     1\n     1     1     1"
+      },
+      {
+        "title": "Identity Matrix",
+        "language": "matlab",
+        "code": "I = eye(3)",
+        "output": "I =\n     1     0     0\n     0     1     0\n     0     0     1"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Matrices and Arrays",
+    "title": "Array Concatenation",
+    "description": "Joining arrays to form larger arrays using concatenation operators.",
+    "snippets": [
+      {
+        "title": "Horizontal Concatenation",
+        "language": "matlab",
+        "code": "a = [1 3 5; 2 4 6; 7 8 10];\nA = [a, a]",
+        "output": "A =\n     1     3     5     1     3     5\n     2     4     6     2     4     6\n     7     8    10     7     8    10"
+      },
+      {
+        "title": "Vertical Concatenation",
+        "language": "matlab",
+        "code": "a = [1 3 5; 2 4 6; 7 8 10];\nA = [a; a]",
+        "output": "A =\n     1     3     5\n     2     4     6\n     7     8    10\n     1     3     5\n     2     4     6\n     7     8    10"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Matrices and Arrays",
+    "title": "Complex Numbers",
+    "description": "Working with complex numbers in MATLAB using i and j notation.",
+    "snippets": [
+      {
+        "title": "Square Root of Negative Number",
+        "language": "matlab",
+        "code": "sqrt(-1)",
+        "output": "ans =\n   0.0000 + 1.0000i"
+      },
+      {
+        "title": "Complex Number Matrix",
+        "language": "matlab",
+        "code": "c = [3+4i, 4+3j; -i, 10j]",
+        "output": "c =\n   3.0000 + 4.0000i   4.0000 + 3.0000i\n   0.0000 - 1.0000i   0.0000 +10.0000i"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Basic Knowledge",
+    "title": "Command Input Functions",
+    "description": "Essential functions for command window operations and workspace management.",
+    "snippets": [
+      {
+        "title": "Clear Command Window",
+        "language": "matlab",
+        "code": "clc\ndisp('Command window cleared')",
+        "output": "Command window cleared"
+      },
+      {
+        "title": "Most Recent Answer",
+        "language": "matlab",
+        "code": "5 * 7;\nans",
+        "output": "ans =\n    35"
+      },
+      {
+        "title": "Check MATLAB Keywords",
+        "language": "matlab",
+        "code": "iskeyword('for')",
+        "output": "ans =\n  logical\n   1"
+      },
+      {
+        "title": "Format Output Display",
+        "language": "matlab",
+        "code": "format short\npi",
+        "output": "ans =\n    3.1416"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Matrices and Arrays",
+    "title": "Array Creation Functions",
+    "description": "Built-in functions for creating different types of arrays and matrices.",
+    "snippets": [
+      {
+        "title": "Random Numbers",
+        "language": "matlab",
+        "code": "rand(2, 3)",
+        "output": "ans =\n    0.8147    0.1270    0.6324\n    0.9058    0.9134    0.0975"
+      },
+      {
+        "title": "Logical Arrays",
+        "language": "matlab",
+        "code": "true_array = true(2, 2)\nfalse_array = false(2, 2)",
+        "output": "true_array =\n  2×2 logical array\n   1   1\n   1   1\n\nfalse_array =\n  2×2 logical array\n   0   0\n   0   0"
+      },
+      {
+        "title": "Diagonal Matrix",
+        "language": "matlab",
+        "code": "diag([1, 2, 3])",
+        "output": "ans =\n     1     0     0\n     0     2     0\n     0     0     3"
+      },
+      {
+        "title": "Block Diagonal Matrix",
+        "language": "matlab",
+        "code": "A = [1 2; 3 4];\nB = [5 6];\nblkdiag(A, B)",
+        "output": "ans =\n     1     2     0     0\n     3     4     0     0\n     0     0     5     6"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Matrices and Arrays",
+    "title": "Grid Creation",
+    "description": "Functions for creating linearly and logarithmically spaced vectors and grids.",
+    "snippets": [
+      {
+        "title": "Linear Spacing",
+        "language": "matlab",
+        "code": "linspace(0, 10, 5)",
+        "output": "ans =\n         0    2.5000    5.0000    7.5000   10.0000"
+      },
+      {
+        "title": "Logarithmic Spacing",
+        "language": "matlab",
+        "code": "logspace(0, 2, 4)",
+        "output": "ans =\n    1.0000    4.6416   21.5443  100.0000"
+      },
+      {
+        "title": "2D Grid",
+        "language": "matlab",
+        "code": "[X, Y] = meshgrid(1:3, 1:2)\nX\nY",
+        "output": "X =\n     1     2     3\n     1     2     3\n\nY =\n     1     1     1\n     2     2     2"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Matrices and Arrays",
+    "title": "Array Properties",
+    "description": "Functions to determine size, shape, and properties of arrays.",
+    "snippets": [
+      {
+        "title": "Array Size and Length",
+        "language": "matlab",
+        "code": "A = [1 2 3; 4 5 6];\nsize(A)\nlength(A)\nnumel(A)",
+        "output": "ans =\n     2     3\n\nans =\n     3\n\nans =\n     6"
+      },
+      {
+        "title": "Array Dimensions",
+        "language": "matlab",
+        "code": "A = rand(3, 4, 2);\nndims(A)",
+        "output": "ans =\n     3"
+      },
+      {
+        "title": "Array Type Checking",
+        "language": "matlab",
+        "code": "A = [1 2 3];\nisscalar(A)\nisvector(A)\nismatrix(A)",
+        "output": "ans =\n  logical\n   0\n\nans =\n  logical\n   1\n\nans =\n  logical\n   1"
+      },
+      {
+        "title": "Check if Sorted",
+        "language": "matlab",
+        "code": "A = [1 2 3 4];\nissorted(A)",
+        "output": "ans =\n  logical\n   1"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Matrices and Arrays",
+    "title": "Array Manipulation",
+    "description": "Functions for reshaping, sorting, and rearranging arrays.",
+    "snippets": [
+      {
+        "title": "Sort Arrays",
+        "language": "matlab",
+        "code": "A = [3, 1, 4, 1, 5];\nsort(A)",
+        "output": "ans =\n     1     1     3     4     5"
+      },
+      {
+        "title": "Flip Arrays",
+        "language": "matlab",
+        "code": "A = [1, 2, 3, 4];\nflip(A)",
+        "output": "ans =\n     4     3     2     1"
+      },
+      {
+        "title": "Reshape Arrays",
+        "language": "matlab",
+        "code": "A = 1:6;\nreshape(A, 2, 3)",
+        "output": "ans =\n     1     3     5\n     2     4     6"
+      },
+      {
+        "title": "Rotate Array",
+        "language": "matlab",
+        "code": "A = [1 2; 3 4];\nrot90(A)",
+        "output": "ans =\n     2     4\n     1     3"
+      },
+      {
+        "title": "Circular Shift",
+        "language": "matlab",
+        "code": "A = [1 2 3 4 5];\ncircshift(A, 2)",
+        "output": "ans =\n     4     5     1     2     3"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Data Types",
+    "title": "Numeric Types",
+    "description": "Creating and converting between different numeric data types.",
+    "snippets": [
+      {
+        "title": "Double Precision",
+        "language": "matlab",
+        "code": "x = double(5)",
+        "output": "x =\n     5"
+      },
+      {
+        "title": "Single Precision",
+        "language": "matlab",
+        "code": "x = single(3.14)",
+        "output": "x =\n  single\n    3.1400"
+      },
+      {
+        "title": "Integer Types",
+        "language": "matlab",
+        "code": "a = int8(127)\nb = uint16(65535)\nc = int32(-2000000)",
+        "output": "a =\n  int8\n   127\n\nb =\n  uint16\n   65535\n\nc =\n  int32\n   -2000000"
+      },
+      {
+        "title": "Type Conversion",
+        "language": "matlab",
+        "code": "x = 3.7;\ny = cast(x, 'int16')",
+        "output": "y =\n  int16\n   4"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Data Types",
+    "title": "Value Ranges",
+    "description": "Constants and functions for numeric limits and special values.",
+    "snippets": [
+      {
+        "title": "Floating Point Precision",
+        "language": "matlab",
+        "code": "eps\nrealmax\nrealmin",
+        "output": "ans =\n   2.2204e-16\n\nans =\n   1.7977e+308\n\nans =\n   2.2251e-308"
+      },
+      {
+        "title": "Integer Limits",
+        "language": "matlab",
+        "code": "intmax('int8')\nintmin('int8')",
+        "output": "ans =\n  int8\n   127\n\nans =\n  int8\n   -128"
+      },
+      {
+        "title": "Special Values",
+        "language": "matlab",
+        "code": "Inf\n-Inf\nNaN",
+        "output": "ans =\n   Inf\n\nans =\n  -Inf\n\nans =\n   NaN"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Control Flow",
+    "title": "Conditional Statements",
+    "description": "If-else statements and switch-case constructs for conditional execution.",
+    "snippets": [
+      {
+        "title": "If-Elseif-Else Statement",
+        "language": "matlab",
+        "code": "score = 85;\nif score >= 90\n    grade = 'A'\nelseif score >= 80\n    grade = 'B'\nelseif score >= 70\n    grade = 'C'\nelse\n    grade = 'F'\nend",
+        "output": "grade =\n    'B'"
+      },
+      {
+        "title": "Switch Statement",
+        "language": "matlab",
+        "code": "day = 3;\nswitch day\n    case 1\n        day_name = 'Monday'\n    case 2\n        day_name = 'Tuesday'  \n    case 3\n        day_name = 'Wednesday'\n    otherwise\n        day_name = 'Unknown'\nend",
+        "output": "day_name =\n    'Wednesday'"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Control Flow",
+    "title": "Loops",
+    "description": "For and while loops for iterative execution of code blocks.",
+    "snippets": [
+      {
+        "title": "For Loop with Range",
+        "language": "matlab",
+        "code": "for i = 1:5\n    fprintf('%d ', i);\nend\nfprintf('\\n');",
+        "output": "1 2 3 4 5"
+      },
+      {
+        "title": "For Loop with Array",
+        "language": "matlab",
+        "code": "values = [10, 20, 30];\nfor val = values\n    fprintf('%d ', val);\nend\nfprintf('\\n');",
+        "output": "10 20 30"
+      },
+      {
+        "title": "While Loop",
+        "language": "matlab",
+        "code": "i = 1;\nwhile i <= 3\n    fprintf('Count: %d\\n', i);\n    i = i + 1;\nend",
+        "output": "Count: 1\nCount: 2\nCount: 3"
+      },
+      {
+        "title": "Break and Continue",
+        "language": "matlab",
+        "code": "for i = 1:10\n    if i == 3\n        continue;\n    end\n    if i == 6\n        break;\n    end\n    fprintf('%d ', i);\nend\nfprintf('\\n');",
+        "output": "1 2 4 5"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Control Flow",
+    "title": "Error Handling",
+    "description": "Try-catch blocks for handling errors and exceptions.",
+    "snippets": [
+      {
+        "title": "Basic Try-Catch",
+        "language": "matlab",
+        "code": "try\n    result = 10 / 0;\n    disp(result);\ncatch ME\n    fprintf('Error: %s\\n', ME.message);\nend",
+        "output": "Inf"
+      },
+      {
+        "title": "Specific Error Handling",
+        "language": "matlab",
+        "code": "try\n    A = [1, 2];\n    element = A(5);\ncatch ME\n    if contains(ME.identifier, 'badsubscript')\n        disp('Index out of bounds!')\n    else\n        disp('Other error occurred')\n    end\nend",
+        "output": "Index out of bounds!"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Strings and Characters",
+    "title": "String Arrays",
+    "description": "Creating and manipulating string arrays in MATLAB.",
+    "snippets": [
+      {
+        "title": "String Array Creation",
+        "language": "matlab",
+        "code": "str1 = \"Hello\"\nstr2 = \"World\"\nstr_array = [str1, str2]",
+        "output": "str1 =\n    \"Hello\"\n\nstr2 =\n    \"World\"\n\nstr_array =\n  1×2 string array\n    \"Hello\"    \"World\""
+      },
+      {
+        "title": "Join Strings",
+        "language": "matlab",
+        "code": "words = [\"MATLAB\", \"is\", \"awesome\"];\nsentence = join(words, \" \")",
+        "output": "sentence =\n    \"MATLAB is awesome\""
+      },
+      {
+        "title": "String Length",
+        "language": "matlab",
+        "code": "str = \"MATLAB Programming\";\nstrlength(str)",
+        "output": "ans =\n    17"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Strings and Characters",
+    "title": "Character Arrays",
+    "description": "Working with character arrays and conversion functions.",
+    "snippets": [
+      {
+        "title": "Character Array",
+        "language": "matlab",
+        "code": "ch = 'Hello World'",
+        "output": "ch =\n    'Hello World'"
+      },
+      {
+        "title": "String Concatenation",
+        "language": "matlab",
+        "code": "str1 = 'Hello';\nstr2 = 'World';\nresult = strcat(str1, ' ', str2)",
+        "output": "result =\n    'Hello World'"
+      },
+      {
+        "title": "Case Conversion",
+        "language": "matlab",
+        "code": "text = 'Hello World';\nupper_text = upper(text)\nlower_text = lower(text)",
+        "output": "upper_text =\n    'HELLO WORLD'\n\nlower_text =\n    'hello world'"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Strings and Characters",
+    "title": "String Search and Replace",
+    "description": "Functions for finding, matching, and replacing text patterns.",
+    "snippets": [
+      {
+        "title": "String Contains",
+        "language": "matlab",
+        "code": "text = \"MATLAB Programming\";\ncontains(text, \"MATLAB\")\ncontains(text, \"Python\")",
+        "output": "ans =\n  logical\n   1\n\nans =\n  logical\n   0"
+      },
+      {
+        "title": "String Find and Replace",
+        "language": "matlab",
+        "code": "text = \"Hello World\";\nstrfind(text, \"World\")\nreplace(text, \"World\", \"MATLAB\")",
+        "output": "ans =\n     7\n\nans =\n    \"Hello MATLAB\""
+      },
+      {
+        "title": "String Matching",
+        "language": "matlab",
+        "code": "text = \"Programming\";\nstartsWith(text, \"Prog\")\nendsWith(text, \"ing\")",
+        "output": "ans =\n  logical\n   1\n\nans =\n  logical\n   1"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Mathematics",
+    "title": "Basic Arithmetic",
+    "description": "Fundamental arithmetic operations and mathematical functions.",
+    "snippets": [
+      {
+        "title": "Addition and Subtraction",
+        "language": "matlab",
+        "code": "a = 10; b = 3;\nsum_result = a + b\ndiff_result = a - b",
+        "output": "sum_result =\n    13\n\ndiff_result =\n     7"
+      },
+      {
+        "title": "Multiplication and Division",
+        "language": "matlab",
+        "code": "a = 15; b = 3;\nproduct = a * b\nquotient = a / b",
+        "output": "product =\n    45\n\nquotient =\n     5"
+      },
+      {
+        "title": "Array Operations",
+        "language": "matlab",
+        "code": "A = [1, 2, 3];\nB = [4, 5, 6];\nA .* B\nA .^ 2",
+        "output": "ans =\n     4    10    18\n\nans =\n     1     4     9"
+      },
+      {
+        "title": "Matrix Multiplication",
+        "language": "matlab",
+        "code": "A = [1 2; 3 4];\nB = [5 6; 7 8];\nA * B",
+        "output": "ans =\n    19    22\n    43    50"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Mathematics",
+    "title": "Rounding and Modular Operations",
+    "description": "Functions for rounding numbers and modular arithmetic.",
+    "snippets": [
+      {
+        "title": "Rounding Functions",
+        "language": "matlab",
+        "code": "x = 3.7;\nceil(x)\nfloor(x)\nround(x)\nfix(x)",
+        "output": "ans =\n     4\n\nans =\n     3\n\nans =\n     4\n\nans =\n     3"
+      },
+      {
+        "title": "Modular Operations",
+        "language": "matlab",
+        "code": "mod(17, 5)\nrem(17, 5)",
+        "output": "ans =\n     2\n\nans =\n     2"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Logic and Comparison",
+    "title": "Relational Operations",
+    "description": "Comparison operators for testing relationships between values.",
+    "snippets": [
+      {
+        "title": "Comparison Operators",
+        "language": "matlab",
+        "code": "a = 5; b = 3;\na > b\na <= b\na == b\na ~= b",
+        "output": "ans =\n  logical\n   1\n\nans =\n  logical\n   0\n\nans =\n  logical\n   0\n\nans =\n  logical\n   1"
+      },
+      {
+        "title": "Array Comparisons",
+        "language": "matlab",
+        "code": "A = [1, 2, 3];\nB = [1, 4, 2];\nA == B\nA > B",
+        "output": "ans =\n  1×3 logical array\n   1   0   0\n\nans =\n  1×3 logical array\n   0   0   1"
+      },
+      {
+        "title": "Array Equality",
+        "language": "matlab",
+        "code": "A = [1, 2, 3];\nB = [1, 2, 3];\nC = [1, 2, 4];\nisequal(A, B)\nisequal(A, C)",
+        "output": "ans =\n  logical\n   1\n\nans =\n  logical\n   0"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Logic and Comparison",
+    "title": "Logical Operations",
+    "description": "Boolean operations and logical functions.",
+    "snippets": [
+      {
+        "title": "Logical Operators",
+        "language": "matlab",
+        "code": "a = true; b = false;\na & b\na | b\n~a\nxor(a, b)",
+        "output": "ans =\n  logical\n   0\n\nans =\n  logical\n   1\n\nans =\n  logical\n   0\n\nans =\n  logical\n   1"
+      },
+      {
+        "title": "Short-circuit Operators",
+        "language": "matlab",
+        "code": "a = 5; b = 0;\n(a > 0) && (b > 0)\n(a > 0) || (b > 0)",
+        "output": "ans =\n  logical\n   0\n\nans =\n  logical\n   1"
+      },
+      {
+        "title": "Logical Array Functions",
+        "language": "matlab",
+        "code": "A = [1, 0, 3, 0, 5];\nany(A)\nall(A)\nfind(A)",
+        "output": "ans =\n  logical\n   1\n\nans =\n  logical\n   0\n\nans =\n     1     3     5"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "File I/O",
+    "title": "Reading Files",
+    "description": "Functions for reading data from various file formats.",
+    "snippets": [
+      {
+        "title": "Read Matrix from File",
+        "language": "matlab",
+        "code": "% Create sample data first\ndata = [1 2 3; 4 5 6];\nwritematrix(data, 'sample.csv');\n\n% Read the matrix back\nread_data = readmatrix('sample.csv')",
+        "output": "read_data =\n     1     2     3\n     4     5     6"
+      },
+      {
+        "title": "Read Table from File",
+        "language": "matlab",
+        "code": "% Read tabular data\n% Assuming we have a CSV file\ntable_data = readtable('sample.csv')",
+        "output": "table_data =\n  2×3 table\n    Var1    Var2    Var3\n    ____    ____    ____\n      1       2       3 \n      4       5       6"
+      },
+      {
+        "title": "Read Text File",
+        "language": "matlab",
+        "code": "% Write text file first\nfid = fopen('sample.txt', 'w');\nfprintf(fid, 'Hello MATLAB\\nLine 2\\n');\nfclose(fid);\n\n% Read lines from file\nlines = readlines('sample.txt')",
+        "output": "lines =\n  2×1 string array\n    \"Hello MATLAB\"\n    \"Line 2\""
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "File I/O",
+    "title": "Writing Files",
+    "description": "Functions for writing data to various file formats.",
+    "snippets": [
+      {
+        "title": "Write Matrix to File",
+        "language": "matlab",
+        "code": "data = [1 2 3; 4 5 6; 7 8 9];\nwritematrix(data, 'output.csv');\ndisp('Matrix written to output.csv')",
+        "output": "Matrix written to output.csv"
+      },
+      {
+        "title": "Write Table to File",
+        "language": "matlab",
+        "code": "Name = {'John'; 'Alice'; 'Bob'};\nAge = [25; 30; 35];\nT = table(Name, Age);\nwritetable(T, 'people.csv');\ndisp('Table written to people.csv')",
+        "output": "Table written to people.csv"
+      },
+      {
+        "title": "Low-level File Writing",
+        "language": "matlab",
+        "code": "fid = fopen('output.txt', 'w');\nfprintf(fid, 'Results:\\n');\nfprintf(fid, 'Value: %d\\n', 42);\nfclose(fid);\ndisp('Text file written')",
+        "output": "Text file written"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Functions",
+    "title": "Function Definition",
+    "description": "Creating user-defined functions in MATLAB.",
+    "snippets": [
+      {
+        "title": "Simple Function",
+        "language": "matlab",
+        "code": "function result = square(x)\n    result = x^2;\nend\n\n% Call the function\nans = square(4)",
+        "output": "ans =\n    16"
+      },
+      {
+        "title": "Multiple Input Function",
+        "language": "matlab",
+        "code": "function area = rectangle_area(length, width)\n    area = length * width;\nend\n\n% Call the function\narea = rectangle_area(5, 3)",
+        "output": "area =\n    15"
+      },
+      {
+        "title": "Multiple Output Function",
+        "language": "matlab",
+        "code": "function [sum_val, diff_val, prod_val] = calc_ops(a, b)\n    sum_val = a + b;\n    diff_val = a - b;\n    prod_val = a * b;\nend\n\n[s, d, p] = calc_ops(8, 3)",
+        "output": "s =\n    11\nd =\n     5\np =\n    24"
+      },
+      {
+        "title": "Anonymous Function",
+        "language": "matlab",
+        "code": "square_func = @(x) x^2;\nresult = square_func(6)",
+        "output": "result =\n    36"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Plotting and Visualization",
+    "title": "2D Plotting",
+    "description": "Creating 2D plots and visualizations.",
+    "snippets": [
+      {
+        "title": "Basic Line Plot",
+        "language": "matlab",
+        "code": "x = 0:0.1:2*pi;\ny = sin(x);\nplot(x, y);\ntitle('Sine Wave');\nxlabel('x');\nylabel('sin(x)');",
+        "output": null
+      },
+      {
+        "title": "Multiple Plots",
+        "language": "matlab",
+        "code": "x = 0:0.1:2*pi;\ny1 = sin(x);\ny2 = cos(x);\nplot(x, y1, 'r-', x, y2, 'b--');\nlegend('sin(x)', 'cos(x)');\ntitle('Trigonometric Functions');",
+        "output": null
+      },
+      {
+        "title": "Scatter Plot",
+        "language": "matlab",
+        "code": "x = randn(50, 1);\ny = randn(50, 1);\nscatter(x, y, 'filled');\ntitle('Random Scatter Plot');\nxlabel('X values');\nylabel('Y values');",
+        "output": null
+      },
+      {
+        "title": "Subplot",
+        "language": "matlab",
+        "code": "x = 1:10;\nsubplot(2, 1, 1);\nplot(x, x.^2);\ntitle('x^2');\nsubplot(2, 1, 2);\nplot(x, x.^3);\ntitle('x^3');",
+        "output": null
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Workspace Management",
+    "title": "Variable Management",
+    "description": "Functions for managing workspace variables and data.",
+    "snippets": [
+      {
+        "title": "List Variables",
+        "language": "matlab",
+        "code": "a = 10;\nb = 'hello';\nc = [1, 2, 3];\nwho",
+        "output": "Your variables are:\na  b  c"
+      },
+      {
+        "title": "Detailed Variable Information",
+        "language": "matlab",
+        "code": "a = magic(3);\nb = 'MATLAB';\nwhos",
+        "output": "  Name      Size            Bytes  Class     Attributes\n  a         3x3                72  double              \n  b         1x6                12  char"
+      },
+      {
+        "title": "Save and Load Variables",
+        "language": "matlab",
+        "code": "x = 1:10;\ny = x.^2;\nsave('mydata.mat', 'x', 'y');\nclear x y;\nload('mydata.mat');\ndisp('Variables loaded')",
+        "output": "Variables loaded"
+      },
+      {
+        "title": "Clear Variables",
+        "language": "matlab",
+        "code": "a = 1; b = 2; c = 3;\nclear a b;\nwho",
+        "output": "Your variables are:\nc"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Mathematics",
+    "title": "Mathematical Functions",
+    "description": "Common mathematical and trigonometric functions.",
+    "snippets": [
+      {
+        "title": "Trigonometric Functions",
+        "language": "matlab",
+        "code": "angle = pi/4;\nsin_val = sin(angle)\ncos_val = cos(angle)\ntan_val = tan(angle)",
+        "output": "sin_val =\n    0.7071\ncos_val =\n    0.7071\ntan_val =\n    1.0000"
+      },
+      {
+        "title": "Exponential and Logarithmic",
+        "language": "matlab",
+        "code": "x = 2;\nexp_val = exp(x)\nlog_val = log(x)\nlog10_val = log10(x)",
+        "output": "exp_val =\n    7.3891\nlog_val =\n    0.6931\nlog10_val =\n    0.3010"
+      },
+      {
+        "title": "Power and Root Functions",
+        "language": "matlab",
+        "code": "x = 16;\nsqrt_val = sqrt(x)\npower_val = x^0.5\ncube_root = nthroot(27, 3)",
+        "output": "sqrt_val =\n     4\npower_val =\n     4\ncube_root =\n     3"
+      }
+    ]
+  },
+  {
+    "parent_category": "MATLAB",
+    "category": "Mathematics",
+    "title": "Statistical Functions",
+    "description": "Functions for statistical analysis and data summary.",
+    "snippets": [
+      {
+        "title": "Basic Statistics",
+        "language": "matlab",
+        "code": "data = [2, 4, 6, 8, 10];\nmean_val = mean(data)\nmedian_val = median(data)\nstd_val = std(data)",
+        "output": "mean_val =\n     6\nmedian_val =\n     6\nstd_val =\n    3.1623"
+      },
+      {
+        "title": "Min and Max",
+        "language": "matlab",
+        "code": "data = [3, 7, 1, 9, 2];\nmin_val = min(data)\nmax_val = max(data)\nrange_val = max_val - min_val",
+        "output": "min_val =\n     1\nmax_val =\n     9\nrange_val =\n     8"
+      },
+      {
+        "title": "Sum and Product",
+        "language": "matlab",
+        "code": "data = [1, 2, 3, 4, 5];\nsum_val = sum(data)\nprod_val = prod(data)",
+        "output": "sum_val =\n    15\nprod_val =\n   120"
+      }
+    ]
+  }
+]
