@@ -8,6 +8,42 @@
     </div>
     
     <div class="json-contribution-layout">
+        <div class="form-section json-example-section">
+            <h2 class="form-section-title">Required JSON Format</h2>
+            <pre><code class="language-json nohighlight">[
+  {
+    "parent_category": "Parent Category Name (Optional)",
+    "category": "Your Category Name",
+    "title": "Your Cheatsheet Title",
+    "description": "A brief description of the cheatsheet.",
+    "content": {
+      "sections": [
+        {
+          "section_title": "Main Section Title (e.g., Basic Syntax)",
+          "sub_sections": [
+            {
+              "sub_section_heading": "First Snippet Title",
+              "tags": ["tag1", "tag2"],
+              "language": "python",
+              "code": "print(\"Your code here.\\nUse \\n for new lines.\")",
+              "output": "Your output here. (or null)"
+            },
+            {
+              "sub_section_heading": "Second Snippet Title",
+              "tags": ["tag3"],
+              "language": "bash",
+              "code": "echo \"Another snippet\"",
+              "output": "Another snippet"
+            }
+          ]
+        }
+      ]
+    }
+  }, ...
+]
+</code></pre>
+        </div>
+
         <div class="form-section json-input-section">
             <form method="post" novalidate>
                 {% csrf_token %}
@@ -18,33 +54,6 @@
                     <input type="file" id="json-file-input" accept=".json" style="display: none;">
                 </div>
             </form>
-        </div>
-
-        <div class="form-section json-example-section">
-            <h2 class="form-section-title">Required JSON Format</h2>
-            <pre><code class="language-json nohighlight">[
-    {
-        "parent_category": "Parent Category Name",  // Example: Python
-        "category": "Your Category Name",
-        "title": "Your Cheatsheet Title",
-        "description": "A brief description of the cheatsheet.",
-        "snippets": [
-            {
-            "title": "First Snippet Title",
-            "language": "python",
-            "code": "print(\"Your code here.\\nUse \\n for new lines.\")",
-            "output": "Your output here. (or null)"
-            },
-            {
-            "title": "Second Snippet Title",
-            "language": "python",
-            "code": "print(\"Your 2nd code here.\\nUse \\n for new lines.\")",
-            "output": "Another snippet"
-            }
-        ]
-    }, ...
-]
-</code></pre>
         </div>
     </div>
 </div>

@@ -95,19 +95,27 @@ textarea {
     color: var(--accent-color);
     text-decoration: none;
     letter-spacing: -0.03em;
+    margin-right: auto; /* Pushes everything else to the right */
 }
 
-.nav-menu {
+/* Container for all right-side elements */
+.header-actions {
     display: flex;
     align-items: center;
-    gap: 2.5rem;
+    gap: 1.5rem;
+    margin-left: 1rem;
 }
 
+/* --- Desktop Navigation --- */
+.nav-menu {
+    display: flex;
+}
 .nav-center {
     display: flex;
-    gap: 2.5rem;
+    align-items: center;
+    gap: 2rem;
+    margin-right: 1rem;
 }
-
 .nav-center a {
     color: var(--text-secondary);
     text-decoration: none;
@@ -115,36 +123,57 @@ textarea {
     font-size: 1.05rem;
     transition: color 0.2s ease;
 }
-
 .nav-center a:hover {
     color: var(--text-primary);
 }
 
+/* --- Auth Buttons --- */
 .nav-auth {
     display: flex;
     align-items: center;
     gap: 1.2rem;
 }
-
 .welcome-text {
     color: var(--text-secondary);
     font-weight: 500;
     font-size: 1rem;
     text-decoration: none;
+    white-space: nowrap; /* Prevents name from wrapping */
 }
 .welcome-text:hover {
     color: var(--text-primary);
 }
 
+/* --- Icon-Only Search Button --- */
+.search-trigger-icon {
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    margin-right: 1rem;
+}
+.search-trigger-icon:hover {
+    color: var(--gradient-start);
+    /* background-color: var(--secondary-bg); */
+    /* border-color: var(--border-color); */
+}
+
+
+/* --- Mobile Hamburger --- */
 .nav-toggle {
-    display: none;
+    display: none; /* Hidden on desktop */
     background: transparent;
     border: none;
     cursor: pointer;
     padding: 0;
     z-index: 1000;
 }
-
 .hamburger {
     display: block;
     position: relative;
@@ -153,9 +182,7 @@ textarea {
     background: var(--text-primary);
     transition: transform 0.3s ease;
 }
-
-.hamburger::before,
-.hamburger::after {
+.hamburger::before, .hamburger::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -164,9 +191,54 @@ textarea {
     left: 0;
     transition: all 0.3s ease;
 }
-
 .hamburger::before { top: -8px; }
 .hamburger::after { bottom: -8px; }
+
+/* --- Mobile Navigation Styles --- */
+@media (max-width: 992px) {
+    /* Hide desktop-only elements */
+    .nav-menu, .nav-auth {
+        display: none;
+    }
+    
+    /* Show mobile-only elements */
+    .nav-toggle {
+        display: block;
+    }
+    
+    /* Copied from your full-screen menu styles */
+    body.nav-open .nav-menu {
+        display: flex;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--secondary-bg);
+        z-index: 999;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    body.nav-open .nav-center,
+    body.nav-open .nav-auth {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 1.5rem;
+        text-align: center;
+    }
+    body.nav-open .nav-auth {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .nav-toggle.is-active .hamburger { transform: rotate(45deg); }
+    .nav-toggle.is-active .hamburger::before { top: 0; transform: rotate(90deg); }
+    .nav-toggle.is-active .hamburger::after { bottom: 0; transform: rotate(90deg); }
+    body.nav-open { overflow: hidden; }
+}
 
 /* ========================================= */
 /* ==         4. Component Styles         == */
@@ -929,13 +1001,24 @@ pre code {
 /* -- Styles for JSON Contribution Page -- */
 .json-contribution-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    width: 100%;
+    grid-template-columns: 1fr;
+    /* grid-template-rows: 1fr 1fr; */
+    gap: 1rem;
 }
+
+.form-section-title {
+    margin: 0;
+}
+
+.json-input-section > form > p {
+    color: white !important;
+}
+
 
 /* This new rule targets the CodeMirror editor */
 .json-input-section .CodeMirror {
-    height: 600px; /* You can adjust this value to make it taller or shorter */
+    height: 100vh; /* You can adjust this value to make it taller or shorter */
     border: 1px solid var(--border-color);
     border-radius: 8px;
     font-size: 1rem;
@@ -947,7 +1030,7 @@ pre code {
     padding: 1rem;
     font-size: 0.9rem;
     line-height: 1.5;
-    height: 100%; /* Make example box match height */
+    /* height: 100%; Make example box match height */
     box-sizing: border-box;
 }
 
@@ -1020,35 +1103,6 @@ pre code {
     align-items: center;
 }
 
-.nav-search input {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    padding-left: 3rem; /* Make space for the icon */
-    background-color: var(--primary-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    color: var(--text-primary);
-    font-size: 1rem;
-    transition: all 0.2s ease;
-}
-
-.nav-search input:focus {
-    outline: none;
-    border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(140, 82, 255, 0.2);
-}
-
-.nav-search button {
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    color: var(--text-secondary);
-}
 
 /* -- Styles for Profile Page -- */
 .list-item-header {
@@ -1509,5 +1563,387 @@ input[type="file"]::file-selector-button:hover {
 
     .upload-actions > label  {
         font-size: 15px;
+    }
+}
+
+
+/* -- Advanced Search Palette Styles -- */
+.search-palette-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    -webkit-backdrop-filter: blur(8px); /* Increased blur */
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    pointer-events: auto;
+}
+
+.search-palette {
+    position: relative;
+    top: 15%; /* Lower the palette slightly */
+    margin: 0 auto;
+    width: 90%;
+    max-width: 900px; /* Wider for two columns */
+    height: 70vh; /* Set a fixed height */
+    max-height: 800px;
+    background-color: rgba(30, 26, 51, 0.95);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 60px rgba(0,0,0,0.6);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    z-index: 1001;
+}
+
+/* --- Search Input Area --- */
+.search-input-area {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    gap: 0.5rem;
+}
+
+.search-input-area .search-icon {
+    color: var(--text-secondary);
+}
+
+#search-input {
+    flex-grow: 1;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    padding: 0.5rem 0; /* Adjust padding for better alignment */
+}
+#search-input::placeholder {
+    color: var(--text-secondary);
+}
+#search-input:focus {
+    outline: none;
+}
+
+#search-cancel-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+#search-cancel-btn:hover {
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+}
+
+
+/* --- Content Area (Results + Preview) --- */
+.search-content-area {
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden; /* Ensure content inside respects height */
+    height: 100%;
+}
+
+.search-results-left-panel {
+    flex: 1; /* Takes half width */
+    border-right: 1px solid var(--border-color);
+    overflow-y: auto;
+    padding: 1rem 1rem 1rem 1.5rem; 
+}
+
+.search-results-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search-results-list li a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border-radius: 6px;
+    /* margin: 0 0.5rem; For internal spacing */
+    margin: 0.5rem;
+}
+
+.search-result-icon {
+    width: 28px; /* Slightly larger icon */
+    height: 28px;
+    object-fit: contain;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.search-result-text {
+    flex-grow: 1;
+}
+
+.search-result-text strong {
+    display: block;
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.search-result-text span {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.search-results-list li a.is-active,
+.search-results-list li a:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+.search-results-list li a.is-active .search-result-text strong,
+.search-results-list li a:hover .search-result-text strong {
+    color: #fff;
+}
+.search-results-list li a.is-active .search-result-text span,
+.search-results-list li a:hover .search-result-text span {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* --- Preview Right Panel --- */
+.search-preview-right-panel {
+    flex: 1;
+    overflow-y: auto;   /* Enable vertical scrolling */
+    padding: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    max-height: 100%;   /* Ensures the panel takes available height */
+    min-height: 0;
+}
+
+.preview-default-state {
+    text-align: center;
+    margin-top: 5rem;
+    color: rgba(255,255,255,0.6);
+}
+
+.preview-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.preview-category-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.preview-title-info h3 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+.preview-title-info span {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.preview-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.preview-tags .tag {
+    background-color: var(--primary-bg);
+    color: var(--text-secondary);
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    border: 1px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.preview-sections {
+    margin-bottom: 1.5rem;
+}
+.preview-sections h4 {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+.preview-sections ul {
+    list-style: none;
+    padding-left: 1rem;
+    margin: 0;
+}
+.preview-sections ul li {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+.preview-sections ul li a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.preview-sections ul li a:hover {
+    color: var(--accent-color);
+}
+
+#preview-full-link {
+    width: fit-content; /* Adjust button width */
+    margin-top: 1.5rem;
+}
+
+/* --- Mobile Responsiveness for Search Palette --- */
+@media (max-width: 768px) {
+    .search-palette {
+        width: 95%;
+        top: 10%;
+        height: 80vh; /* Taller on mobile */
+    }
+
+    .search-content-area {
+        flex-direction: column; /* Stack panels vertically */
+    }
+
+    .search-results-left-panel {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        max-height: 40%; /* Limit height of results list */
+    }
+    .search-preview-right-panel {
+        max-height: 60%; /* Limit height of preview */
+    }
+}
+
+.search-highlight {
+    color: var(--accent-color);
+    font-weight: 700;
+    background-color: rgba(140, 82, 255, 0.1);
+    padding: 2px 0;
+    border-radius: 3px;
+}
+
+/* Add this to your styles.css */
+
+.search-palette-footer-hints {
+    border-top: 1px solid var(--border-color);
+    padding: 0.6rem 1rem;
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    background-color: var(--primary-bg); /* Match darkest background */
+}
+
+.search-palette-footer-hints kbd {
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-family: inherit;
+    font-size: 0.75rem;
+}
+
+.body-lock-scroll {
+    overflow: hidden !important;
+    height: 100vh;
+}
+
+
+#particles-js-canvas-el {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1 !important;   /* Makes sure it never covers interactive UI */
+    pointer-events: none !important;
+}
+
+@media (max-width: 992px) {
+    .nav-auth {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 1.2rem;
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .nav-menu, .nav-center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    /* Make mobile nav overlay the full screen */
+    body.nav-open .nav-menu {
+        left: 0;
+        position: fixed;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--secondary-bg);
+        z-index: 999;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .search-palette {
+        width: 100vw;
+        max-width: 100vw;
+        height: 100vh;
+        max-height: 100vh;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+        border-radius: 0;
+    }
+    .search-content-area {
+        flex-direction: column;
+        width: 100vw;
+        height: 100vh;
+        max-height: 100vh;
+    }
+    .search-results-left-panel {
+        width: 100vw;
+        height: 100vh;
+        max-width: 100vw;
+        max-height: 100vh;
+        border: none;
+        padding-bottom: 4rem;
+    }
+    .search-preview-right-panel {
+        display: none !important;
+    }
+
+    #search-input{
+        font-size: 1rem;
+    }
+
+    .search-input-area .search-icon {
+        width: 16px !important;
+        height: 16px !important;
     }
 }

@@ -24,25 +24,15 @@
             <nav class="header-nav container">
                 <a href="{% url 'category_list' %}" class="logo">DevCheatHub</a>
 
-                <div class="nav-search">
-                    <form method="get" action="{% url 'search_results' %}">
-                        <input type="search" name="q" placeholder="Search cheatsheets...">
-                        <button type="submit" aria-label="Search">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                        </button>
-                    </form>
-                </div>
-
-                <button class="nav-toggle" aria-label="toggle navigation">
-                    <span class="hamburger"></span>
-                </button>
-
                 <div class="nav-menu">
                     <div class="nav-center">
                         <a href="{% url 'category_list' %}">Browse</a>
                         <a href="{% url 'contribute' %}">Contribute</a>
                         <a href="{% url 'about' %}">About</a>
                     </div>
+                    <button id="open-search-btn" class="search-trigger-icon" aria-label="Open search">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
                     <div class="nav-auth">
                         {% if user.is_authenticated %}
                             <a href="{% url 'profile' %}" class="welcome-text">Hello, {{ user.username }}</a>
@@ -52,9 +42,17 @@
                             </form>
                         {% else %}
                             <a href="{% url 'login' %}" class="btn btn-secondary">Login</a>
-                            <a href="{% url 'register' %}" class="btn btn-primary">Sign Up</a>
+                            <a href="{% url 'register' %}" class="btn btn-primary" >Sign Up</a>
                         {% endif %}
                     </div>
+    
+                </div>
+
+                <div class="header-actions">
+
+                    <button class="nav-toggle" aria-label="toggle navigation">
+                        <span class="hamburger"></span>
+                    </button>
                 </div>
             </nav>
         </header>
@@ -85,6 +83,48 @@
             </div>
         </footer>
     {% endblock footer %}
+
+    <div id="search-palette-overlay" class="search-palette-overlay">
+        <div id="search-palette" class="search-palette">
+            <div class="search-input-area">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="search" id="search-input" placeholder="Search for cheatsheet..." autocomplete="off">
+                <button id="search-cancel-btn" aria-label="Cancel search">Cancel</button>
+            </div>
+            
+            <div class="search-content-area">
+                <div class="search-results-left-panel">
+                    <ul id="search-results-list" class="search-results-list">
+                        </ul>
+                </div>
+                
+                <div id="search-preview-right-panel" class="search-preview-right-panel">
+                    <div id="preview-default-state" class="preview-default-state">
+                        <p>Start typing to search, or select an item on the left for a preview.</p>
+                    </div>
+                    <div id="preview-content" class="preview-content" style="display: none;">
+                        <div class="preview-header">
+                            <img id="preview-category-icon" src="" alt="Category icon" class="preview-category-icon">
+                            <div class="preview-title-info">
+                                <h3 id="preview-title"></h3>
+                                <span id="preview-category-name"></span>
+                            </div>
+                        </div>
+                        <div id="preview-tags" class="preview-tags">
+                            </div>
+                        <div id="preview-sections" class="preview-sections">
+                            </div>
+                        <a id="preview-full-link" href="#" class="btn btn-primary btn-sm">View Full Cheatsheet</a>
+                    </div>
+                </div>
+            </div>
+            <div class="search-palette-footer-hints">
+                <span><kbd>↑</kbd> <kbd>↓</kbd> to navigate</span>
+                <span><kbd>↵</kbd> to open</span>
+                <span><kbd>ESC</kbd> to close</span>
+            </div>
+        </div>
+    </div>
 
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){

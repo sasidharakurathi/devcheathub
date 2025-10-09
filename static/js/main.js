@@ -193,4 +193,234 @@ document.addEventListener('DOMContentLoaded', () => {
             this.style.display = 'none';
         });
     }
+
+    // --- Advanced Instant Search Command Palette ---
+    const overlay = document.getElementById('search-palette-overlay');
+    const searchInput = document.getElementById('search-input');
+    const resultsList = document.getElementById('search-results-list');
+    const openSearchBtn = document.getElementById('open-search-btn');
+    const searchCancelBtn = document.getElementById('search-cancel-btn'); // New cancel button
+    const previewDefaultState = document.getElementById('preview-default-state');
+    const previewContent = document.getElementById('preview-content');
+    const previewCategoryIcon = document.getElementById('preview-category-icon');
+    const previewTitle = document.getElementById('preview-title');
+    const previewCategoryName = document.getElementById('preview-category-name');
+    const previewTags = document.getElementById('preview-tags');
+    const previewSections = document.getElementById('preview-sections');
+    const previewFullLink = document.getElementById('preview-full-link');
+    const searchPreviewRightPanel = document.getElementById('search-preview-right-panel');
+
+
+    if (overlay && searchInput && resultsList && openSearchBtn && searchCancelBtn && previewDefaultState && previewContent && previewCategoryIcon && previewTitle && previewCategoryName && previewTags && previewSections && previewFullLink) {
+        let activeResultIndex = -1; // For left panel results
+        let activeSectionIndex = -1; // For right panel sections
+        let currentResults = []; // Store fetched results for easier access
+
+        const openPalette = () => {
+            overlay.style.display = 'block';
+            searchInput.focus();
+            searchInput.value = '';
+            resultsList.innerHTML = '';
+            previewDefaultState.style.display = 'block';
+            previewContent.style.display = 'none';
+            activeResultIndex = -1;
+            activeSectionIndex = -1;
+            currentResults = [];
+            document.body.classList.add('body-lock-scroll');
+        };
+
+        const closePalette = () => {
+            overlay.style.display = 'none';
+            document.body.classList.remove('body-lock-scroll');
+        };
+
+        // --- Left Panel: Results Navigation ---
+        const updateActiveResult = () => {
+            const items = resultsList.querySelectorAll('li a');
+            items.forEach((item, index) => {
+                if (index === activeResultIndex) {
+                    item.classList.add('is-active');
+                    item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+                    displayPreview(currentResults[index]); // Display preview for active item
+                } else {
+                    item.classList.remove('is-active');
+                }
+            });
+
+            if (activeResultIndex === -1 && items.length > 0) {
+                // If nothing is active, show the default preview or first item's
+                displayPreview(currentResults[0]);
+            } else if (items.length === 0) {
+                previewDefaultState.style.display = 'block';
+                previewContent.style.display = 'none';
+            }
+        };
+
+        // --- Right Panel: Preview Display ---
+        const displayPreview = (item) => {
+            if (!item) {
+                previewDefaultState.style.display = 'block';
+                previewContent.style.display = 'none';
+                return;
+            }
+
+            previewDefaultState.style.display = 'none';
+            previewContent.style.display = 'block';
+            searchPreviewRightPanel.scrollTop = 0; // Scroll to top when new item is displayed
+
+            previewCategoryIcon.src = item.category_icon_url;
+            previewCategoryIcon.alt = item.category_name + " icon";
+            previewTitle.textContent = item.title;
+            previewCategoryName.textContent = item.category_name;
+            previewFullLink.href = item.url;
+
+            // Render Tags
+            previewTags.innerHTML = '';
+            if (item.tags && item.tags.length > 0) {
+                item.tags.forEach(tag => {
+                    const span = document.createElement('span');
+                    span.className = 'tag';
+                    span.textContent = tag;
+                    previewTags.appendChild(span);
+                });
+            } else {
+                previewTags.innerHTML = '<span class="tag">No specific tags</span>';
+            }
+
+            // Render Sections
+            previewSections.innerHTML = '';
+            if (item.sections && item.sections.length > 0) {
+                item.sections.forEach(section => {
+                    const sectionDiv = document.createElement('div');
+                    sectionDiv.innerHTML = `<h4>${section.title}</h4>`;
+                    if (section.subsections && section.subsections.length > 0) {
+                        const ul = document.createElement('ul');
+                        section.subsections.forEach(subsection => {
+                            const li = document.createElement('li');
+                            // We will link to the full cheatsheet and add an anchor for future scrolling
+                            li.innerHTML = `<a href="${item.url}#${subsection.heading.replace(/\s+/g, '-').toLowerCase()}">${subsection.heading}</a>`;
+                            ul.appendChild(li);
+                        });
+                        sectionDiv.appendChild(ul);
+                    }
+                    previewSections.appendChild(sectionDiv);
+                });
+            } else {
+                previewSections.innerHTML = '<p>No structured sections available.</p>';
+            }
+            activeSectionIndex = -1; // Reset active section on new preview
+        };
+
+
+        openSearchBtn.addEventListener('click', openPalette);
+        searchCancelBtn.addEventListener('click', closePalette); // New cancel button listener
+
+        // Keyboard shortcuts for opening/closing
+        window.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                openPalette();
+            }
+            if (e.key === 'Escape') closePalette();
+        });
+        
+        // Close when clicking the background overlay
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) closePalette();
+        });
+
+        // Keyboard navigation within the palette
+        searchInput.addEventListener('keydown', (e) => {
+            const items = resultsList.querySelectorAll('li a');
+            if (items.length === 0) return;
+
+            switch (e.key) {
+                case 'ArrowDown':
+                    e.preventDefault();
+                    activeResultIndex = (activeResultIndex + 1) % items.length;
+                    updateActiveResult();
+                    break;
+                case 'ArrowUp':
+                    e.preventDefault();
+                    activeResultIndex = (activeResultIndex - 1 + items.length) % items.length;
+                    updateActiveResult();
+                    break;
+                case 'Enter':
+                    e.preventDefault();
+                    if (activeResultIndex > -1) {
+                        // If an item is selected, go to its URL
+                        items[activeResultIndex].click();
+                    } else {
+                        // If nothing is selected, perform a full search
+                        const query = searchInput.value;
+                        if (query) window.location.href = `/search/?q=${query}`;
+                    }
+                    break;
+            }
+        });
+
+        // Fetch results as the user types
+        searchInput.addEventListener('input', async () => {
+            const query = searchInput.value;
+            activeResultIndex = -1;
+            currentResults = [];
+
+            // Helper function to highlight text
+            const highlight = (text, query) => {
+                if (!query) return text;
+                const regex = new RegExp(`(${query})`, 'gi');
+                return text.replace(regex, `<span class="search-highlight">$1</span>`);
+            };
+
+            if (query.length < 2) {
+                resultsList.innerHTML = ''; // Clear previous results
+                previewDefaultState.style.display = 'block';
+                previewContent.style.display = 'none';
+                return;
+            }
+
+            // Add a loading state for better UX
+            // resultsList.innerHTML = `<li class="search-loading">Searching...</li>`;
+
+            const response = await fetch(`/api/live-search/?q=${query}`);
+            const data = await response.json();
+            currentResults = data.results;
+
+            // Clear loading state
+            resultsList.innerHTML = '';
+
+            if (data.results.length > 0) {
+                data.results.forEach((item, index) => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        <a href="${item.url}" data-index="${index}">
+                            <img src="${item.category_icon_url || '/static/profile_pics/default.svg'}" class="search-result-icon" alt="">
+                            <div class="search-result-text">
+                                <strong>${highlight(item.title, query)}</strong>
+                                <span>in ${item.category_name}</span>
+                            </div>
+                        </a>`;
+                    resultsList.appendChild(li);
+                });
+
+                const footerLi = document.createElement('li');
+                footerLi.className = 'search-palette-footer';
+                footerLi.innerHTML = `<a href="/search/?q=${query}">View all results for "${query}"</a>`;
+                resultsList.appendChild(footerLi);
+
+                if (currentResults.length > 0) {
+                    activeResultIndex = 0;
+                    updateActiveResult();
+                }
+
+            } else {
+                // Enhanced "no results" message
+                resultsList.innerHTML = `<center><li class="search-no-results">No results found for "<strong>${query}</strong>". Try another search.</li></center>`;
+                previewDefaultState.style.display = 'block';
+                previewContent.style.display = 'none';
+            }
+        });
+    }
+
+
 });

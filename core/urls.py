@@ -13,6 +13,8 @@ urlpatterns = [
     path('contribute/', views.contribute, name='contribute'),
     path('about/', views.about_page, name='about'),
     
+    path('api/live-search/', views.live_search, name='live_search'),
+    
     path('under-development/', views.under_development, name='under_development'),
     
 
