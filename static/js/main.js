@@ -140,4 +140,57 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // --- Profile Page Edit/View Toggle ---
+    const viewMode = document.getElementById('profile-view-mode');
+    const editMode = document.getElementById('profile-edit-mode');
+    const editBtn = document.getElementById('edit-profile-btn');
+    const cancelBtn = document.getElementById('cancel-edit-btn');
+
+    if (viewMode && editMode && editBtn && cancelBtn) {
+        editBtn.addEventListener('click', () => {
+            viewMode.style.display = 'none';
+            editMode.style.display = 'block';
+        });
+
+        cancelBtn.addEventListener('click', () => {
+            editMode.style.display = 'none';
+            viewMode.style.display = 'block';
+        });
+    }
+    // --- Live Preview for Profile Picture Upload ---
+    const profilePicInput = document.getElementById('id_profile_picture');
+    const imagePreview = document.getElementById('image-preview');
+
+    if (profilePicInput && imagePreview) {
+        profilePicInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+     // --- Remove Profile Picture Logic ---
+    const removePicBtn = document.getElementById('remove-pic-btn');
+    // const imagePreview = document.getElementById('image-preview');
+    // Find Django's hidden "clear" checkbox
+    const clearCheckbox = document.getElementById('profile_picture-clear_id');
+
+    if (removePicBtn && imagePreview && clearCheckbox) {
+        removePicBtn.addEventListener('click', function() {
+            // Check the hidden checkbox
+            clearCheckbox.checked = true;
+
+            // Instantly update the preview to the default image
+            imagePreview.src = imagePreview.dataset.defaultUrl;
+            
+            // Hide the remove button since the picture is now "removed"
+            this.style.display = 'none';
+        });
+    }
 });

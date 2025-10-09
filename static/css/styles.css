@@ -971,6 +971,21 @@ pre code {
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color); /* This is the line that changes the border color */
+    box-shadow: 0 0 0 3px rgba(140, 82, 255, 0.2); /* This adds the outer glow */
+}
+
+.separator-light {
+    border: none;
+    height: 2px;
+    background-color: var(--accent-color);
+    /* margin: 2rem -6rem; */
+}
+
 .contribution-actions {
     display: flex;
     gap: 1rem;
@@ -1220,6 +1235,11 @@ pre code {
 /* -- Sticky Footer Fix -- */
 html {
     height: 100%;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 body {
@@ -1230,4 +1250,264 @@ body {
 
 main {
     flex-grow: 1; /* Make the main content area grow to fill empty space */
+}
+
+.profile-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; }
+.profile-sidebar { text-align: center; }
+.profile-picture { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; }
+.profile-username { font-size: 1.8rem; margin-bottom: 0.5rem; }
+.profile-email { color: var(--text-secondary); margin-bottom: 1.5rem; }
+.profile-bio { font-size: 0.95rem; padding-left: 1.5rem;}
+.profile-socials {padding-left: 1.5rem; gap: 1rem; }
+@media (max-width: 992px) { .profile-layout { grid-template-columns: 1fr; } }
+
+/* -- Custom Styles for File Input -- */
+input[type="file"] {
+    background-color: var(--primary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    padding: 0.5rem;
+}
+
+input[type="file"]::file-selector-button {
+    background-color: var(--secondary-bg);
+    color: var(--text-primary);
+    border: none;
+    border-right: 1px solid var(--border-color);
+    padding: 0.6rem 1rem;
+    border-radius: 6px 0 0 6px;
+    margin: -0.5rem 1rem -0.5rem -0.5rem; /* Pull button to the edge */
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: var(--accent-color);
+}
+
+/* -- Styles for Profile Page (View & Edit Modes) -- */
+.profile-view-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--border-color);
+}
+.profile-username {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+.profile-email {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+.profile-view-body h3 {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+.profile-bio {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+.profile-socials {
+    display: flex;
+    gap: 1rem;
+}
+.social-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+}
+.social-link:hover {
+    color: var(--accent-color);
+}
+.form-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+.profile-submissions {
+    margin-top: 3rem;
+}
+
+/* -- Styles for Form Errors -- */
+.form-error {
+    margin-top: 0.5rem;
+}
+
+.error-text {
+    color: #ff6b6b; /* A light red for errors */
+    font-size: 0.9rem;
+    margin: 0.25rem 0;
+}
+
+.profile-fullname {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+/* -- Custom Styles for Profile Picture Upload -- */
+.custom-image-upload {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: var(--primary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+#image-preview {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border-color);
+}
+
+.upload-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.clear-checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.clear-checkbox-group input[type="checkbox"] {
+    margin: 0;
+}
+
+/* -- Style for Danger / Remove Button -- */
+.btn-danger {
+    background-color: transparent;
+    color: #ea5455; /* Muted red color from our status badges */
+    border: 1px solid #ea5455;
+}
+
+.btn-danger:hover {
+    background-color: #ea5455;
+    color: #fff;
+    box-shadow: 0 7px 20px rgba(234, 84, 85, 0.3);
+}
+
+.form-group {
+    margin-top: 1rem;
+}
+
+/* -- Responsive Fixes for Profile Page -- */
+@media (max-width: 992px) {
+    /* Stack the main profile layout into a single column on tablets */
+    .profile-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Reduce padding on the main form panels for mobile */
+    .form-section {
+        padding: 1.5rem;
+    }
+
+    /* Make the section titles smaller */
+    .form-section-title {
+        font-size: 1.5rem;
+    }
+
+    /* Stack the profile picture and username in view mode */
+    .profile-view-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .profile-username {
+        font-size: 1.8rem;
+    }
+}
+
+/* -- Responsive Fixes for Profile Page -- */
+@media (max-width: 768px) {
+    /* Add more space between the form and the submissions list */
+    .profile-submissions {
+        margin-top: 4rem;
+    }
+
+    /* Make the pagination controls wrap on small screens */
+    .pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    /* Make the individual page number links smaller to save space */
+    .page-item {
+        margin: 2px;
+    }
+    .page-link {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* -- Additional Responsive Fixes for Profile Page -- */
+@media (max-width: 768px) {
+
+    /* Center the titles for a consistent mobile look */
+    .profile-main .form-section-title,
+    .profile-submissions .section-title {
+        text-align: center;
+    }
+    
+    /* Stack the image upload buttons vertically */
+    .upload-actions {
+        flex-direction: column;
+        align-items: flex-start; /* Align stacked buttons to the left */
+        gap: 1rem;
+        margin-left: 1rem;
+    }
+}
+
+/* -- Responsive Fix for Profile Picture Buttons -- */
+@media (max-width: 768px) {
+    .upload-actions {
+        /*
+        Ensure buttons inside take up full available width.
+        We already set flex-direction: column for .upload-actions
+        so now we just need to align-items: stretch to fill width.
+        */
+        align-items: stretch;
+    }
+
+    /* Make sure the label for "Change Picture" also stretches */
+    .upload-actions .btn-secondary {
+        width: 80%; /* Explicitly set width to 100% for consistency */
+        text-align: center; /* Center the text inside the button */
+    }
+
+    /* Make sure the "Remove" button also stretches */
+    #remove-pic-btn {
+        width: 80%; /* Explicitly set width to 100% for consistency */
+    }
+
+    .upload-actions > label  {
+        font-size: 15px;
+    }
 }
