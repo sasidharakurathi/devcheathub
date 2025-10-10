@@ -1,0 +1,328 @@
+[
+    {
+        "parent_category": "ES6",
+        "category": "ES6 Basics",
+        "title": "New Variables & Arrow Functions",
+        "description": "How ES6 introduced block-scoped variables with `let` and `const`, and a more concise syntax for functions with arrow functions.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Block-Scoped Variables",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "let (Block-Scoped)",
+                            "tags": [
+                                "es6",
+                                "variables",
+                                "let",
+                                "scope",
+                                "block scope"
+                            ],
+                            "language": "javascript",
+                            "code": "// `let` declares a block-scoped variable.\n// It is only accessible within the block (`{...}`) it was defined in.\n\nif (true) {\n  let message = \"Hello, ES6!\";\n  console.log(message); // Works\n}\n\n// console.log(message); // Throws ReferenceError: message is not defined",
+                            "output": "Hello, ES6!\n// The second console.log would cause a ReferenceError."
+                        },
+                        {
+                            "sub_section_heading": "const (Constant Reference)",
+                            "tags": [
+                                "es6",
+                                "variables",
+                                "const",
+                                "scope",
+                                "immutable"
+                            ],
+                            "language": "javascript",
+                            "code": "// `const` declares a block-scoped constant.\n// The variable's reference cannot be reassigned.\n\nconst PI = 3.14159;\n// PI = 3; // Throws TypeError: Assignment to constant variable.\n\n// IMPORTANT: For objects and arrays, the contents can still be changed.\nconst person = { name: 'John' };\nperson.name = 'Jane'; // This is allowed!\n\nconsole.log(person.name);",
+                            "output": "Jane"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Arrow Functions",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Concise Function Syntax",
+                            "tags": [
+                                "es6",
+                                "functions",
+                                "arrow functions",
+                                "syntax"
+                            ],
+                            "language": "javascript",
+                            "code": "// Traditional function expression\nconst add_old = function(a, b) {\n  return a + b;\n};\n\n// Arrow function with multiple arguments\nconst add_new = (a, b) => {\n  return a + b;\n};\n\n// Shorter syntax for a single return expression\nconst subtract = (a, b) => a - b;\n\n// Shorter syntax for a single parameter\nconst square = x => x * x;\n\nconsole.log(subtract(10, 5));\nconsole.log(square(4));",
+                            "output": "5\n16"
+                        },
+                        {
+                            "sub_section_heading": "Lexical `this` Binding",
+                            "tags": [
+                                "es6",
+                                "functions",
+                                "arrow functions",
+                                "this",
+                                "scope"
+                            ],
+                            "language": "javascript",
+                            "code": "// Arrow functions do not have their own `this`. They inherit `this` from the parent scope.\n\nfunction Timer() {\n  this.seconds = 0;\n\n  // In a traditional function, `this` would be rebound to the global object or undefined.\n  // setInterval(function() {\n  //   this.seconds++; // `this` is not the Timer instance!\n  // }, 1000);\n\n  // With an arrow function, `this` correctly refers to the Timer instance.\n  setInterval(() => {\n    this.seconds++;\n    console.log(this.seconds);\n  }, 1000);\n}",
+                            "output": "The console will log 1, 2, 3, ... every second."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "ES6",
+        "category": "ES6 Basics",
+        "title": "Template Literals & Default Parameters",
+        "description": "How to create powerful, dynamic strings with template literals (backticks) and how to set default values for function parameters.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Template Literals",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Multi-line Strings",
+                            "tags": [
+                                "es6",
+                                "strings",
+                                "template literals",
+                                "multiline"
+                            ],
+                            "language": "javascript",
+                            "code": "// Template literals use backticks (``) instead of single or double quotes.\n// They allow for multi-line strings without needing `\\n`.\n\nconst multiLineString = `This is a string\nspanning multiple\nlines.`;\n\nconsole.log(multiLineString);",
+                            "output": "This is a string\nspanning multiple\nlines."
+                        },
+                        {
+                            "sub_section_heading": "Expression Interpolation",
+                            "tags": [
+                                "es6",
+                                "strings",
+                                "template literals",
+                                "interpolation",
+                                "expression"
+                            ],
+                            "language": "javascript",
+                            "code": "// You can embed variables and expressions directly inside a template literal.\n// This is done using the `${expression}` syntax.\n\nconst name = 'Alice';\nconst age = 30;\n\n// Old way (concatenation)\nconst message_old = 'Hello, my name is ' + name + ' and I am ' + (age + 1) + ' years old next year.';\n\n// New way (template literal)\nconst message_new = `Hello, my name is ${name} and I am ${age + 1} years old next year.`;\n\nconsole.log(message_new);",
+                            "output": "Hello, my name is Alice and I am 31 years old next year."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Default Function Parameters",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Setting Default Values",
+                            "tags": [
+                                "es6",
+                                "functions",
+                                "default parameters",
+                                "arguments"
+                            ],
+                            "language": "javascript",
+                            "code": "// ES6 allows you to set a default value for a function parameter in the signature.\n\n// Old way (ES5)\n// function greet_old(name) {\n//   name = name || 'Guest';\n//   console.log('Hello, ' + name);\n// }\n\n// New way (ES6)\nfunction greet_new(name = 'Guest', greeting = 'Hello') {\n  console.log(`${greeting}, ${name}!`);\n}\n\ngreet_new('Bob'); // Call with one argument\ngreet_new();      // Call with no arguments",
+                            "output": "Hello, Bob!\nHello, Guest!"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "ES6",
+        "category": "ES6 Basics",
+        "title": "Destructuring & Spread/Rest Operator",
+        "description": "How to use destructuring to easily unpack values from arrays and objects, and the versatile `...` operator for spreading and gathering elements.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Destructuring",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Object Destructuring",
+                            "tags": [
+                                "es6",
+                                "destructuring",
+                                "object"
+                            ],
+                            "language": "javascript",
+                            "code": "// A syntax for unpacking properties from an object into distinct variables.\n\nconst user = {\n  firstName: 'John',\n  lastName: 'Doe',\n  age: 42\n};\n\n// Basic unpacking\nconst { firstName, age } = user;\nconsole.log(`${firstName} is ${age} years old.`);\n\n// Unpacking with a new variable name\nconst { lastName: surname } = user;\nconsole.log(`User's surname is ${surname}.`);",
+                            "output": "John is 42 years old.\nUser's surname is Doe."
+                        },
+                        {
+                            "sub_section_heading": "Array Destructuring",
+                            "tags": [
+                                "es6",
+                                "destructuring",
+                                "array"
+                            ],
+                            "language": "javascript",
+                            "code": "// A syntax for unpacking values from an array into distinct variables.\n\nconst fruits = ['Apple', 'Banana', 'Cherry'];\n\n// Basic unpacking by position\nconst [first, second] = fruits;\nconsole.log(`The first two fruits are ${first} and ${second}.`);\n\n// Skipping elements\nconst [ , , third] = fruits;\nconsole.log(`The third fruit is ${third}.`);",
+                            "output": "The first two fruits are Apple and Banana.\nThe third fruit is Cherry."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "The Spread/Rest Operator (`...`)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Spread Operator",
+                            "tags": [
+                                "es6",
+                                "spread operator",
+                                "array",
+                                "object",
+                                "clone",
+                                "merge"
+                            ],
+                            "language": "javascript",
+                            "code": "// The spread operator 'expands' an iterable (like an array or object) into its individual elements.\n\n// For arrays: Combining or cloning\nconst arr1 = ['a', 'b'];\nconst arr2 = ['c', 'd'];\nconst combinedArr = [...arr1, ...arr2]; // ['a', 'b', 'c', 'd']\nconsole.log(combinedArr);\n\n// For objects: Cloning or merging\nconst obj1 = { name: 'Peter', age: 25 };\nconst mergedObj = { ...obj1, city: 'New York' }; // { name: 'Peter', age: 25, city: 'New York' }\nconsole.log(mergedObj.city);",
+                            "output": "['a', 'b', 'c', 'd']\nNew York"
+                        },
+                        {
+                            "sub_section_heading": "Rest Operator",
+                            "tags": [
+                                "es6",
+                                "rest operator",
+                                "functions",
+                                "arguments"
+                            ],
+                            "language": "javascript",
+                            "code": "// The rest operator 'gathers' the rest of some values into an array.\n// It's often used in function parameters.\n\nfunction sum(first, second, ...remainingArgs) {\n  console.log('The rest of the arguments are:', remainingArgs);\n  return first + second;\n}\n\nsum(10, 20, 30, 40, 50);",
+                            "output": "The rest of the arguments are: [30, 40, 50]"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "ES6",
+        "category": "ES6 Advanced",
+        "title": "Classes & Modules",
+        "description": "How to use the `class` syntax for object-oriented programming and the native ES6 module system (`import`/`export`) for organizing code into reusable files.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "ES6 Classes",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Defining a Class",
+                            "tags": [
+                                "es6",
+                                "class",
+                                "oop",
+                                "constructor",
+                                "method"
+                            ],
+                            "language": "javascript",
+                            "code": "// The `class` keyword is syntactic sugar over JavaScript's prototype-based inheritance.\n\nclass Person {\n  // The constructor is a special method for creating and initializing an object.\n  constructor(name, age) {\n    this.name = name;\n    this.age = age;\n  }\n\n  // Methods are defined on the class prototype.\n  greet() {\n    return `Hello, my name is ${this.name}.`;\n  }\n}\n\nconst person1 = new Person('Alice', 25);\nconsole.log(person1.greet());",
+                            "output": "Hello, my name is Alice."
+                        },
+                        {
+                            "sub_section_heading": "Inheritance with `extends` and `super`",
+                            "tags": [
+                                "es6",
+                                "class",
+                                "oop",
+                                "inheritance",
+                                "extends",
+                                "super"
+                            ],
+                            "language": "javascript",
+                            "code": "// The `extends` keyword is used to create a subclass.\n\nclass Student extends Person {\n  constructor(name, age, major) {\n    // `super()` calls the constructor of the parent class.\n    super(name, age);\n    this.major = major;\n  }\n\n  // You can also override parent methods or add new ones.\n  study() {\n    return `${this.name} is studying ${this.major}.`;\n  }\n}\n\nconst student1 = new Student('Bob', 20, 'Computer Science');\nconsole.log(student1.greet());\nconsole.log(student1.study());",
+                            "output": "Hello, my name is Bob.\nBob is studying Computer Science."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "ES6 Modules",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Exporting from a Module (`export`)",
+                            "tags": [
+                                "es6",
+                                "modules",
+                                "export",
+                                "import",
+                                "modular"
+                            ],
+                            "language": "javascript",
+                            "code": "// --- File: utils.js ---\n\n// Use `export` to export variables or functions.\n\n// 1. Named exports (you can have many)\nexport const PI = 3.14;\n\nexport function add(a, b) {\n  return a + b;\n}\n\n// 2. Default export (you can only have one)\nexport default function multiply(a, b) {\n  return a * b;\n}",
+                            "output": "This file now exports three members: a default function and two named members."
+                        },
+                        {
+                            "sub_section_heading": "Importing into Another Module (`import`)",
+                            "tags": [
+                                "es6",
+                                "modules",
+                                "import",
+                                "export"
+                            ],
+                            "language": "javascript",
+                            "code": "// --- File: main.js ---\n\n// Import the default export and the named exports from `utils.js`.\nimport multiply, { PI, add } from './utils.js';\n\nconsole.log(`PI is approximately ${PI}`);\nconsole.log(`2 + 3 = ${add(2, 3)}`);\nconsole.log(`2 * 3 = ${multiply(2, 3)}`);",
+                            "output": "PI is approximately 3.14\n2 + 3 = 5\n2 * 3 = 6"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "ES6",
+        "category": "ES6 Advanced",
+        "title": "Promises & Async/Await",
+        "description": "How to handle asynchronous operations like API calls or file reads in modern JavaScript using Promises and the clean `async/await` syntax.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Promises",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Creating and Consuming a Promise",
+                            "tags": [
+                                "es6",
+                                "async",
+                                "promise",
+                                "then",
+                                "catch"
+                            ],
+                            "language": "javascript",
+                            "code": "// A Promise is an object representing a future value from an async operation.\n\nconst fetchData = new Promise((resolve, reject) => {\n  // Simulate a network request\n  setTimeout(() => {\n    const success = true;\n    if (success) {\n      resolve('Data fetched successfully!'); // Fulfill the promise\n    } else {\n      reject('Error: Failed to fetch data.'); // Reject the promise\n    }\n  }, 2000);\n});\n\n// Consume the promise\nfetchData\n  .then(response => {\n    // This runs when the promise is resolved\n    console.log(response);\n  })\n  .catch(error => {\n    // This runs when the promise is rejected\n    console.error(error);\n  });",
+                            "output": "(After a 2-second delay)\nData fetched successfully!"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Async/Await (Modern Syntax)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Using `async` and `await`",
+                            "tags": [
+                                "es6",
+                                "async",
+                                "await",
+                                "promise"
+                            ],
+                            "language": "javascript",
+                            "code": "// `async/await` is syntactic sugar over Promises that makes async code look synchronous.\n\n// 1. A function that returns a promise (same as before)\nfunction fetchData() {\n  return new Promise(resolve => {\n    setTimeout(() => {\n      resolve('Data fetched with async/await!');\n    }, 2000);\n  });\n}\n\n// 2. An `async` function to consume the promise\nasync function processData() {\n  console.log('Waiting for data...');\n  // `await` pauses the function until the promise resolves\n  const response = await fetchData();\n  console.log(response);\n}\n\nprocessData();",
+                            "output": "Waiting for data...\n(After a 2-second delay)\nData fetched with async/await!"
+                        },
+                        {
+                            "sub_section_heading": "Error Handling with `try...catch`",
+                            "tags": [
+                                "es6",
+                                "async",
+                                "await",
+                                "error handling",
+                                "try catch"
+                            ],
+                            "language": "javascript",
+                            "code": "// To handle rejected promises with async/await, use a standard `try...catch` block.\n\nfunction fetchFailingData() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => reject('Error: Something went wrong!'), 2000);\n  });\n}\n\nasync function processFailingData() {\n  try {\n    const response = await fetchFailingData();\n    console.log(response);\n  } catch (error) {\n    // The rejected value of the promise is caught here\n    console.error(error);\n  }\n}\n\nprocessFailingData();",
+                            "output": "(After a 2-second delay)\nError: Something went wrong!"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+]

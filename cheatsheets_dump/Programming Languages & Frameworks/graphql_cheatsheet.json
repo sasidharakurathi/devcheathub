@@ -1,0 +1,406 @@
+[
+    {
+        "parent_category": "GraphQL",
+        "category": "GraphQL Basics",
+        "title": "Core Concepts & Schema Definition Language (SDL)",
+        "description": "Understanding the fundamental principles of GraphQL, what a schema is, and how to define data types using the Schema Definition Language (SDL).",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Core Concepts",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "What is GraphQL?",
+                            "tags": [
+                                "graphql",
+                                "concepts",
+                                "api",
+                                "rest"
+                            ],
+                            "language": "text",
+                            "code": "GraphQL is a query language for your API. Unlike a traditional REST API that has many endpoints for different resources, a GraphQL API typically has a single endpoint.\n\nThe client sends a 'query' that describes exactly the data it needs, and the server responds with a JSON object matching that exact shape.\n\nAnalogy:\n- REST is like ordering a fixed combo meal. You get everything in that combo, whether you want it or not (over-fetching).\n- GraphQL is like ordering from an \u00e0 la carte menu. You ask for exactly the items you want and get nothing more.",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "The Schema: The API's Contract",
+                            "tags": [
+                                "graphql",
+                                "concepts",
+                                "schema",
+                                "sdl",
+                                "types"
+                            ],
+                            "language": "text",
+                            "code": "The GraphQL schema is the most important part of a GraphQL API. It's a strong contract that defines all the capabilities of the API.\n\nIt specifies:\n- The types of data you can query (e.g., `User`, `Post`).\n- The fields available on each type (e.g., a `User` has a `name` and an `email`).\n- The relationships between types (e.g., a `User` has `posts`).\n\nThis schema is written in the Schema Definition Language (SDL).",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Schema Definition Language (SDL) Basics",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Defining a Type (`type`)",
+                            "tags": [
+                                "graphql",
+                                "sdl",
+                                "schema",
+                                "type"
+                            ],
+                            "language": "graphql",
+                            "code": "# Use the `type` keyword to define a custom object type.\n# This 'Book' type has three fields: id, title, and pageCount.\n\ntype Book {\n  id: ID\n  title: String\n  pageCount: Int\n}",
+                            "output": "This defines a 'Book' object that can be queried in the API."
+                        },
+                        {
+                            "sub_section_heading": "Built-in Scalar Types",
+                            "tags": [
+                                "graphql",
+                                "sdl",
+                                "scalar",
+                                "types"
+                            ],
+                            "language": "graphql",
+                            "code": "# GraphQL has five built-in scalar types, which represent single values.\n\n# String: A UTF-8 character sequence (e.g., \"Hello, World!\").\n# Int: A signed 32\u2010bit integer.\n# Float: A signed double-precision floating-point value.\n# Boolean: `true` or `false`.\n# ID: A unique identifier, often used as a primary key. It serializes as a String.",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "The Root `Query` Type",
+                            "tags": [
+                                "graphql",
+                                "sdl",
+                                "schema",
+                                "query",
+                                "root type"
+                            ],
+                            "language": "graphql",
+                            "code": "# The `Query` type is a special, top-level type.\n# It defines all the possible entry points for reading data from the API.\n\ntype Query {\n  # This field defines a query named `allBooks` that returns a list of Book types.\n  allBooks: [Book]\n\n  # This field defines a query named `bookById` that accepts an 'id' argument.\n  bookById(id: ID): Book\n}",
+                            "output": "Clients can now execute queries named `allBooks` and `bookById` against the API."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "GraphQL",
+        "category": "GraphQL Basics",
+        "title": "Basic Queries & Arguments",
+        "description": "How to fetch data from a GraphQL API by writing queries, selecting specific fields, and passing arguments to filter for the exact data you need.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Fetching Data with Queries",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Writing Your First Query",
+                            "tags": [
+                                "graphql",
+                                "query",
+                                "fields",
+                                "json"
+                            ],
+                            "language": "graphql",
+                            "code": "# A query describes the data you want to fetch.\n# You can select only the fields you need.\n# Here, we ask for all books, but only want their titles.\n\nquery GetAllBookTitles {\n  allBooks {\n    title\n  }\n}",
+                            "output": "{\n  \"data\": {\n    \"allBooks\": [\n      { \"title\": \"The Hobbit\" },\n      { \"title\": \"The Fellowship of the Ring\" }\n    ]\n  }\n}"
+                        },
+                        {
+                            "sub_section_heading": "Querying Nested Objects",
+                            "tags": [
+                                "graphql",
+                                "query",
+                                "nested",
+                                "relationships"
+                            ],
+                            "language": "graphql",
+                            "code": "# --- First, let's update our schema to include an Author ---\n# type Book {\n#   id: ID\n#   title: String\n#   author: Author  <-- The nested object\n# }\n# \n# type Author {\n#   id: ID\n#   name: String\n# }\n\n# Now you can query the book and its related author in one request.\nquery GetBooksAndAuthors {\n  allBooks {\n    title\n    author {\n      name\n    }\n  }\n}",
+                            "output": "{\n  \"data\": {\n    \"allBooks\": [\n      {\n        \"title\": \"The Hobbit\",\n        \"author\": {\n          \"name\": \"J.R.R. Tolkien\"\n        }\n      },\n      {\n        \"title\": \"The Fellowship of the Ring\",\n        \"author\": {\n          \"name\": \"J.R.R. Tolkien\"\n        }\n      }\n    ]\n  }\n}"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Filtering with Arguments",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Passing Arguments to a Field",
+                            "tags": [
+                                "graphql",
+                                "query",
+                                "arguments",
+                                "variables",
+                                "filter"
+                            ],
+                            "language": "graphql",
+                            "code": "# Arguments allow you to filter or specify which data you want.\n# The schema defines which arguments a field accepts (e.g., `bookById(id: ID)`).\n\nquery GetSingleBook {\n  bookById(id: \"1\") {\n    id\n    title\n    author {\n      name\n    }\n  }\n}",
+                            "output": "{\n  \"data\": {\n    \"bookById\": {\n      \"id\": \"1\",\n      \"title\": \"The Hobbit\",\n      \"author\": {\n        \"name\": \"J.R.R. Tolkien\"\n      }\n    }\n  }\n}"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "GraphQL",
+        "category": "GraphQL Basics",
+        "title": "Mutations for Modifying Data",
+        "description": "How to create, update, and delete data using GraphQL mutations. While queries are for fetching data, mutations are for changing data.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Defining and Writing a Mutation",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Step 1: Define the Mutation in the Schema",
+                            "tags": [
+                                "graphql",
+                                "mutation",
+                                "schema",
+                                "sdl"
+                            ],
+                            "language": "graphql",
+                            "code": "# Mutations are defined in a special top-level `Mutation` type.\n# This mutation, `createBook`, takes a title and returns the newly created Book.\n\ntype Mutation {\n  createBook(title: String!, authorId: ID!): Book\n}\n\ntype Book {\n  id: ID!\n  title: String!\n  author: Author\n}",
+                            "output": "The API now exposes a `createBook` mutation that clients can call to add a new book."
+                        },
+                        {
+                            "sub_section_heading": "Step 2: Execute the Mutation",
+                            "tags": [
+                                "graphql",
+                                "mutation",
+                                "query",
+                                "json"
+                            ],
+                            "language": "graphql",
+                            "code": "# A mutation is structured like a query, but it starts with the `mutation` keyword.\n# You pass arguments for the data you want to create.\n# You also specify the data you want back from the server in the same request.\n\nmutation AddNewBook {\n  createBook(title: \"A New Hope\", authorId: \"1\") {\n    id\n    title\n  }\n}",
+                            "output": "{\n  \"data\": {\n    \"createBook\": {\n      \"id\": \"3\",\n      \"title\": \"A New Hope\"\n    }\n  }\n}"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Using Input Types for Arguments",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Step 1: Define an `input` Type in the Schema",
+                            "tags": [
+                                "graphql",
+                                "mutation",
+                                "input",
+                                "arguments",
+                                "sdl"
+                            ],
+                            "language": "graphql",
+                            "code": "# When a mutation has many arguments, it's cleaner to bundle them into an `input` type.\n\ninput CreateBookInput {\n  title: String!\n  authorId: ID!\n  pageCount: Int\n}\n\n# Now, update the mutation to use the single input type.\ntype Mutation {\n  createBook(input: CreateBookInput!): Book\n}",
+                            "output": "The mutation is now cleaner and more extensible, as new fields can be added to `CreateBookInput` without changing the mutation's signature."
+                        },
+                        {
+                            "sub_section_heading": "Step 2: Use the Input Type in a Mutation",
+                            "tags": [
+                                "graphql",
+                                "mutation",
+                                "input",
+                                "query"
+                            ],
+                            "language": "graphql",
+                            "code": "# The mutation on the client side now passes a single `input` object.\n\nmutation AddNewBookWithInput {\n  createBook(input: {title: \"The Empire Strikes Back\", authorId: \"1\"}) {\n    id\n    title\n    author {\n      name\n    }\n  }\n}",
+                            "output": "{\n  \"data\": {\n    \"createBook\": {\n      \"id\": \"4\",\n      \"title\": \"The Empire Strikes Back\",\n      \"author\": {\n        \"name\": \"J.R.R. Tolkien\"\n      }\n    }\n  }\n}"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "GraphQL",
+        "category": "Advanced GraphQL",
+        "title": "Advanced Schema & Type System",
+        "description": "How to build a more robust and expressive schema using type modifiers like Lists and Non-Null, and advanced types like Enums and Interfaces.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Type Modifiers",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Defining Lists ([])",
+                            "tags": [
+                                "graphql",
+                                "schema",
+                                "sdl",
+                                "list",
+                                "array"
+                            ],
+                            "language": "graphql",
+                            "code": "# To declare a list of a certain type, wrap the type in square brackets [].\n\ntype Author {\n  id: ID\n  name: String\n  books: [Book] # This author can have a list of books\n}\n\ntype Book {\n  id: ID\n  title: String\n}",
+                            "output": "The `books` field on the `Author` type will now return an array of `Book` objects (or null)."
+                        },
+                        {
+                            "sub_section_heading": "Enforcing Non-Null (!)",
+                            "tags": [
+                                "graphql",
+                                "schema",
+                                "sdl",
+                                "non-null",
+                                "required"
+                            ],
+                            "language": "graphql",
+                            "code": "# The exclamation mark `!` after a type means the field is non-nullable.\n# The server guarantees it will never return a null value for this field.\n\ntype Book {\n  id: ID! # The ID can never be null\n  title: String! # The title can never be null\n  pageCount: Int # pageCount is nullable and can be null\n}\n\n# It can be combined with lists in powerful ways:\n# books: [Book]     A nullable list of nullable Books.\n# books: [Book!]    A nullable list of non-null Books.\n# books: [Book]!    A non-null list of nullable Books.\n# books: [Book!]!   A non-null list of non-null Books.",
+                            "output": "This adds a layer of type safety to your API, as the client can trust that certain fields will always return a value."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Advanced Types",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Enumeration Types (enum)",
+                            "tags": [
+                                "graphql",
+                                "schema",
+                                "sdl",
+                                "enum"
+                            ],
+                            "language": "graphql",
+                            "code": "# Enums are a special scalar type that restricts a field to a specific set of allowed values.\n\n# Define the enum\nenum BookGenre {\n  FANTASY\n  SCI_FI\n  MYSTERY\n}\n\n# Use the enum as a type for a field\ntype Book {\n  id: ID!\n  title: String!\n  genre: BookGenre\n}",
+                            "output": "The `genre` field is now guaranteed to be one of the three defined values, preventing invalid data."
+                        },
+                        {
+                            "sub_section_heading": "Interfaces",
+                            "tags": [
+                                "graphql",
+                                "schema",
+                                "sdl",
+                                "interface",
+                                "abstract"
+                            ],
+                            "language": "graphql",
+                            "code": "# An interface is an abstract type that defines a set of fields.\n# Other types can 'implement' this interface, guaranteeing they have those fields.\n\ninterface Media {\n  id: ID!\n  title: String!\n}\n\n# Book and Magazine both implement the Media interface\ntype Book implements Media {\n  id: ID!\n  title: String!\n  pageCount: Int\n}\n\ntype Magazine implements Media {\n  id: ID!\n  title: String!\n  issueNumber: Int\n}\n\n# This allows you to write queries that return a mix of types.\ntype Query {\n  searchMedia(term: String!): [Media]\n}",
+                            "output": "This allows for more flexible and reusable schemas. A query for `searchMedia` can now return a list containing both `Book` and `Magazine` objects."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "GraphQL",
+        "category": "Advanced GraphQL",
+        "title": "Advanced Queries & Fragments",
+        "description": "How to write more powerful, dynamic, and reusable client-side queries using aliases to rename fields, variables to pass dynamic data, and fragments to reuse sets of fields.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Advanced Query Syntax",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Aliases",
+                            "tags": [
+                                "graphql",
+                                "query",
+                                "alias",
+                                "rename"
+                            ],
+                            "language": "graphql",
+                            "code": "# Aliases let you rename the result of a field to anything you want.\n# This is essential if you need to fetch the same field with different arguments in one query.\n\nquery GetMultipleBooks {\n  hobbit: bookById(id: \"1\") {\n    title\n  }\n  \n  fellowship: bookById(id: \"2\") {\n    title\n  }\n}",
+                            "output": "{\n  \"data\": {\n    \"hobbit\": {\n      \"title\": \"The Hobbit\"\n    },\n    \"fellowship\": {\n      \"title\": \"The Fellowship of the Ring\"\n    }\n  }\n}"
+                        },
+                        {
+                            "sub_section_heading": "Variables for Dynamic Queries",
+                            "tags": [
+                                "graphql",
+                                "query",
+                                "variables",
+                                "dynamic"
+                            ],
+                            "language": "graphql",
+                            "code": "# In a real app, you don't hardcode values. Variables let you pass dynamic data.\n# The process has three parts:\n# 1. Define the variable in the query signature (e.g., `$bookId: ID!`)\n# 2. Use the variable as an argument (e.g., `id: $bookId`)\n# 3. Pass a separate JSON object of variables alongside the query.\n\nquery GetBookById($bookId: ID!) {\n  bookById(id: $bookId) {\n    id\n    title\n  }\n}",
+                            "output": "/* --- Query Variables (sent separately) --- */\n{\n  \"bookId\": \"1\"\n}\n\n/* --- Server Response (JSON) --- */\n{\n  \"data\": {\n    \"bookById\": {\n      \"id\": \"1\",\n      \"title\": \"The Hobbit\"\n    }\n  }\n}"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Reusable Logic",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Fragments for Reusable Fields",
+                            "tags": [
+                                "graphql",
+                                "query",
+                                "fragment",
+                                "reusable",
+                                "DRY"
+                            ],
+                            "language": "graphql",
+                            "code": "# Fragments are reusable sets of fields that you can include in your queries.\n# This helps you avoid repeating the same fields over and over.\n\n# 1. Define a fragment on a specific type\nfragment BookDetails on Book {\n  id\n  title\n  author {\n    name\n  }\n}\n\n# 2. Use the fragment in your queries with the spread (...) operator\nquery GetMultipleBooksWithFragment {\n  book1: bookById(id: \"1\") {\n    ...BookDetails\n  }\n  book2: bookById(id: \"2\") {\n    ...BookDetails\n  }\n}",
+                            "output": "{\n  \"data\": {\n    \"book1\": {\n      \"id\": \"1\",\n      \"title\": \"The Hobbit\",\n      \"author\": {\n        \"name\": \"J.R.R. Tolkien\"\n      }\n    },\n    \"book2\": {\n      \"id\": \"2\",\n      \"title\": \"The Fellowship of the Ring\",\n      \"author\": {\n        \"name\": \"J.R.R. Tolkien\"\n      }\n    }\n  }\n}"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "GraphQL",
+        "category": "Advanced GraphQL",
+        "title": "Subscriptions for Real-time Data",
+        "description": "How to receive real-time updates from the server using GraphQL Subscriptions. Unlike queries, subscriptions maintain a long-lived connection, and the server pushes data to the client.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Core Concepts",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "What are Subscriptions?",
+                            "tags": [
+                                "graphql",
+                                "subscriptions",
+                                "real-time",
+                                "websockets"
+                            ],
+                            "language": "text",
+                            "code": "Subscriptions are a GraphQL feature that allows a server to send data to its clients when a specific event happens.\n\nThey are typically implemented over WebSockets and maintain a persistent connection to the server.\n\nAnalogy:\n- A Query is like asking a friend, \"What's the weather right now?\" (You pull data once).\n- A Subscription is like asking your friend, \"Text me every time the weather changes.\" (The server pushes data to you).",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Implementation",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Step 1: Define the Subscription in the Schema",
+                            "tags": [
+                                "graphql",
+                                "subscriptions",
+                                "schema",
+                                "sdl",
+                                "root type"
+                            ],
+                            "language": "graphql",
+                            "code": "# Subscriptions are defined in a special top-level `Subscription` type.\n# This subscription will push a `Comment` object whenever a new comment is added to a specific post.\n\ntype Subscription {\n  commentAdded(postId: ID!): Comment\n}\n\ntype Comment {\n  id: ID!\n  content: String!\n  author: User!\n}",
+                            "output": "The API now offers a real-time `commentAdded` event that clients can subscribe to."
+                        },
+                        {
+                            "sub_section_heading": "Step 2: Write the Subscription Query",
+                            "tags": [
+                                "graphql",
+                                "subscriptions",
+                                "query",
+                                "client-side"
+                            ],
+                            "language": "graphql",
+                            "code": "# On the client, you write a subscription query that looks similar to a regular query.\n# This tells the server what data you want to receive for each event.\n\nsubscription OnCommentAdded($postId: ID!) {\n  commentAdded(postId: $postId) {\n    id\n    content\n    author {\n      name\n    }\n  }\n}",
+                            "output": "The client will now listen for new data. When the server triggers the `commentAdded` event for the specified post, it will push a JSON object with the requested `id`, `content`, and `author` fields to the client."
+                        },
+                        {
+                            "sub_section_heading": "The Data Flow Explained",
+                            "tags": [
+                                "graphql",
+                                "subscriptions",
+                                "data flow"
+                            ],
+                            "language": "text",
+                            "code": "1. Client A sends the `subscription` operation to the server.\n2. A persistent WebSocket connection is established between Client A and the server.\n3. Client B sends a `mutation` to add a new comment to the specified post.\n4. The server processes the mutation and saves the new comment.\n5. The server then pushes the new comment data through the WebSocket to Client A.\n6. Client A receives the new data in real-time and can update its UI.",
+                            "output": null
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+]

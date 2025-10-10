@@ -1,0 +1,167 @@
+[
+    {
+        "parent_category": "INI",
+        "category": "INI Basics",
+        "title": "Basic Structure",
+        "description": "The fundamental components of an INI file: sections for grouping data and key-value pairs for storing settings.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Core Components",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Sections `[section]`",
+                            "tags": [
+                                "ini",
+                                "syntax",
+                                "section"
+                            ],
+                            "language": "ini",
+                            "code": "[database]",
+                            "output": "Sections are used to group related key-value pairs. They are defined by a name enclosed in square brackets."
+                        },
+                        {
+                            "sub_section_heading": "Key-Value Pairs `key = value`",
+                            "tags": [
+                                "ini",
+                                "syntax",
+                                "key-value",
+                                "parameter"
+                            ],
+                            "language": "ini",
+                            "code": "host = localhost\nport = 5432",
+                            "output": "Within a section, data is stored as key-value pairs. The key and value are typically separated by an equals sign `=`."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Complete Example",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "A Simple INI File",
+                            "tags": [
+                                "ini",
+                                "example",
+                                "structure"
+                            ],
+                            "language": "ini",
+                            "code": "[database]\nhost = localhost\nport = 5432\nuser = admin\n\n[server]\nhost = 127.0.0.1\nport = 8080",
+                            "output": "{\n  \"database\": {\n    \"host\": \"localhost\",\n    \"port\": \"5432\",\n    \"user\": \"admin\"\n  },\n  \"server\": {\n    \"host\": \"127.0.0.1\",\n    \"port\": \"8080\"\n  }\n}"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "INI",
+        "category": "INI Basics",
+        "title": "Data Types, Comments & Variations",
+        "description": "Understanding how data types are typically interpreted in INI files, how to add comments, and common syntax variations you might encounter.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Data Types & Comments",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Data Type Interpretation",
+                            "tags": [
+                                "ini",
+                                "data types",
+                                "string",
+                                "parsing"
+                            ],
+                            "language": "ini",
+                            "code": "# INI has no formal type system. Most parsers treat ALL values as strings.\n# Your application code is responsible for converting them to numbers or booleans.\n\nport = 8080\nenabled = true",
+                            "output": "{\n  \"port\": \"8080\",\n  \"enabled\": \"true\"\n}\n// Notice how both the number and boolean are parsed as strings."
+                        },
+                        {
+                            "sub_section_heading": "Adding Comments",
+                            "tags": [
+                                "ini",
+                                "syntax",
+                                "comments"
+                            ],
+                            "language": "ini",
+                            "code": "; Semicolons are the most common character for comments.\n# Some parsers also support the hash symbol for comments.\n\n[database]\nhost = localhost ; Inline comments are sometimes supported, but not universally.",
+                            "output": "{\n  \"database\": {\n    \"host\": \"localhost\"\n  }\n}"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Syntax Variations",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Key-Value Separators",
+                            "tags": [
+                                "ini",
+                                "syntax",
+                                "variations",
+                                "separator"
+                            ],
+                            "language": "ini",
+                            "code": "# While the equals sign is standard, some parsers also allow a colon.\n# Whitespace around the separator is typically ignored.\n\n[owner]\nname = John Doe\norganization: Example Inc.",
+                            "output": "{\n  \"owner\": {\n    \"name\": \"John Doe\",\n    \"organization\": \"Example Inc.\"\n  }\n}"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "INI",
+        "category": "Advanced INI",
+        "title": "Advanced Structures & Limitations",
+        "description": "Common patterns for simulating complex data structures like nested objects and arrays in INI files, and an overview of the format's limitations.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Simulating Complex Structures (Conventions)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Nested Objects with Dotted Keys",
+                            "tags": [
+                                "ini",
+                                "advanced",
+                                "nested",
+                                "dotted keys",
+                                "convention"
+                            ],
+                            "language": "ini",
+                            "code": "# INI does not have official support for nested objects.\n# A common convention is to use dots in key names to simulate hierarchy.\n\n[database]\ndatabase.name = my_app\ndatabase.host = localhost\ndatabase.port = 5432",
+                            "output": "{\n  \"database\": {\n    \"database.name\": \"my_app\",\n    \"database.host\": \"localhost\",\n    \"database.port\": \"5432\"\n  }\n}\n// Note: Some advanced parsers might convert this to a nested object, but most will treat the keys as literal strings with dots."
+                        },
+                        {
+                            "sub_section_heading": "Arrays with Duplicate Keys",
+                            "tags": [
+                                "ini",
+                                "advanced",
+                                "array",
+                                "convention"
+                            ],
+                            "language": "ini",
+                            "code": "# INI has no standard array syntax.\n# One common convention is to use the same key multiple times.\n# This behavior is highly dependent on the parser.\n\n[server]\nhost = 192.168.1.1\nhost = 192.168.1.2\nhost = 192.168.1.3",
+                            "output": "{\n  \"server\": {\n    \"host\": [\n      \"192.168.1.1\",\n      \"192.168.1.2\",\n      \"192.168.1.3\"\n    ]\n  }\n}\n// Note: Many simple parsers will just overwrite the value, resulting in only the last `host` being kept."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Format Limitations",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Key Limitations of the INI Format",
+                            "tags": [
+                                "ini",
+                                "limitations",
+                                "comparison"
+                            ],
+                            "language": "text",
+                            "code": "It's important to understand what INI is NOT good at:\n\n1.  **No Official Standard:** The format's behavior can vary significantly between different parsers.\n2.  **No Data Types:** Almost all values are treated as strings, requiring the application to perform conversions.\n3.  **No Standard for Complex Structures:** There is no built-in, universally recognized way to represent nested objects, lists of objects, or multi-line strings.\n\nFor complex configurations, formats like YAML, TOML, or JSON are generally preferred.",
+                            "output": null
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+]

@@ -1,0 +1,269 @@
+[
+    {
+        "parent_category": "YAML",
+        "category": "YAML Basics",
+        "title": "Basic Syntax & Data Types",
+        "description": "The fundamental syntax rules of YAML, including key-value pairs, indentation, and the primary scalar data types.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Core Syntax Rules",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Key-Value Pairs",
+                            "tags": [
+                                "yaml",
+                                "syntax",
+                                "key-value"
+                            ],
+                            "language": "yaml",
+                            "code": "# YAML is built on key-value pairs.\n# The key is followed by a colon and a space.\nkey: value",
+                            "output": "Equivalent JSON: {\"key\": \"value\"}"
+                        },
+                        {
+                            "sub_section_heading": "Indentation Defines Structure",
+                            "tags": [
+                                "yaml",
+                                "syntax",
+                                "indentation",
+                                "structure"
+                            ],
+                            "language": "text",
+                            "code": "YAML uses indentation (spaces, NOT tabs) to create nested structures. The number of spaces is not fixed, but it must be consistent within the same block.\n\nTwo spaces are a common convention.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Scalar Data Types",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Strings, Numbers, and Booleans",
+                            "tags": [
+                                "yaml",
+                                "data types",
+                                "string",
+                                "number",
+                                "boolean",
+                                "null"
+                            ],
+                            "language": "yaml",
+                            "code": "# Scalar types represent single values.\n\n# Strings (quotes are often optional)\na_string: Hello, YAML!\nanother_string: \"You can use quotes if you need to.\"\n\n# Numbers (integers and floats)\nan_integer: 123\na_float: 45.67\n\n# Booleans\nis_active: true\nis_enabled: false\n\n# Null value\nempty_field: null # or just leave the value blank, or use ~",
+                            "output": "{\n  \"a_string\": \"Hello, YAML!\",\n  \"another_string\": \"You can use quotes if you need to.\",\n  \"an_integer\": 123,\n  \"a_float\": 45.67,\n  \"is_active\": true,\n  \"is_enabled\": false,\n  \"empty_field\": null\n}"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "YAML",
+        "category": "YAML Basics",
+        "title": "Lists (Sequences) & Dictionaries (Mappings)",
+        "description": "How to structure data in YAML using lists (formally called sequences) and dictionaries (formally called mappings).",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Lists (Sequences)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Simple Lists",
+                            "tags": [
+                                "yaml",
+                                "list",
+                                "sequence",
+                                "array"
+                            ],
+                            "language": "yaml",
+                            "code": "# A list (sequence) is an ordered collection of items.\n# Each item begins with a hyphen and a space.\n\n- Apple\n- Banana\n- Cherry",
+                            "output": "[\"Apple\", \"Banana\", \"Cherry\"]"
+                        },
+                        {
+                            "sub_section_heading": "Lists of Dictionaries",
+                            "tags": [
+                                "yaml",
+                                "list",
+                                "dictionary",
+                                "nested"
+                            ],
+                            "language": "yaml",
+                            "code": "# This is a very common pattern.\n# It's a list where each item is a dictionary.\n\n- name: John Doe\n  age: 34\n  job: Engineer\n- name: Jane Smith\n  age: 28\n  job: Designer",
+                            "output": "[\n  {\n    \"name\": \"John Doe\",\n    \"age\": 34,\n    \"job\": \"Engineer\"\n  },\n  {\n    \"name\": \"Jane Smith\",\n    \"age\": 28,\n    \"job\": \"Designer\"\n  }\n]"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Dictionaries (Mappings)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Nested Dictionaries",
+                            "tags": [
+                                "yaml",
+                                "dictionary",
+                                "mapping",
+                                "nested",
+                                "object"
+                            ],
+                            "language": "yaml",
+                            "code": "# You can nest dictionaries by indenting key-value pairs.\n\nuser:\n  name: Alex\n  contact:\n    email: alex@example.com\n    phone: 123-456-7890",
+                            "output": "{\n  \"user\": {\n    \"name\": \"Alex\",\n    \"contact\": {\n      \"email\": \"alex@example.com\",\n      \"phone\": \"123-456-7890\"\n    }\n  }\n}"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Combined Structures",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Complex Example",
+                            "tags": [
+                                "yaml",
+                                "structure",
+                                "complex",
+                                "nested"
+                            ],
+                            "language": "yaml",
+                            "code": "# Real-world YAML files combine these structures.\n\nserver:\n  host: 127.0.0.1\n  port: 8080\n\ndatabase:\n  type: postgresql\n  user: admin\n  ports:\n    - 5432\n    - 5433",
+                            "output": "{\n  \"server\": {\n    \"host\": \"127.0.0.1\",\n    \"port\": 8080\n  },\n  \"database\": {\n    \"type\": \"postgresql\",\n    \"user\": \"admin\",\n    \"ports\": [\n      5432,\n      5433\n    ]\n  }\n}"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "YAML",
+        "category": "Advanced YAML",
+        "title": "Advanced Features",
+        "description": "How to use more advanced YAML features like multi-line strings, comments, and anchors/aliases to write clean, readable, and maintainable files.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Handling Text",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Multi-line Strings (Literal Style `|`)",
+                            "tags": [
+                                "yaml",
+                                "string",
+                                "multiline",
+                                "literal"
+                            ],
+                            "language": "yaml",
+                            "code": "# The pipe `|` preserves newlines.\n# The final newline at the end of the string is chomped.\n\naddress: |\n  123 Fake Street\n  Anytown, ST 12345",
+                            "output": "{\n  \"address\": \"123 Fake Street\\nAnytown, ST 12345\"\n}"
+                        },
+                        {
+                            "sub_section_heading": "Multi-line Strings (Folded Style `>`)",
+                            "tags": [
+                                "yaml",
+                                "string",
+                                "multiline",
+                                "folded"
+                            ],
+                            "language": "yaml",
+                            "code": "# The greater-than sign `>` folds newlines into spaces.\n# It's useful for long paragraphs.\n\ndescription: >\n  This is a long description that will be folded into a single line,\n  making it easier to read in the YAML file.",
+                            "output": "{\n  \"description\": \"This is a long description that will be folded into a single line, making it easier to read in the YAML file.\"\n}"
+                        },
+                        {
+                            "sub_section_heading": "Comments (`#`)",
+                            "tags": [
+                                "yaml",
+                                "syntax",
+                                "comments"
+                            ],
+                            "language": "yaml",
+                            "code": "# Comments begin with a hash symbol.\n# They are ignored by the parser.\n\nkey: value # This is an inline comment",
+                            "output": "{\n  \"key\": \"value\"\n}"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Reusing Data (DRY Principle)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Anchors (`&`) and Aliases (`*`)",
+                            "tags": [
+                                "yaml",
+                                "advanced",
+                                "anchor",
+                                "alias",
+                                "DRY"
+                            ],
+                            "language": "yaml",
+                            "code": "# Anchors (`&`) and Aliases (`*`) let you reuse data structures.\n\n# 1. Define a block of data and give it an anchor name (`&defaults`).\ndefault_config: &defaults\n  adapter: postgres\n  host: localhost\n\n# 2. Reuse that block elsewhere using an alias (`*defaults`).\ndevelopment:\n  database: dev_db\n  <<: *defaults # `<<:` merges the aliased dictionary here\n\ntest:\n  database: test_db\n  <<: *defaults",
+                            "output": "{\n  \"default_config\": {\n    \"adapter\": \"postgres\",\n    \"host\": \"localhost\"\n  },\n  \"development\": {\n    \"database\": \"dev_db\",\n    \"adapter\": \"postgres\",\n    \"host\": \"localhost\"\n  },\n  \"test\": {\n    \"database\": \"test_db\",\n    \"adapter\": \"postgres\",\n    \"host\": \"localhost\"\n  }\n}"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "YAML",
+        "category": "Advanced YAML",
+        "title": "Advanced Features",
+        "description": "How to use more advanced YAML features like multi-line strings, comments, and anchors/aliases to write clean, readable, and maintainable files.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Handling Text",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Multi-line Strings (Literal Style `|`)",
+                            "tags": [
+                                "yaml",
+                                "string",
+                                "multiline",
+                                "literal"
+                            ],
+                            "language": "yaml",
+                            "code": "# The pipe `|` preserves newlines.\n# The final newline at the end of the string is chomped.\n\naddress: |\n  123 Fake Street\n  Anytown, ST 12345",
+                            "output": "{\n  \"address\": \"123 Fake Street\\nAnytown, ST 12345\"\n}"
+                        },
+                        {
+                            "sub_section_heading": "Multi-line Strings (Folded Style `>`)",
+                            "tags": [
+                                "yaml",
+                                "string",
+                                "multiline",
+                                "folded"
+                            ],
+                            "language": "yaml",
+                            "code": "# The greater-than sign `>` folds newlines into spaces.\n# It's useful for long paragraphs.\n\ndescription: >\n  This is a long description that will be folded into a single line,\n  making it easier to read in the YAML file.",
+                            "output": "{\n  \"description\": \"This is a long description that will be folded into a single line, making it easier to read in the YAML file.\"\n}"
+                        },
+                        {
+                            "sub_section_heading": "Comments (`#`)",
+                            "tags": [
+                                "yaml",
+                                "syntax",
+                                "comments"
+                            ],
+                            "language": "yaml",
+                            "code": "# Comments begin with a hash symbol.\n# They are ignored by the parser.\n\nkey: value # This is an inline comment",
+                            "output": "{\n  \"key\": \"value\"\n}"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Reusing Data (DRY Principle)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Anchors (`&`) and Aliases (`*`)",
+                            "tags": [
+                                "yaml",
+                                "advanced",
+                                "anchor",
+                                "alias",
+                                "DRY"
+                            ],
+                            "language": "yaml",
+                            "code": "# Anchors (`&`) and Aliases (`*`) let you reuse data structures.\n\n# 1. Define a block of data and give it an anchor name (`&defaults`).\ndefault_config: &defaults\n  adapter: postgres\n  host: localhost\n\n# 2. Reuse that block elsewhere using an alias (`*defaults`).\ndevelopment:\n  database: dev_db\n  <<: *defaults # `<<:` merges the aliased dictionary here\n\ntest:\n  database: test_db\n  <<: *defaults",
+                            "output": "{\n  \"default_config\": {\n    \"adapter\": \"postgres\",\n    \"host\": \"localhost\"\n  },\n  \"development\": {\n    \"database\": \"dev_db\",\n    \"adapter\": \"postgres\",\n    \"host\": \"localhost\"\n  },\n  \"test\": {\n    \"database\": \"test_db\",\n    \"adapter\": \"postgres\",\n    \"host\": \"localhost\"\n  }\n}"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+]

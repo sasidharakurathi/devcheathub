@@ -48,8 +48,8 @@
                 <h3 class="contributor-name">{{ cheatsheet.author.get_full_name|default:cheatsheet.author.username }}</h3>
                 {% if cheatsheet.author.profile.github_url %}
                     <a href="{{ cheatsheet.author.profile.github_url }}" class="social-link" target="_blank" rel="noopener noreferrer">View GitHub</a>
+                    |
                 {% endif %}
-                |
                 {% if cheatsheet.author.profile.linkedin_url %}
                     <a href="{{ cheatsheet.author.profile.linkedin_url }}" class="social-link" target="_blank" rel="noopener noreferrer">View LinkedIn</a>
                 {% endif %}

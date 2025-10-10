@@ -16,8 +16,10 @@
         {% for sheet in page_obj  %}
         <a href="{% url 'cheatsheet_detail' sheet.slug %}" class="list-item-link">
             <div class="list-item">
-                <h2 class="list-item-title">{{ sheet.title }}</h2>
-                <p class="list-item-description">{{ sheet.description }}</p>
+                <div>
+                    <h2 class="list-item-title">{{ sheet.title }}</h2>
+                    <p class="list-item-description">{{ sheet.description }}</p>
+                </div>
             </div>
         </a>
         {% empty %}

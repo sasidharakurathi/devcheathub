@@ -1,0 +1,235 @@
+[
+    {
+        "parent_category": "JSON",
+        "category": "JSON Basics",
+        "title": "Basic Syntax & Data Types",
+        "description": "The fundamental syntax rules and the six core data types that make up any JSON document.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Core Syntax Rules",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Key-Value Pairs",
+                            "tags": [
+                                "json",
+                                "syntax",
+                                "key-value",
+                                "object"
+                            ],
+                            "language": "json",
+                            "code": "{\n  \"key\": \"value\"\n}",
+                            "output": "JSON data is represented as a collection of key-value pairs.\n\n- An object is an unordered set of key-value pairs, enclosed in curly braces `{}`.\n- Keys MUST be strings in double quotes (e.g., `\"name\"`).\n- Values can be any of the six JSON data types.\n- Pairs are separated by commas."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "The Six Data Types",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Example of All Data Types",
+                            "tags": [
+                                "json",
+                                "data types",
+                                "string",
+                                "number",
+                                "boolean",
+                                "null",
+                                "object",
+                                "array"
+                            ],
+                            "language": "json",
+                            "code": "{\n  \"a_string\": \"Hello, World!\",\n  \"a_number\": 123.45,\n  \"a_boolean\": true,\n  \"nothing_here\": null,\n  \"an_object\": {\n    \"nested_key\": \"nested_value\"\n  },\n  \"an_array\": [\n    \"apple\",\n    \"banana\",\n    \"cherry\"\n  ]\n}",
+                            "output": "This single JSON object demonstrates all six possible data types."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "JSON",
+        "category": "JSON Basics",
+        "title": "Structuring Data with Objects & Arrays",
+        "description": "How to create complex, nested data structures by combining JSON objects and arrays to model real-world information.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Nesting Structures",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Nested Objects",
+                            "tags": [
+                                "json",
+                                "structure",
+                                "object",
+                                "nested"
+                            ],
+                            "language": "json",
+                            "code": "{\n  \"id\": 101,\n  \"name\": \"John Doe\",\n  \"contact\": {\n    \"email\": \"john.doe@example.com\",\n    \"phone\": null\n  }\n}",
+                            "output": "An object's value can be another object, allowing you to group related information."
+                        },
+                        {
+                            "sub_section_heading": "Arrays of Objects",
+                            "tags": [
+                                "json",
+                                "structure",
+                                "array",
+                                "list"
+                            ],
+                            "language": "json",
+                            "code": "[\n  {\n    \"id\": 1,\n    \"productName\": \"Laptop\",\n    \"inStock\": true\n  },\n  {\n    \"id\": 2,\n    \"productName\": \"Mouse\",\n    \"inStock\": false\n  }\n]",
+                            "output": "This is a common pattern for representing a list of items, where each item is a structured object."
+                        },
+                        {
+                            "sub_section_heading": "Complex Combination",
+                            "tags": [
+                                "json",
+                                "structure",
+                                "complex",
+                                "nested"
+                            ],
+                            "language": "json",
+                            "code": "{\n  \"id\": \"post123\",\n  \"title\": \"Understanding JSON\",\n  \"author\": {\n    \"id\": \"user001\",\n    \"name\": \"Jane Smith\"\n  },\n  \"tags\": [\"data\", \"webdev\", \"tutorial\"],\n  \"comments\": [\n    {\n      \"user\": \"Bob\",\n      \"text\": \"Great article!\"\n    },\n    {\n      \"user\": \"Alice\",\n      \"text\": \"Very helpful, thanks!\"\n    }\n  ]\n}",
+                            "output": "This example shows a blog post object that contains a nested author object, an array of simple strings (tags), and an array of comment objects."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "JSON",
+        "category": "Advanced JSON",
+        "title": "JSON Schema for Validation",
+        "description": "How to use JSON Schema to define a formal structure for your JSON data. This enables automatic validation and ensures data quality and consistency.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Core Concepts",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "What is JSON Schema?",
+                            "tags": [
+                                "json",
+                                "json schema",
+                                "validation",
+                                "schema"
+                            ],
+                            "language": "text",
+                            "code": "JSON Schema is a vocabulary that allows you to annotate and validate JSON documents.\n\nAnalogy: If a JSON document is the 'data', the JSON Schema is the 'rulebook' or 'blueprint' that the data must follow. It defines:\n- What properties are required.\n- What data type each property should have.\n- Data formats (e.g., email, URI).\n- Constraints (e.g., a number must be positive).",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Building a Schema",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Defining Properties and Required Fields",
+                            "tags": [
+                                "json",
+                                "json schema",
+                                "properties",
+                                "required",
+                                "type"
+                            ],
+                            "language": "json",
+                            "code": "{\n  \"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\n  \"title\": \"Product\",\n  \"description\": \"A product from the catalog\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"id\": {\n      \"description\": \"The unique identifier for a product\",\n      \"type\": \"integer\"\n    },\n    \"name\": {\n      \"description\": \"Name of the product\",\n      \"type\": \"string\"\n    },\n    \"price\": {\n      \"type\": \"number\",\n      \"minimum\": 0\n    }\n  },\n  \"required\": [\"id\", \"name\", \"price\"]\n}",
+                            "output": "This schema defines a 'Product' object with three required properties: id (integer), name (string), and price (a non-negative number)."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Validation Example",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Valid vs. Invalid JSON",
+                            "tags": [
+                                "json",
+                                "json schema",
+                                "validation",
+                                "example"
+                            ],
+                            "language": "json",
+                            "code": "/* --- VALID JSON (according to the schema above) --- */\n{\n  \"id\": 1,\n  \"name\": \"A Green Door\",\n  \"price\": 12.50\n}\n\n/* --- INVALID JSON --- */\n{\n  \"name\": \"A Red Door\",\n  \"price\": -5.00\n}",
+                            "output": "The first JSON is valid. The second is invalid for two reasons:\n1. It's missing the required `id` property.\n2. The `price` is less than the specified `minimum` of 0."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "JSON",
+        "category": "Advanced JSON",
+        "title": "Advanced Use Cases: JWT & GeoJSON",
+        "description": "An overview of common, real-world standards built on the JSON format, including JSON Web Tokens (JWT) for authentication and GeoJSON for geographic data.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "JSON Web Tokens (JWT) for Authentication",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "What is a JWT?",
+                            "tags": [
+                                "json",
+                                "jwt",
+                                "authentication",
+                                "security",
+                                "token"
+                            ],
+                            "language": "text",
+                            "code": "A JSON Web Token (JWT) is a compact, URL-safe standard for securely transmitting information between parties as a JSON object. It is commonly used for authentication and authorization in APIs.\n\nA JWT consists of three parts separated by dots: `Header.Payload.Signature`.",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "The Structure of a JWT (Decoded)",
+                            "tags": [
+                                "json",
+                                "jwt",
+                                "header",
+                                "payload",
+                                "claims"
+                            ],
+                            "language": "json",
+                            "code": "/* A JWT is not encrypted, it's Base64Url encoded. Here are the decoded JSON parts. */\n\n// 1. Header: Metadata about the token\n{\n  \"alg\": \"HS256\",\n  \"typ\": \"JWT\"\n}\n\n// 2. Payload: The claims or data being transmitted\n{\n  \"sub\": \"1234567890\",\n  \"name\": \"John Doe\",\n  \"iat\": 1516239022,\n  \"exp\": 1516242622\n}\n\n// 3. Signature: A cryptographic signature to verify the token is authentic.",
+                            "output": "The header and payload are JSON objects that are encoded to create the final token. The signature ensures the data has not been tampered with."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "GeoJSON for Geographic Data",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "What is GeoJSON?",
+                            "tags": [
+                                "json",
+                                "geojson",
+                                "gis",
+                                "mapping",
+                                "geographic"
+                            ],
+                            "language": "text",
+                            "code": "GeoJSON is an open standard format for encoding a variety of geographic data structures using JSON. It is widely used in mapping applications and geographic information systems (GIS).\n\nIt can represent geometries (Point, LineString, Polygon), Features, and collections of Features.",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "Example GeoJSON Feature",
+                            "tags": [
+                                "json",
+                                "geojson",
+                                "feature",
+                                "point",
+                                "coordinates"
+                            ],
+                            "language": "json",
+                            "code": "{\n  \"type\": \"Feature\",\n  \"geometry\": {\n    \"type\": \"Point\",\n    \"coordinates\": [80.6480, 16.5062]\n  },\n  \"properties\": {\n    \"name\": \"Vijayawada\",\n    \"population\": 1723000\n  }\n}",
+                            "output": "This GeoJSON 'Feature' object represents a single point on a map (Vijayawada) and includes additional metadata in its `properties` object."
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+]

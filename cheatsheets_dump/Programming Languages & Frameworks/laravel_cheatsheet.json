@@ -1,0 +1,834 @@
+[
+    {
+        "parent_category": "Laravel",
+        "category": "Laravel Basics",
+        "title": "Setup & Routing",
+        "description": "How to install a new Laravel project using Composer and define the basic routes for your application in the `routes/web.php` file.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Installation & Project Structure",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Installation via Composer",
+                            "tags": [
+                                "laravel",
+                                "setup",
+                                "install",
+                                "composer"
+                            ],
+                            "language": "bash",
+                            "code": "# Composer is a dependency manager for PHP. This command creates a new Laravel project.\n# Make sure you have PHP and Composer installed first.\n\ncomposer create-project laravel/laravel my-first-app\n\n# Navigate into your new project directory\ncd my-first-app\n\n# Start the local development server\nphp artisan serve",
+                            "output": "Your Laravel development server will start, typically at http://127.0.0.1:8000"
+                        },
+                        {
+                            "sub_section_heading": "Key Directory Structure",
+                            "tags": [
+                                "laravel",
+                                "setup",
+                                "structure",
+                                "folders"
+                            ],
+                            "language": "text",
+                            "code": "A new Laravel project has a standard structure:\n\n- app/         : Core application code (Controllers, Models, etc.).\n- routes/      : All route definitions (web.php is for web browser routes).\n- resources/   : Frontend assets (CSS, JS) and Blade views (`views/`).\n- public/      : The web server's document root; publicly accessible files.\n- database/    : Database migrations, seeders, and factories.\n- .env         : Environment configuration file (database credentials, etc.).",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Defining Routes",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Basic GET Route",
+                            "tags": [
+                                "laravel",
+                                "routing",
+                                "get",
+                                "closure"
+                            ],
+                            "language": "php",
+                            "code": "// --- File: routes/web.php ---\n\nuse Illuminate\\Support\\Facades\\Route;\n\n// A basic route that returns a string directly.\nRoute::get('/greeting', function () {\n    return 'Hello, World!';\n});",
+                            "output": "Navigating to your-app-url/greeting in a browser will display the text 'Hello, World!'."
+                        },
+                        {
+                            "sub_section_heading": "Returning a View",
+                            "tags": [
+                                "laravel",
+                                "routing",
+                                "view",
+                                "blade"
+                            ],
+                            "language": "php",
+                            "code": "// --- File: routes/web.php ---\n\n// The most common use case is to return a Blade view.\n// This returns the file located at resources/views/welcome.blade.php\nRoute::get('/', function () {\n    return view('welcome');\n});",
+                            "output": "Navigating to your application's root URL will display the default Laravel welcome page."
+                        },
+                        {
+                            "sub_section_heading": "Route with Parameters",
+                            "tags": [
+                                "laravel",
+                                "routing",
+                                "parameters",
+                                "wildcard"
+                            ],
+                            "language": "php",
+                            "code": "// --- File: routes/web.php ---\n\n// Capture segments of the URI using curly braces.\n// The captured value is passed to the closure's argument.\nRoute::get('/users/{id}', function (string $id) {\n    return 'Showing user with ID: ' . $id;\n});",
+                            "output": "Navigating to your-app-url/users/123 will display 'Showing user with ID: 123'."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Laravel",
+        "category": "Laravel Basics",
+        "title": "Controllers & Blade Views",
+        "description": "How to organize application logic in Controllers and render dynamic HTML using the Blade templating engine.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Using Controllers",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Generating a Controller",
+                            "tags": [
+                                "laravel",
+                                "controller",
+                                "artisan",
+                                "mvc"
+                            ],
+                            "language": "bash",
+                            "code": "# Use the `make:controller` Artisan command to create a new controller file.\n# This command will create the file at `app/Http/Controllers/PostController.php`\n\nphp artisan make:controller PostController",
+                            "output": "Controller created successfully."
+                        },
+                        {
+                            "sub_section_heading": "Connecting a Route to a Controller",
+                            "tags": [
+                                "laravel",
+                                "controller",
+                                "routing",
+                                "mvc"
+                            ],
+                            "language": "php",
+                            "code": "// --- File: app/Http/Controllers/PostController.php ---\nnamespace App\\Http\\Controllers;\n\nuse Illuminate\\Http\\Request;\n\nclass PostController extends Controller\n{\n    // Define a method to handle the request\n    public function index()\n    {\n        return 'A list of posts will be here.';\n    }\n}\n\n// --- File: routes/web.php ---\nuse App\\Http\\Controllers\\PostController;\n\n// This route now points to the 'index' method of the PostController\nRoute::get('/posts', [PostController::class, 'index']);",
+                            "output": "Navigating to your-app-url/posts will now execute the index() method in PostController."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Using Blade Templates",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Passing Data to a View",
+                            "tags": [
+                                "laravel",
+                                "blade",
+                                "view",
+                                "controller",
+                                "data"
+                            ],
+                            "language": "php",
+                            "code": "// --- File: app/Http/Controllers/PostController.php ---\n// We'll modify the controller to pass data to a view.\n\npublic function index()\n{\n    $posts = [\n        ['title' => 'First Post'],\n        ['title' => 'Second Post']\n    ];\n\n    // The second argument to the `view` helper is an array of data.\n    // The array keys become variable names in the view.\n    return view('posts.index', ['posts' => $posts]);\n}",
+                            "output": "The controller now renders the `resources/views/posts/index.blade.php` file and gives it access to a `$posts` variable."
+                        },
+                        {
+                            "sub_section_heading": "Displaying Data & Control Structures",
+                            "tags": [
+                                "laravel",
+                                "blade",
+                                "syntax",
+                                "if",
+                                "foreach"
+                            ],
+                            "language": "php",
+                            "code": "\n\n<!DOCTYPE html>\n<html>\n<head>\n    <title>All Posts</title>\n</head>\n<body>\n    <h1>Posts</h1>\n\n    {{-- This is a Blade comment --}}\n\n    @if (count($posts) > 0)\n        <ul>\n            {{-- Loop over the posts array --}}\n            @foreach ($posts as $post)\n                {{-- Display data using curly braces --}}\n                <li>{{ $post['title'] }}</li>\n            @endforeach\n        </ul>\n    @else\n        <p>No posts found!</p>\n    @endif\n</body>\n</html>",
+                            "output": "\n\n<!DOCTYPE html>\n<html>\n<head>\n    <title>All Posts</title>\n</head>\n<body>\n    <h1>Posts</h1>\n    <ul>\n        <li>First Post</li>\n        <li>Second Post</li>\n    </ul>\n</body>\n</html>"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Laravel",
+        "category": "Laravel Basics",
+        "title": "Database Migrations",
+        "description": "How to define, create, and modify your database tables using Laravel's schema builder and migration system. This is like version control for your database.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Configuration & Creation",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Step 1: Configure the `.env` File",
+                            "tags": [
+                                "laravel",
+                                "database",
+                                "migration",
+                                "env",
+                                "config"
+                            ],
+                            "language": "bash",
+                            "code": "# Your database connection is configured in the .env file in your project root.\n# Make sure you have created a database and update these values.\n\nDB_CONNECTION=mysql\nDB_HOST=127.0.0.1\nDB_PORT=3306\nDB_DATABASE=my_first_app\nDB_USERNAME=root\nDB_PASSWORD=",
+                            "output": "The application is now configured to connect to your local 'my_first_app' database."
+                        },
+                        {
+                            "sub_section_heading": "Step 2: Create a Migration File",
+                            "tags": [
+                                "laravel",
+                                "database",
+                                "migration",
+                                "artisan",
+                                "schema"
+                            ],
+                            "language": "bash",
+                            "code": "# Use the `make:migration` Artisan command to generate a new migration file.\n# The file will be created in the `database/migrations/` directory.\n\nphp artisan make:migration create_posts_table",
+                            "output": "INFO  Migration [YYYY_MM_DD_HHMMSS_create_posts_table] created successfully."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Defining and Running the Schema",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Step 3: Define the Table Schema",
+                            "tags": [
+                                "laravel",
+                                "migration",
+                                "schema",
+                                "builder",
+                                "database"
+                            ],
+                            "language": "php",
+                            "code": "// --- File: database/migrations/YYYY_MM_DD_HHMMSS_create_posts_table.php ---\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    public function up(): void\n    {\n        // The `up` method is run when you migrate.\n        Schema::create('posts', function (Blueprint $table) {\n            $table->id(); // Auto-incrementing BigInt primary key `id`\n            $table->string('title');\n            $table->text('body');\n            $table->timestamps(); // `created_at` and `updated_at` columns\n        });\n    }\n\n    public function down(): void\n    {\n        // The `down` method is run when you rollback.\n        Schema::dropIfExists('posts');\n    }\n};",
+                            "output": "The schema for the 'posts' table is now defined in code."
+                        },
+                        {
+                            "sub_section_heading": "Step 4: Run the Migrations",
+                            "tags": [
+                                "laravel",
+                                "migration",
+                                "artisan",
+                                "migrate",
+                                "rollback"
+                            ],
+                            "language": "bash",
+                            "code": "# Run the `migrate` command to execute all pending migrations.\nphp artisan migrate\n\n# To undo the last migration operation, you can use rollback.\nphp artisan migrate:rollback",
+                            "output": "INFO  Running migrations.\nYYYY_MM_DD_HHMMSS_create_posts_table ................................... 15ms DONE\n\n(A 'posts' table with the defined columns is now created in your database.)"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Laravel",
+        "category": "Laravel Basics",
+        "title": "Eloquent ORM Basics",
+        "description": "How to interact with your database using Eloquent models for easy, object-oriented CRUD (Create, Read, Update, Delete) operations.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Creating and Configuring Models",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Step 1: Create an Eloquent Model",
+                            "tags": [
+                                "laravel",
+                                "eloquent",
+                                "model",
+                                "orm",
+                                "artisan"
+                            ],
+                            "language": "bash",
+                            "code": "# Use the `make:model` Artisan command to create a model file.\n# This will create the file `app/Models/Post.php`.\n# By convention, Laravel links the 'Post' model to the 'posts' database table.\n\nphp artisan make:model Post",
+                            "output": "Model created successfully."
+                        },
+                        {
+                            "sub_section_heading": "Step 2: Configure Mass Assignment",
+                            "tags": [
+                                "laravel",
+                                "eloquent",
+                                "model",
+                                "fillable",
+                                "security"
+                            ],
+                            "language": "php",
+                            "code": "// --- File: app/Models/Post.php ---\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Model;\n\nclass Post extends Model\n{\n    // The `$fillable` property specifies which attributes can be mass-assigned.\n    // This is a security feature to prevent unwanted data from being saved.\n    protected $fillable = ['title', 'body'];\n}",
+                            "output": "The Post model is now configured to allow the 'title' and 'body' fields to be filled."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Reading and Creating Data (CRUD)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Create Records",
+                            "tags": [
+                                "laravel",
+                                "eloquent",
+                                "create",
+                                "crud"
+                            ],
+                            "language": "php",
+                            "code": "// You can create a new record using the `create` method.\n// This is often used inside a controller method.\n\nuse App\\Models\\Post;\n\n$newPost = Post::create([\n    'title' => 'My First Post',\n    'body'  => 'This is the content of my first post.'\n]);",
+                            "output": "A new row is created in the 'posts' table with the provided data."
+                        },
+                        {
+                            "sub_section_heading": "Read Records",
+                            "tags": [
+                                "laravel",
+                                "eloquent",
+                                "read",
+                                "find",
+                                "all",
+                                "get"
+                            ],
+                            "language": "php",
+                            "code": "use App\\Models\\Post;\n\n// Get all records from the table\n$allPosts = Post::all();\n\n// Find a single record by its primary key\n$post = Post::find(1);\n\n// Build a more complex query\n$publishedPosts = Post::where('is_published', true)->orderBy('created_at', 'desc')->get();",
+                            "output": "Returns an Eloquent Collection (like an array) of Post objects, or a single Post object."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Updating and Deleting Data (CRUD)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Update Records",
+                            "tags": [
+                                "laravel",
+                                "eloquent",
+                                "update",
+                                "save",
+                                "crud"
+                            ],
+                            "language": "php",
+                            "code": "use App\\Models\\Post;\n\n// To update a record, find it, change its properties, and then call `save()`.\n$post = Post::find(1);\n\nif ($post) {\n    $post->title = 'My Updated Title';\n    $post->save();\n}",
+                            "output": "The title of the post with id=1 is updated in the database."
+                        },
+                        {
+                            "sub_section_heading": "Delete Records",
+                            "tags": [
+                                "laravel",
+                                "eloquent",
+                                "delete",
+                                "destroy",
+                                "crud"
+                            ],
+                            "language": "php",
+                            "code": "use App\\Models\\Post;\n\n// To delete a record, find it and then call `delete()`.\n$post = Post::find(1);\n\nif ($post) {\n    $post->delete();\n}\n\n// You can also delete multiple records by their primary keys.\nPost::destroy([2, 3, 4]);",
+                            "output": "The specified records are removed from the 'posts' table."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Laravel",
+        "category": "Laravel Basics",
+        "title": "Form Handling & Validation",
+        "description": "How to create HTML forms to accept user input, validate the submitted data on the server, and display feedback to the user.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Step 1: Routes and Controller Setup",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Define Routes for the Form",
+                            "tags": [
+                                "laravel",
+                                "form",
+                                "routing",
+                                "post",
+                                "get"
+                            ],
+                            "language": "php",
+                            "code": "// --- File: routes/web.php ---\nuse App\\Http\\Controllers\\PostController;\n\n// Route to show the form to create a post\nRoute::get('/posts/create', [PostController::class, 'create']);\n\n// Route to handle the form submission\nRoute::post('/posts', [PostController::class, 'store']);",
+                            "output": "Defines two routes: one to display the form and one to process its submission."
+                        },
+                        {
+                            "sub_section_heading": "Create Controller Methods",
+                            "tags": [
+                                "laravel",
+                                "form",
+                                "controller",
+                                "mvc"
+                            ],
+                            "language": "php",
+                            "code": "// --- File: app/Http/Controllers/PostController.php ---\n\n// Add the `create` and `store` methods to your controller.\n\npublic function create()\n{\n    // This method simply returns the view with the form\n    return view('posts.create');\n}\n\npublic function store(Request $request)\n{\n    // This method will handle the validation and storage logic\n    // (We will complete this in Step 3)\n}",
+                            "output": "Creates the controller actions to show the form and handle its data."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Step 2: Create the Form in a Blade View",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "The HTML Form",
+                            "tags": [
+                                "laravel",
+                                "blade",
+                                "form",
+                                "csrf",
+                                "error",
+                                "validation"
+                            ],
+                            "language": "php",
+                            "code": "\n\n<form method=\"POST\" action=\"/posts\">\n    @csrf \n\n    <div>\n        <label for=\"title\">Title</label>\n        <input type=\"text\" name=\"title\" id=\"title\" value=\"{{ old('title') }}\">\n        \n        @error('title')\n            <div class=\"error\">{{ $message }}</div>\n        @enderror\n    </div>\n\n    <div>\n        <label for=\"body\">Content</label>\n        <textarea name=\"body\" id=\"body\">{{ old('body') }}</textarea>\n\n        @error('body')\n            <div class=\"error\">{{ $message }}</div>\n        @enderror\n    </div>\n\n    <button type=\"submit\">Create Post</button>\n</form>",
+                            "output": "This Blade file renders a form. `@csrf` adds security. `@error` displays validation errors. `old()` repopulates the form after a validation error."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Step 3: Process and Validate the Request",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "The `store` Method with Validation",
+                            "tags": [
+                                "laravel",
+                                "validation",
+                                "controller",
+                                "request"
+                            ],
+                            "language": "php",
+                            "code": "// --- File: app/Http/Controllers/PostController.php ---\n\nuse Illuminate\\Http\\Request;\nuse App\\Models\\Post;\n\npublic function store(Request $request)\n{\n    // `validate` checks the rules. If they fail, it automatically\n    // redirects the user back to the form with the errors.\n    $validated = $request->validate([\n        'title' => 'required|unique:posts|max:255',\n        'body' => 'required',\n    ]);\n\n    // If validation passes, create the post\n    Post::create($validated);\n\n    // Redirect the user to a new page\n    return redirect('/posts');\n}",
+                            "output": "When the form is submitted, this method validates the data. If successful, it creates a new post and redirects. If not, it redirects back with errors."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Laravel",
+        "category": "Laravel Basics",
+        "title": "Eloquent Relationships",
+        "description": "How to define and query relationships between your Eloquent models, such as the common 'one-to-many' relationship (e.g., a User has many Posts).",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Step 1: The Database Schema",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Adding a Foreign Key",
+                            "tags": [
+                                "laravel",
+                                "eloquent",
+                                "relationships",
+                                "migration",
+                                "foreign key"
+                            ],
+                            "language": "php",
+                            "code": "// To connect posts to a user, the `posts` table needs a `user_id` column.\n// You can add this in the `create_posts_table` migration.\n\npublic function up(): void\n{\n    Schema::create('posts', function (Blueprint $table) {\n        $table->id();\n        $table->foreignId('user_id')->constrained()->onDelete('cascade');\n        $table->string('title');\n        $table->text('body');\n        $table->timestamps();\n    });\n}",
+                            "output": "This migration sets up a `user_id` column on the `posts` table that is linked to the `id` on the `users` table. `onDelete('cascade')` means if a user is deleted, all of their posts are also deleted."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Step 2: Defining the Relationships in Models",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "The `hasMany` Relationship (One-to-Many)",
+                            "tags": [
+                                "laravel",
+                                "eloquent",
+                                "relationships",
+                                "hasMany",
+                                "model"
+                            ],
+                            "language": "php",
+                            "code": "// --- File: app/Models/User.php ---\n// A User can have many Posts.\n\nclass User extends Model\n{\n    // ... existing code\n\n    /**\n     * Get the posts for the user.\n     */\n    public function posts()\n    {\n        return $this->hasMany(Post::class);\n    }\n}",
+                            "output": "This defines that a User can be related to many Post models."
+                        },
+                        {
+                            "sub_section_heading": "The `belongsTo` Relationship (Inverse)",
+                            "tags": [
+                                "laravel",
+                                "eloquent",
+                                "relationships",
+                                "belongsTo",
+                                "model"
+                            ],
+                            "language": "php",
+                            "code": "// --- File: app/Models/Post.php ---\n// A Post belongs to one User.\n\nclass Post extends Model\n{\n    // ... existing code\n\n    /**\n     * Get the user that owns the post.\n     */\n    public function user()\n    {\n        return $this->belongsTo(User::class);\n    }\n}",
+                            "output": "This defines the inverse relationship: that a Post is owned by a User."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Step 3: Querying the Relationships",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Retrieving Related Models",
+                            "tags": [
+                                "laravel",
+                                "eloquent",
+                                "relationships",
+                                "querying"
+                            ],
+                            "language": "php",
+                            "code": "// Once defined, you can easily access related models as if they were properties.\n\nuse App\\Models\\User;\nuse App\\Models\\Post;\n\n// Get a user and all of their posts\n$user = User::find(1);\n$postsOfUser = $user->posts; // Returns a Collection of the user's posts\n\n// Get a post and find the author's name\n$post = Post::find(5);\n$authorName = $post->user->name; // Returns the name of the user who wrote the post",
+                            "output": "Eloquent automatically handles the database queries to fetch the related models, making your code clean and readable."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Laravel",
+        "category": "Advanced Laravel",
+        "title": "Advanced Eloquent",
+        "description": "Master complex Eloquent features like many-to-many relationships, performance optimization with eager loading, and API data transformation with Resources.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Many-to-Many Relationships",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Step 1: The Pivot Table Migration",
+                            "tags": [
+                                "laravel",
+                                "eloquent",
+                                "relationships",
+                                "many-to-many",
+                                "pivot"
+                            ],
+                            "language": "php",
+                            "code": "// A many-to-many relationship (e.g., a Post has many Tags) requires a third, intermediate table.\n// By convention, its name is the singular model names in alphabetical order: `post_tag`.\n\nSchema::create('post_tag', function (Blueprint $table) {\n    $table->foreignId('post_id')->constrained()->onDelete('cascade');\n    $table->foreignId('tag_id')->constrained()->onDelete('cascade');\n    $table->primary(['post_id', 'tag_id']); // A post can only have a tag once\n});",
+                            "output": "This migration creates the pivot table that links the `posts` and `tags` tables together."
+                        },
+                        {
+                            "sub_section_heading": "Step 2: Define `belongsToMany` Relationship",
+                            "tags": [
+                                "laravel",
+                                "eloquent",
+                                "relationships",
+                                "belongsToMany",
+                                "model"
+                            ],
+                            "language": "php",
+                            "code": "// --- File: app/Models/Post.php ---\npublic function tags()\n{\n    return $this->belongsToMany(Tag::class);\n}\n\n// --- File: app/Models/Tag.php ---\npublic function posts()\n{\n    return $this->belongsToMany(Post::class);\n}",
+                            "output": "Both models now define their relationship to the other through the pivot table."
+                        },
+                        {
+                            "sub_section_heading": "Step 3: Attaching and Querying",
+                            "tags": [
+                                "laravel",
+                                "eloquent",
+                                "relationships",
+                                "attach",
+                                "sync"
+                            ],
+                            "language": "php",
+                            "code": "use App\\Models\\Post;\nuse App\\Models\\Tag;\n\n$post = Post::find(1);\n$tag = Tag::find(5);\n\n// Attach a tag to a post\n$post->tags()->attach($tag);\n\n// Get all tags for a post\n$tagsForPost = $post->tags; // Returns a Collection of Tag models\n\n// You can also sync, which replaces all existing associations\n// $post->tags()->sync([1, 2, 3]);",
+                            "output": "Eloquent provides simple methods to manage the records in the pivot table."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Performance: Eager Loading",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Solving the N+1 Problem with `with()`",
+                            "tags": [
+                                "laravel",
+                                "eloquent",
+                                "performance",
+                                "eager loading",
+                                "n+1"
+                            ],
+                            "language": "php",
+                            "code": "// Problem: A loop that accesses a relationship runs one query per item (N+1 queries).\n// Controller (Slow - Lazy Loading):\n$posts = Post::all(); // 1 query\n// In Blade View:\n// @foreach ($posts as $post)\n//   {{ $post->user->name }} // 1 query for EACH post!\n// @endforeach\n\n// Solution: Use `with()` to eager load the relationship data in a single extra query.\n// Controller (Fast - Eager Loading):\n$posts = Post::with('user')->get(); // Just 2 queries total, no matter how many posts!\n\n// The Blade view code remains the same, but is now much faster.",
+                            "output": "Eager loading dramatically reduces the number of database queries, which is a critical performance optimization."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "API: Eloquent Resources",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Creating and Defining a Resource",
+                            "tags": [
+                                "laravel",
+                                "eloquent",
+                                "api",
+                                "resource",
+                                "json"
+                            ],
+                            "language": "php",
+                            "code": "# 1. Create a resource with Artisan\n# php artisan make:resource PostResource\n\n// 2. Define the JSON structure in the resource file\n// --- File: app/Http/Resources/PostResource.php ---\nnamespace App\\Http\\Resources;\n\nuse Illuminate\\Http\\Request;\nuse Illuminate\\Http\\Resources\\Json\\JsonResource;\n\nclass PostResource extends JsonResource\n{\n    public function toArray(Request $request): array\n    {\n        // This method controls the exact JSON output for a Post model\n        return [\n            'id' => $this->id,\n            'post_title' => $this->title,\n            'content' => $this->body,\n            'author_name' => $this->user->name, // Include related data\n            'created' => $this->created_at->format('Y-m-d'),\n        ];\n    }\n}",
+                            "output": "An API Resource acts as a transformation layer between your Eloquent model and your JSON API response."
+                        },
+                        {
+                            "sub_section_heading": "Using the Resource in a Controller",
+                            "tags": [
+                                "laravel",
+                                "api",
+                                "resource",
+                                "controller",
+                                "json"
+                            ],
+                            "language": "php",
+                            "code": "// --- In your Api/PostController.php ---\nuse App\\Http\\Resources\\PostResource;\nuse App\\Models\\Post;\n\n// Return a single resource\npublic function show(Post $post)\n{\n    return new PostResource($post);\n}\n\n// Return a collection of resources\npublic function index()\n{\n    return PostResource::collection(Post::with('user')->paginate(10));\n}",
+                            "output": "{\n  \"data\": {\n    \"id\": 1,\n    \"post_title\": \"My Updated Title\",\n    \"content\": \"This is the content...\",\n    \"author_name\": \"John Doe\",\n    \"created\": \"2025-10-10\"\n  }\n}"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Laravel",
+        "category": "Advanced Laravel",
+        "title": "Authentication & Authorization",
+        "description": "How to secure your application with Laravel's built-in authentication scaffolding and control user permissions with middleware, Gates, and Policies.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Authentication: Scaffolding with Breeze",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Installing a Starter Kit (Breeze)",
+                            "tags": [
+                                "laravel",
+                                "authentication",
+                                "auth",
+                                "breeze",
+                                "scaffolding"
+                            ],
+                            "language": "bash",
+                            "code": "# Laravel's starter kits (like Breeze) provide a full authentication system out of the box.\n\n# 1. Install Laravel Breeze via Composer\ncomposer require laravel/breeze --dev\n\n# 2. Run the Breeze install command\nphp artisan breeze:install\n\n# 3. Install frontend dependencies\nnpm install\n\n# 4. Compile assets and run database migrations\nnpm run dev\nphp artisan migrate",
+                            "output": "This generates all necessary routes, controllers, and Blade views for user registration, login, password reset, and email verification."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Protecting Routes with Middleware",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Using the `auth` Middleware",
+                            "tags": [
+                                "laravel",
+                                "authentication",
+                                "middleware",
+                                "security",
+                                "routing"
+                            ],
+                            "language": "php",
+                            "code": "// --- File: routes/web.php ---\n\n// Middleware can be used to inspect and filter incoming HTTP requests.\n// The `auth` middleware checks if the user is authenticated.\n\n// Apply middleware to a single route:\nRoute::get('/dashboard', [DashboardController::class, 'index'])\n    ->middleware('auth');\n\n// Apply middleware to a group of routes:\nRoute::middleware(['auth'])->group(function () {\n    Route::get('/profile', [ProfileController::class, 'edit']);\n    Route::patch('/profile', [ProfileController::class, 'update']);\n});",
+                            "output": "Any user attempting to access `/dashboard` or `/profile` without being logged in will be automatically redirected to the login page."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Authorization: Controlling User Actions",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Defining a Gate",
+                            "tags": [
+                                "laravel",
+                                "authorization",
+                                "gate",
+                                "permissions"
+                            ],
+                            "language": "php",
+                            "code": "// Gates provide a simple way to authorize actions.\n// They are typically defined in the `boot` method of `app/Providers/AuthServiceProvider.php`.\n\nuse Illuminate\\Support\\Facades\\Gate;\n\npublic function boot(): void\n{\n    // This Gate returns `true` if the user's role is 'admin'.\n    Gate::define('view-admin-dashboard', function ($user) {\n        return $user->role === 'admin';\n    });\n}",
+                            "output": "A permission named `view-admin-dashboard` is now defined in the application."
+                        },
+                        {
+                            "sub_section_heading": "Using a Gate in Blade (`@can`)",
+                            "tags": [
+                                "laravel",
+                                "authorization",
+                                "gate",
+                                "blade",
+                                "can"
+                            ],
+                            "language": "php",
+                            "code": "\n\n<nav>\n    <a href=\"/\">Home</a>\n    \n    @can('view-admin-dashboard')\n        <a href=\"/admin\">Admin Dashboard</a>\n    @endcan\n</nav>",
+                            "output": "The 'Admin Dashboard' link will only be rendered in the HTML if the currently logged-in user passes the 'view-admin-dashboard' Gate check."
+                        },
+                        {
+                            "sub_section_heading": "Policies (Concept)",
+                            "tags": [
+                                "laravel",
+                                "authorization",
+                                "policy",
+                                "permissions",
+                                "model"
+                            ],
+                            "language": "text",
+                            "code": "While Gates are great for simple actions, Policies are used to group authorization logic for a specific model.\n\nFor example, you would create a `PostPolicy` class with methods like `view`, `create`, `update`, and `delete` to control all authorization logic related to the `Post` model.\n\nUse `php artisan make:policy PostPolicy --model=Post` to generate a policy.",
+                            "output": null
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Laravel",
+        "category": "Advanced Laravel",
+        "title": "The Service Container & Dependency Injection",
+        "description": "Understanding Laravel's core architectural concept: the IoC (Inversion of Control) container that manages class dependencies and enables automatic dependency injection.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Core Concepts",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "What is the Service Container?",
+                            "tags": [
+                                "laravel",
+                                "service container",
+                                "ioc",
+                                "architecture"
+                            ],
+                            "language": "text",
+                            "code": "The Service Container is a powerful tool for managing class dependencies and performing dependency injection.\n\nThink of it as a central 'registry' or 'toolbox' for your application. When you need a complex object (a 'service'), you ask the container for it, and the container knows how to build it, along with all of its dependencies.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Automatic Dependency Injection",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Automatic Injection in Controllers",
+                            "tags": [
+                                "laravel",
+                                "dependency injection",
+                                "di",
+                                "controller",
+                                "automatic"
+                            ],
+                            "language": "php",
+                            "code": "// Laravel automatically resolves dependencies out of the container for many classes, like controllers.\n// You 'type-hint' the class you need in the constructor or method, and Laravel injects it.\n\n// Example: A custom service to handle payments\nclass PaymentService {\n    public function charge($amount) { /* ... */ }\n}\n\n// In your controller, you don't need to write `new PaymentService()`.\nclass OrderController extends Controller\n{\n    // Laravel automatically injects the PaymentService instance\n    public function store(Request $request, PaymentService $paymentService)\n    {\n        // ... validation logic ...\n\n        $paymentService->charge(100);\n\n        return redirect('/')->with('status', 'Order placed!');\n    }\n}",
+                            "output": "Laravel's service container automatically creates and passes an instance of `PaymentService` into the `store` method. This makes your code more decoupled and easier to test."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Manual Binding in Service Providers",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Simple Binding (`bind`)",
+                            "tags": [
+                                "laravel",
+                                "service container",
+                                "binding",
+                                "service provider"
+                            ],
+                            "language": "php",
+                            "code": "// Sometimes you need to tell the container HOW to create an object.\n// This is done in the `register` method of a service provider (e.g., `app/Providers/AppServiceProvider.php`).\n\npublic function register(): void\n{\n    // Every time you ask for 'MyCustomService', this function will be called.\n    $this->app->bind('MyCustomService', function ($app) {\n        return new MyCustomService('some-api-key');\n    });\n}",
+                            "output": "This registers a 'binding'. A new `MyCustomService` instance will be created every time it's resolved from the container."
+                        },
+                        {
+                            "sub_section_heading": "Singleton Binding (`singleton`)",
+                            "tags": [
+                                "laravel",
+                                "service container",
+                                "singleton",
+                                "binding"
+                            ],
+                            "language": "php",
+                            "code": "// A singleton is resolved only ONCE per request lifecycle.\n// The same instance is returned every subsequent time it's requested.\n\npublic function register(): void\n{\n    $this->app->singleton('MySingletonService', function ($app) {\n        // This expensive object creation only happens once.\n        return new MySingletonService();\n    });\n}",
+                            "output": "This is useful for objects that are expensive to create or need to maintain a shared state throughout a single request."
+                        },
+                        {
+                            "sub_section_heading": "Binding an Interface to an Implementation",
+                            "tags": [
+                                "laravel",
+                                "service container",
+                                "interface",
+                                "binding",
+                                "decoupling"
+                            ],
+                            "language": "php",
+                            "code": "// This is the most powerful feature of the container.\n// It allows you to code against an interface and easily swap out the implementation.\n\n// --- File: app/Providers/AppServiceProvider.php ---\npublic function register(): void\n{\n    // Bind the PaymentGatewayInterface to a concrete StripeGateway class\n    $this->app->bind(\n        App\\Contracts\\PaymentGatewayInterface::class,\n        App\\Services\\StripeGateway::class\n    );\n}\n\n// --- In your controller ---\n// Now you can type-hint the INTERFACE, not the concrete class.\npublic function store(Request $request, PaymentGatewayInterface $gateway)\n{\n    $gateway->charge(100);\n}",
+                            "output": "This decouples your controller from the specific payment implementation. You can easily change to a `PayPalGateway` by changing only one line in your service provider."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Laravel",
+        "category": "Advanced Laravel",
+        "title": "Queues & Jobs",
+        "description": "How to improve application performance and user experience by deferring time-consuming tasks (like sending emails) to a background queue using Jobs.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Step 1: Configuration",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Configure a Queue Driver (Database)",
+                            "tags": [
+                                "laravel",
+                                "queues",
+                                "jobs",
+                                "performance",
+                                "database"
+                            ],
+                            "language": "bash",
+                            "code": "# By default, Laravel's queue is 'sync', meaning it runs tasks immediately.\n# Let's change it to use the database.\n\n# 1. Update your .env file\n# QUEUE_CONNECTION=sync -> QUEUE_CONNECTION=database\n\n# 2. Generate the migration file for the jobs table\nphp artisan queue:table\n\n# 3. Run the migration to create the `jobs` table\nphp artisan migrate",
+                            "output": "Your application is now configured to store queued jobs in the `jobs` database table."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Step 2: Creating and Dispatching a Job",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Create a Job Class",
+                            "tags": [
+                                "laravel",
+                                "queues",
+                                "jobs",
+                                "artisan"
+                            ],
+                            "language": "php",
+                            "code": "# 1. Use Artisan to generate a new job class\n# php artisan make:job SendWelcomeEmail\n\n// --- File: app/Jobs/SendWelcomeEmail.php ---\nnamespace App\\Jobs;\n\nuse App\\Models\\User;\nuse Illuminate\\Bus\\Queueable;\nuse Illuminate\\Contracts\\Queue\\ShouldQueue;\nuse Illuminate\\Foundation\\Bus\\Dispatchable;\nuse Illuminate\\Queue\\InteractsWithQueue;\nuse Illuminate\\Queue\\SerializesModels;\n\nclass SendWelcomeEmail implements ShouldQueue\n{\n    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;\n\n    /**\n     * The user instance.\n     */\n    protected $user;\n\n    public function __construct(User $user)\n    {\n        $this->user = $user;\n    }\n\n    /**\n     * The `handle` method contains the slow task logic.\n     */\n    public function handle(): void\n    {\n        // Logic to send a welcome email...\n        // mail($this->user->email, ...);\n    }\n}",
+                            "output": "A new job class is created at `app/Jobs/SendWelcomeEmail.php`. Its `handle` method will be executed by the queue worker."
+                        },
+                        {
+                            "sub_section_heading": "Dispatch the Job from a Controller",
+                            "tags": [
+                                "laravel",
+                                "queues",
+                                "jobs",
+                                "dispatch",
+                                "controller"
+                            ],
+                            "language": "php",
+                            "code": "// Instead of sending the email directly in your controller, you dispatch the job.\n// --- In your Auth/RegisteredUserController.php or similar ---\n\nuse App\\Jobs\\SendWelcomeEmail;\n\n// After creating a new user...\n$user = User::create(...);\n\n// Dispatch the job to the queue\nSendWelcomeEmail::dispatch($user);\n\n// The controller can now immediately return a response to the user\n// without waiting for the email to be sent.",
+                            "output": "The `SendWelcomeEmail` job is added to the queue for background processing. The user's web request completes almost instantly."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Step 3: Processing the Queue",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Running the Queue Worker",
+                            "tags": [
+                                "laravel",
+                                "queues",
+                                "jobs",
+                                "worker",
+                                "artisan"
+                            ],
+                            "language": "bash",
+                            "code": "# The queue worker is a background process that listens for and executes jobs from the queue.\n# You must run this command on your server and keep it running.\n\nphp artisan queue:work",
+                            "output": "INFO  Processing jobs from the [database] queue.\n[YYYY-MM-DD HH:MM:SS] App\\Jobs\\SendWelcomeEmail .................................. RUNNING\n[YYYY-MM-DD HH:MM:SS] App\\Jobs\\SendWelcomeEmail .................................. PROCESSED"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+]

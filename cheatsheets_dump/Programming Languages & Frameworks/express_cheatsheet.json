@@ -1,0 +1,425 @@
+[
+    {
+        "parent_category": "Express",
+        "category": "Express Basics",
+        "title": "Setup & 'Hello World'",
+        "description": "How to initialize a Node.js project, install the Express framework, and create a minimal 'Hello World' server.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Project Initialization",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Step 1: Initialize a Node.js Project",
+                            "tags": [
+                                "express",
+                                "setup",
+                                "npm",
+                                "init",
+                                "package.json"
+                            ],
+                            "language": "bash",
+                            "code": "# Create a new directory for your project and navigate into it\nmkdir my-express-app && cd my-express-app\n\n# Initialize a new Node.js project using npm\n# The -y flag accepts all the default options\nnpm init -y",
+                            "output": "This creates a `package.json` file in your directory, which will manage your project's dependencies and scripts."
+                        },
+                        {
+                            "sub_section_heading": "Step 2: Install Express",
+                            "tags": [
+                                "express",
+                                "setup",
+                                "npm",
+                                "install",
+                                "dependencies"
+                            ],
+                            "language": "bash",
+                            "code": "# Install Express and save it as a dependency in your package.json\nnpm install express",
+                            "output": "Express will be downloaded into a `node_modules` folder, and your `package.json` will be updated."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Creating and Running the Server",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Step 3: Create the Server File",
+                            "tags": [
+                                "express",
+                                "server",
+                                "hello world",
+                                "app",
+                                "listen"
+                            ],
+                            "language": "javascript",
+                            "code": "// --- File: index.js ---\n\n// 1. Import the express library\nconst express = require('express');\n\n// 2. Create an instance of an Express application\nconst app = express();\n\n// 3. Define the port the server will run on\nconst port = 3000;\n\n// 4. Define a route for the root URL ('/')\n// This handles GET requests to the homepage\napp.get('/', (req, res) => {\n  res.send('Hello World!');\n});\n\n// 5. Start the server and listen for incoming connections\napp.listen(port, () => {\n  console.log(`Server is running at http://localhost:${port}`);\n});",
+                            "output": "This code creates a basic web server that responds with 'Hello World!' when you visit the homepage."
+                        },
+                        {
+                            "sub_section_heading": "Step 4: Run the Application",
+                            "tags": [
+                                "express",
+                                "server",
+                                "run",
+                                "node"
+                            ],
+                            "language": "bash",
+                            "code": "# Run the server file using Node.js\nnode index.js",
+                            "output": "Server is running at http://localhost:3000\n(Visiting this URL in your browser will show 'Hello World!')"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Express",
+        "category": "Express Basics",
+        "title": "Routing Basics",
+        "description": "How to handle requests to different URLs (routes) and HTTP methods, and how to organize routes into modular files using `express.Router`.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Defining Routes",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Handling Different HTTP Methods",
+                            "tags": [
+                                "express",
+                                "routing",
+                                "get",
+                                "post",
+                                "http"
+                            ],
+                            "language": "javascript",
+                            "code": "// --- File: index.js ---\n\n// Express provides methods for all HTTP verbs (get, post, put, delete, etc.).\n\n// Handles GET requests to the /about page\napp.get('/about', (req, res) => {\n  res.send('This is the about page.');\n});\n\n// Handles POST requests to the /users endpoint\napp.post('/users', (req, res) => {\n  res.send('User created.'); // Logic to create a user would go here\n});",
+                            "output": "The server will now respond to GET requests at `/about` and POST requests at `/users`."
+                        },
+                        {
+                            "sub_section_heading": "Accessing Route Parameters",
+                            "tags": [
+                                "express",
+                                "routing",
+                                "parameters",
+                                "params",
+                                "req"
+                            ],
+                            "language": "javascript",
+                            "code": "// --- File: index.js ---\n\n// Use a colon (:) to specify a named route parameter.\n// Express captures the value and stores it in `req.params`.\n\napp.get('/users/:id', (req, res) => {\n  const userId = req.params.id;\n  res.send(`Showing profile for user with ID: ${userId}`);\n});",
+                            "output": "Navigating to `/users/123` in a browser will display 'Showing profile for user with ID: 123'."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Organizing Routes with `express.Router`",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Step 1: Create a Router File",
+                            "tags": [
+                                "express",
+                                "routing",
+                                "router",
+                                "modular",
+                                "organization"
+                            ],
+                            "language": "javascript",
+                            "code": "// --- File: routes/products.js ---\n\n// For larger applications, it's best to keep routes in separate files.\n\nconst express = require('express');\nconst router = express.Router(); // Create a new router instance\n\n// A route defined on the router\n// Note: The path is relative to where the router is mounted.\nrouter.get('/', (req, res) => {\n  res.send('List of all products');\n});\n\nrouter.get('/:id', (req, res) => {\n  res.send(`Showing product with ID: ${req.params.id}`);\n});\n\n// Export the router to be used in the main server file\nmodule.exports = router;",
+                            "output": "This file defines a self-contained module for all product-related routes."
+                        },
+                        {
+                            "sub_section_heading": "Step 2: Use the Router in the Main App",
+                            "tags": [
+                                "express",
+                                "routing",
+                                "router",
+                                "app.use"
+                            ],
+                            "language": "javascript",
+                            "code": "// --- File: index.js ---\n\nconst express = require('express');\nconst app = express();\n\n// 1. Import the router file\nconst productRoutes = require('./routes/products');\n\n// 2. 'Mount' the router with a prefix\n// All routes defined in products.js will now be prefixed with '/products'\napp.use('/products', productRoutes);\n\napp.listen(3000, () => {\n  console.log('Server is running');\n});",
+                            "output": "A GET request to `/products` will now be handled by the router, displaying 'List of all products'. A request to `/products/456` will display 'Showing product with ID: 456'."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Express",
+        "category": "Express Basics",
+        "title": "Middleware",
+        "description": "Understanding middleware functions, which are functions that have access to the request (`req`), response (`res`), and the `next` middleware in the application's request-response cycle.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Core Concepts & Built-in Middleware",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "What is Middleware?",
+                            "tags": [
+                                "express",
+                                "middleware",
+                                "concepts",
+                                "next"
+                            ],
+                            "language": "text",
+                            "code": "Middleware functions are the building blocks of an Express application. They act like a series of processing steps for an incoming request.\n\nEach middleware can:\n- Execute any code.\n- Make changes to the request and response objects.\n- End the request-response cycle.\n- Call the next middleware in the stack using the `next()` function.\n\nIf the current middleware does not end the cycle, it MUST call `next()` to pass control to the next middleware, or the request will be left hanging.",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "Using Built-in Middleware (`express.json`)",
+                            "tags": [
+                                "express",
+                                "middleware",
+                                "json",
+                                "body-parser",
+                                "built-in"
+                            ],
+                            "language": "javascript",
+                            "code": "// --- File: index.js ---\n\n// Common middleware is often applied at the application level using `app.use()`.\n\n// This built-in middleware parses incoming requests with JSON payloads.\n// It makes the parsed data available on `req.body`.\napp.use(express.json());\n\n// This built-in middleware parses URL-encoded payloads (from HTML forms).\napp.use(express.urlencoded({ extended: true }));\n\napp.post('/api/users', (req, res) => {\n  // Without `express.json()`, req.body would be undefined.\n  const userData = req.body;\n  res.json({ received: userData });\n});",
+                            "output": "A POST request to `/api/users` with a JSON body like `{\"name\":\"John\"}` will receive a response like `{\"received\":{\"name\":\"John\"}}`."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Custom Middleware",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Creating a Custom Middleware Function",
+                            "tags": [
+                                "express",
+                                "middleware",
+                                "custom",
+                                "logger"
+                            ],
+                            "language": "javascript",
+                            "code": "// --- File: index.js ---\n\n// A simple middleware function that logs the request method and URL.\nconst requestLogger = (req, res, next) => {\n  console.log(`${req.method} ${req.originalUrl}`);\n  next(); // Pass control to the next middleware\n};\n\n// Apply this middleware to all requests in the application\napp.use(requestLogger);",
+                            "output": "For every incoming request, the server console will log information like 'GET /' or 'POST /api/users'."
+                        },
+                        {
+                            "sub_section_heading": "Applying Middleware (Application vs. Route Level)",
+                            "tags": [
+                                "express",
+                                "middleware",
+                                "app.use",
+                                "route-level"
+                            ],
+                            "language": "javascript",
+                            "code": "// Middleware can be applied globally or to specific routes.\n\n// A middleware for authentication\nconst checkAuth = (req, res, next) => {\n  if (req.headers.authorization === 'my-secret-token') {\n    return next(); // User is authenticated, proceed\n  }\n  res.status(401).send('Unauthorized');\n};\n\n// 1. Application-level middleware (runs for every request)\napp.use(requestLogger);\n\n// 2. Route-level middleware (runs only for this specific route)\napp.get('/dashboard', checkAuth, (req, res) => {\n  res.send('Welcome to the dashboard!');\n});",
+                            "output": "Requests to `/dashboard` must pass through both `requestLogger` and `checkAuth`. Requests to other routes will only pass through `requestLogger`."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Express",
+        "category": "Express Basics",
+        "title": "Handling Requests & Responses",
+        "description": "How to access incoming request data from the `req` object and how to send various types of responses to the client using the `res` object.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Accessing Request Data (the `req` object)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Route Parameters (`req.params`)",
+                            "tags": [
+                                "express",
+                                "request",
+                                "req",
+                                "params",
+                                "routing"
+                            ],
+                            "language": "javascript",
+                            "code": "// `req.params` contains route parameters from the URL path.\n\napp.get('/products/:productId/reviews/:reviewId', (req, res) => {\n  const { productId, reviewId } = req.params;\n  res.send(`Fetching review ${reviewId} for product ${productId}`);\n});",
+                            "output": "A request to `/products/101/reviews/5` will respond with 'Fetching review 5 for product 101'."
+                        },
+                        {
+                            "sub_section_heading": "Query String (`req.query`)",
+                            "tags": [
+                                "express",
+                                "request",
+                                "req",
+                                "query",
+                                "url"
+                            ],
+                            "language": "javascript",
+                            "code": "// `req.query` contains the query string parameters from the URL.\n\n// URL: /search?term=javascript&sort=popular\napp.get('/search', (req, res) => {\n  const term = req.query.term;\n  const sortBy = req.query.sort;\n  res.send(`Searching for '${term}' and sorting by '${sortBy}'`);\n});",
+                            "output": "The server will respond with 'Searching for 'javascript' and sorting by 'popular''."
+                        },
+                        {
+                            "sub_section_heading": "Request Body (`req.body`)",
+                            "tags": [
+                                "express",
+                                "request",
+                                "req",
+                                "body",
+                                "json"
+                            ],
+                            "language": "javascript",
+                            "code": "// `req.body` contains the parsed body of a POST, PUT, or PATCH request.\n// NOTE: This requires middleware like `express.json()` to be configured first.\n\n// Assumes `app.use(express.json());` has been called\napp.post('/api/users', (req, res) => {\n  const username = req.body.username;\n  // ...logic to save the new user...\n  res.status(201).json({ message: `User ${username} created!` });\n});",
+                            "output": "A POST request with the JSON body `{\"username\": \"jane\"}` will receive a 201 status and the JSON response `{\"message\": \"User jane created!\"}`."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Sending Responses (the `res` object)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Sending JSON (`res.json`)",
+                            "tags": [
+                                "express",
+                                "response",
+                                "res",
+                                "json",
+                                "api"
+                            ],
+                            "language": "javascript",
+                            "code": "// `res.json()` sends a JSON response and automatically sets the Content-Type header.\n\napp.get('/api/user', (req, res) => {\n  res.json({ id: 1, name: 'John Doe', email: 'john@example.com' });\n});",
+                            "output": "Sends a JSON object to the client with the `Content-Type` header set to `application/json`."
+                        },
+                        {
+                            "sub_section_heading": "Setting Status Codes (`res.status`)",
+                            "tags": [
+                                "express",
+                                "response",
+                                "res",
+                                "status",
+                                "http"
+                            ],
+                            "language": "javascript",
+                            "code": "// `res.status()` sets the HTTP status code for the response.\n// It can be chained with other response methods like `.send()` or `.json()`.\n\napp.get('/not-found', (req, res) => {\n  res.status(404).send('Sorry, that page does not exist.');\n});\n\napp.post('/items', (req, res) => {\n  // ... create a new item ...\n  res.status(201).json({ message: 'Item created successfully' });\n});",
+                            "output": "Allows you to send appropriate HTTP status codes like 404 (Not Found) or 201 (Created)."
+                        },
+                        {
+                            "sub_section_heading": "Redirecting (`res.redirect`)",
+                            "tags": [
+                                "express",
+                                "response",
+                                "res",
+                                "redirect"
+                            ],
+                            "language": "javascript",
+                            "code": "// `res.redirect()` redirects the request to a different URL.\n\napp.get('/old-page', (req, res) => {\n  res.redirect('/new-page');\n});",
+                            "output": "A request to `/old-page` will result in a 302 redirect to `/new-page`."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Express",
+        "category": "Express Basics",
+        "title": "Templating & Serving Files",
+        "description": "How to render dynamic HTML pages using a view engine like EJS and how to serve static assets like CSS, images, and client-side JavaScript.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Serving Static Files",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Using the `express.static` Middleware",
+                            "tags": [
+                                "express",
+                                "static",
+                                "assets",
+                                "css",
+                                "public"
+                            ],
+                            "language": "javascript",
+                            "code": "// The `express.static` middleware serves files from a specified directory.\n// It's common practice to name this directory 'public'.\n\n// --- In index.js ---\napp.use(express.static('public'));\n\n// --- Your folder structure ---\n// my-express-app/\n// ├── public/\n// │   ├── css/\n// │   │   └── style.css\n// │   └── images/\n// │       └── logo.png\n// ├── views/\n// └── index.js\n\n// --- In your HTML/EJS file ---\n// You can now link to these files directly in your templates.\n// <link rel=\"stylesheet\" href=\"/css/style.css\">",
+                            "output": "A request for `/css/style.css` will now serve the `style.css` file located in the `public/css` directory."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Rendering Dynamic Views with EJS",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Step 1: Setup the View Engine",
+                            "tags": [
+                                "express",
+                                "template",
+                                "view engine",
+                                "ejs",
+                                "setup"
+                            ],
+                            "language": "javascript",
+                            "code": "# 1. Install a view engine (EJS is a popular choice)\n# npm install ejs\n\n// 2. Configure Express to use the view engine\n// --- In index.js ---\napp.set('view engine', 'ejs');\n\n// By default, Express will look for templates in a `views` directory.",
+                            "output": "Express is now configured to use EJS to render templates."
+                        },
+                        {
+                            "sub_section_heading": "Step 2: Render a View from a Route",
+                            "tags": [
+                                "express",
+                                "template",
+                                "render",
+                                "ejs",
+                                "dynamic"
+                            ],
+                            "language": "javascript",
+                            "code": "// --- In index.js ---\napp.get('/users/:username', (req, res) => {\n  const userData = {\n    name: req.params.username,\n    lastLogin: new Date().toLocaleDateString(),\n    posts: ['Post 1', 'Post 2']\n  };\n\n  // `res.render()` renders a template file and passes it a data object.\n  // This will render the file at `views/profile.ejs`\n  res.render('profile', userData);\n});\n\n// --- In views/profile.ejs ---\n// <h1>Welcome, <%= name %>!</h1>\n// <p>Your last login was on <%= lastLogin %>.</p>\n// <ul>\n//   <% posts.forEach(post => { %>\n//     <li><%= post %></li>\n//   <% }) %>\n// </ul>",
+                            "output": "A request to `/users/Alice` will render the `profile.ejs` template, dynamically inserting Alice's name, the current date, and a list of posts into the final HTML."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Express",
+        "category": "Express Basics",
+        "title": "Error Handling",
+        "description": "How to handle common application errors gracefully, including a custom 404 (Not Found) handler and a centralized, catch-all error handler.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Handling 404 (Not Found) Errors",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Creating a 404 Catch-All Handler",
+                            "tags": [
+                                "express",
+                                "error handling",
+                                "404",
+                                "not found"
+                            ],
+                            "language": "javascript",
+                            "code": "// This middleware should be placed at the very end of your routes and other middleware.\n// It will catch any request that hasn't been handled by a route above it.\n\n// ... all your other app.get, app.post, app.use calls ...\n\napp.use((req, res, next) => {\n  res.status(404).send(\"Sorry, we couldn't find that page!\");\n});",
+                            "output": "If a user navigates to a URL that does not match any defined route, they will receive a 404 status and the message 'Sorry, we couldn't find that page!'."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Centralized Error Handling",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Step 1: Triggering an Error",
+                            "tags": [
+                                "express",
+                                "error handling",
+                                "next",
+                                "error"
+                            ],
+                            "language": "javascript",
+                            "code": "// In any route handler, you can pass an error object to the `next()` function.\n// Express will skip all other middleware and go directly to your error-handling middleware.\n\napp.get('/admin', (req, res, next) => {\n  try {\n    // Some logic that might fail\n    if (req.query.user !== 'admin') {\n      throw new Error('You are not an administrator!');\n    }\n    res.send('Welcome, admin!');\n  } catch (err) {\n    next(err); // Pass the error to the centralized handler\n  }\n});",
+                            "output": "A request to `/admin` without the correct query parameter will trigger an error that is passed down the middleware chain."
+                        },
+                        {
+                            "sub_section_heading": "Step 2: Creating the Error-Handling Middleware",
+                            "tags": [
+                                "express",
+                                "error handling",
+                                "middleware",
+                                "500"
+                            ],
+                            "language": "javascript",
+                            "code": "// Error-handling middleware is defined with FOUR arguments: (err, req, res, next).\n// This special signature is how Express identifies it.\n// It should be defined at the very end of your index.js file, after the 404 handler.\n\napp.use((err, req, res, next) => {\n  console.error(err.stack); // Log the error stack for debugging\n  \n  // Send a generic 500 Internal Server Error response\n  res.status(500).send('Something broke!');\n});",
+                            "output": "When the error from the `/admin` route is triggered, this middleware catches it, logs it to the console, and sends a user-friendly 500 error message to the browser, preventing the server from crashing."
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+]

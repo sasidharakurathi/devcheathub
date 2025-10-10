@@ -16,8 +16,17 @@
             {% for cheatsheet in page_obj %}
                 <a href="{% url 'cheatsheet_detail' cheatsheet.slug %}" class="list-item-link">
                     <div class="list-item">
-                        <h2 class="list-item-title">{{ cheatsheet.title }}</h2>
-                        <p class="list-item-description">{{ cheatsheet.description }}</p>
+                        <div>
+                            {% if cheatsheet.category.parent and  cheatsheet.category.parent.icon %}
+                                <img src="{{ cheatsheet.category.parent.icon.url }}" alt="{{ cheatsheet.category.parent.name }} logo" class="card-icon">
+                            {% elif  cheatsheet.category.icon %}
+                                <img src="{{ cheatsheet.category.icon.url }}" alt="{{ cheatsheet.category.name }} logo" class="card-icon">
+                            {% endif %}
+                        </div>
+                        <div>
+                            <h2 class="list-item-title">{{ cheatsheet.title }}</h2>
+                            <p class="list-item-description">{{ cheatsheet.description }}</p>
+                        </div>
                     </div>
                 </a>
             {% endfor %}
