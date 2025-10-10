@@ -1,0 +1,400 @@
+[
+    {
+        "parent_category": "EJS",
+        "category": "EJS Basics",
+        "title": "EJS Fundamentals & Setup",
+        "description": "How to install EJS and configure it as a view engine in a standard Node.js/Express application to render dynamic HTML.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Installation & Configuration",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Installation with npm",
+                            "tags": [
+                                "ejs",
+                                "setup",
+                                "install",
+                                "npm",
+                                "express"
+                            ],
+                            "language": "bash",
+                            "code": "# First, make sure you are in your Node.js project directory.\n# Install EJS and save it as a project dependency.\nnpm install ejs --save",
+                            "output": "Adds EJS to your node_modules folder and your package.json file."
+                        },
+                        {
+                            "sub_section_heading": "Setup in Express.js",
+                            "tags": [
+                                "ejs",
+                                "setup",
+                                "express",
+                                "view engine"
+                            ],
+                            "language": "javascript",
+                            "code": "// --- In your main server file (e.g., app.js or server.js) ---\n\nconst express = require('express');\nconst app = express();\n\n// 1. Set EJS as the view engine.\n// This tells Express to use EJS for templating.\napp.set('view engine', 'ejs');\n\n// 2. (Optional but recommended) Set the views directory.\n// By default, Express looks in a 'views' folder. This line makes it explicit.\n// const path = require('path');\n// app.set('views', path.join(__dirname, 'views'));\n\n// ... your routes and other app logic will go here ...\n\nconst PORT = 3000;\napp.listen(PORT, () => {\n  console.log(`Server is running on port ${PORT}`);\n});",
+                            "output": "Your Express application is now configured to render .ejs files from the 'views' directory."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Rendering Your First View",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "The Express Route (app.js)",
+                            "tags": [
+                                "ejs",
+                                "render",
+                                "route",
+                                "express",
+                                "data"
+                            ],
+                            "language": "javascript",
+                            "code": "// This route will render an EJS template and pass data to it.\n\napp.get('/', (req, res) => {\n  // Data to pass to the template\n  const data = {\n    title: \"Welcome to My Site!\",\n    user: \"Alex\"\n  };\n\n  // Use res.render() to render a view.\n  // The first argument is the filename (without .ejs) inside the 'views' folder.\n  // The second argument is the data object.\n  res.render('index', data);\n});",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "The EJS Template (views/index.ejs)",
+                            "tags": [
+                                "ejs",
+                                "template",
+                                "syntax",
+                                "variable"
+                            ],
+                            "language": "ejs",
+                            "code": "\n\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title><%= title %></title>\n</head>\n<body>\n  <h1><%= title %></h1>\n  <p>Hello, <%= user %>!</p>\n</body>\n</html>",
+                            "output": "\n\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Welcome to My Site!</title>\n</head>\n<body>\n  <h1>Welcome to My Site!</h1>\n  <p>Hello, Alex!</p>\n</body>\n</html>"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "EJS",
+        "category": "EJS Basics",
+        "title": "Core EJS Tags & Expressions",
+        "description": "A guide to the fundamental EJS tags used for outputting variables, running JavaScript logic, adding comments, and controlling whitespace.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Tags for Outputting Data",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "<%= ... %> (Escaped Output)",
+                            "tags": [
+                                "ejs",
+                                "tags",
+                                "output",
+                                "escaped",
+                                "security"
+                            ],
+                            "language": "ejs",
+                            "code": "\n\n\n<% let malicious_input = \"<script>alert('hacked!')</script>\"; %>\n\n<p><%= malicious_input %></p>",
+                            "output": "\n<p>&lt;script&gt;alert('hacked!')&lt;/script&gt;</p>"
+                        },
+                        {
+                            "sub_section_heading": "<%- ... %> (Unescaped Output)",
+                            "tags": [
+                                "ejs",
+                                "tags",
+                                "output",
+                                "unescaped",
+                                "raw-html"
+                            ],
+                            "language": "ejs",
+                            "code": "\n\n\n<% let trusted_html = \"<strong>This is bold text.</strong>\"; %>\n\n<div><%- trusted_html %></div>",
+                            "output": "\n<div><strong>This is bold text.</strong></div>"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Tags for Logic and Comments",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "<% ... %> (Scriptlet Tag)",
+                            "tags": [
+                                "ejs",
+                                "tags",
+                                "logic",
+                                "scriptlet",
+                                "control-flow"
+                            ],
+                            "language": "ejs",
+                            "code": "\n\n\n<% let user = { name: 'Admin', role: 'admin' }; %>\n<% if (user.role === 'admin') { %>\n  <p>Welcome, Administrator!</p>\n<% } %>",
+                            "output": "<p>Welcome, Administrator!</p>"
+                        },
+                        {
+                            "sub_section_heading": "<%# ... %> (Comment Tag)",
+                            "tags": [
+                                "ejs",
+                                "tags",
+                                "comments"
+                            ],
+                            "language": "ejs",
+                            "code": "\n\n<%# This whole line is a server-side comment. %>\n<p>This paragraph is rendered.</p>",
+                            "output": "<p>This paragraph is rendered.</p>"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Whitespace Control",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Newline Trimming (Slurp)",
+                            "tags": [
+                                "ejs",
+                                "tags",
+                                "whitespace",
+                                "trim",
+                                "slurp"
+                            ],
+                            "language": "ejs",
+                            "code": "\n\n\n<ul>\n<% [\"Apple\", \"Banana\"].forEach(function(fruit) { %>\n  <li><%= fruit %></li>\n<% }); %>\n</ul>\n\n\n<ul>\n<% [\"Apple\", \"Banana\"].forEach(function(fruit) { -%>\n  <li><%= fruit %></li>\n<% }); -%>\n</ul>",
+                            "output": "\n<ul>\n  \n  <li>Apple</li>\n\n  <li>Banana</li>\n\n</ul>\n\n\n<ul>\n  <li>Apple</li>\n  <li>Banana</li>\n</ul>"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "EJS",
+        "category": "EJS Basics",
+        "title": "Control Flow in Templates",
+        "description": "How to use JavaScript's conditional logic (if/else) and loops (forEach) within EJS templates to create dynamic content.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Conditional Rendering",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "if / else Statements",
+                            "tags": [
+                                "ejs",
+                                "control flow",
+                                "if",
+                                "else",
+                                "conditional"
+                            ],
+                            "language": "ejs",
+                            "code": "<%-- Data passed from server: { user: { name: 'Alice', role: 'admin' } } --%>\n\n<nav>\n  <a href=\"/\">Home</a>\n  <a href=\"/profile\">Profile</a>\n  \n  <% if (user && user.role === 'admin') { %>\n    <a href=\"/admin\">Admin Dashboard</a>\n  <% } else { %>\n    <a href=\"/contact\">Contact Us</a>\n  <% } %>\n</nav>",
+                            "output": "\n<nav>\n  <a href=\"/\">Home</a>\n  <a href=\"/profile\">Profile</a>\n  \n    <a href=\"/admin\">Admin Dashboard</a>\n</nav>"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Looping Over Data",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "forEach Loops",
+                            "tags": [
+                                "ejs",
+                                "control flow",
+                                "loop",
+                                "forEach",
+                                "array"
+                            ],
+                            "language": "ejs",
+                            "code": "<%-- Data passed from server: { todos: ['Learn EJS', 'Build a project', 'Deploy app'] } --%>\n\n<h1>My To-Do List</h1>\n\n<% if (todos.length > 0) { %>\n  <ul>\n    <% todos.forEach(function(item) { %>\n      <li><%= item %></li>\n    <% }); %>\n  </ul>\n<% } else { %>\n  <p>You have nothing to do!</p>\n<% } %>",
+                            "output": "\n<h1>My To-Do List</h1>\n\n  <ul>\n      <li>Learn EJS</li>\n      <li>Build a project</li>\n      <li>Deploy app</li>\n  </ul>"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "EJS",
+        "category": "EJS Basics",
+        "title": "Partials for Reusable Code",
+        "description": "How to use EJS includes to create reusable template partials (like headers and footers) to keep your code DRY (Don't Repeat Yourself).",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Creating and Using Partials",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Step 1: The Header Partial",
+                            "tags": [
+                                "ejs",
+                                "partials",
+                                "include",
+                                "header",
+                                "DRY"
+                            ],
+                            "language": "ejs",
+                            "code": "\n\n<%-- This is a reusable snippet. All data from the parent is available here. --%>\n\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title><%= title %></title>\n  <link rel=\"stylesheet\" href=\"/css/styles.css\">\n</head>\n<body>\n  <nav>\n    <a href=\"/\">Home</a>\n    <a href=\"/about\">About</a>\n  </nav>",
+                            "output": "This file contains the top part of your HTML structure."
+                        },
+                        {
+                            "sub_section_heading": "Step 2: The Footer Partial",
+                            "tags": [
+                                "ejs",
+                                "partials",
+                                "include",
+                                "footer"
+                            ],
+                            "language": "ejs",
+                            "code": "\n\n  <footer>\n    <p>&copy; 2025 My Awesome Website</p>\n  </footer>\n</body>\n</html>",
+                            "output": "This file contains the closing part of your HTML structure."
+                        },
+                        {
+                            "sub_section_heading": "Step 3: The Main Template",
+                            "tags": [
+                                "ejs",
+                                "partials",
+                                "include",
+                                "template"
+                            ],
+                            "language": "ejs",
+                            "code": "\n\n<%-- Data passed from server: { title: \"Homepage\" } --%>\n\n<%- include('partials/header') %>\n\n<main>\n  <h1>Welcome to the Homepage!</h1>\n  <p>This is the main content of the page.</p>\n</main>\n\n<%- include('partials/footer') %>",
+                            "output": "\n\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Homepage</title>\n  <link rel=\"stylesheet\" href=\"/css/styles.css\">\n</head>\n<body>\n  <nav>\n    <a href=\"/\">Home</a>\n    <a href=\"/about\">About</a>\n  </nav>\n\n<main>\n  <h1>Welcome to the Homepage!</h1>\n  <p>This is the main content of the page.</p>\n</main>\n\n  <footer>\n    <p>&copy; 2025 My Awesome Website</p>\n  </footer>\n</body>\n</html>"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "EJS",
+        "category": "Advanced EJS",
+        "title": "Advanced & Niche Features",
+        "description": "A guide to advanced and less common EJS features, including client-side rendering, custom delimiters, asynchronous operations, and helper functions.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Client-Side Usage",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Client-Side Rendering in the Browser",
+                            "tags": [
+                                "ejs",
+                                "advanced",
+                                "client-side",
+                                "browser"
+                            ],
+                            "language": "html",
+                            "code": "\n\n<!DOCTYPE html>\n<html>\n<head>\n  <title>EJS on the Client</title>\n  \n  <script src=\"https://cdn.jsdelivr.net/npm/ejs@3.1.9/ejs.min.js\"></script>\n</head>\n<body>\n  <h1>Users:</h1>\n  <div id=\"output\"></div>\n\n  \n  <script type=\"text/template\" id=\"user-template\">\n    <ul>\n      <% users.forEach(function(user){ %>\n        <li><%= user.name %></li>\n      <% }); %>\n    </ul>\n  </script>\n\n  <script>\n    // 3. Get the template string\n    const template = document.getElementById('user-template').innerHTML;\n    // 4. Define your data\n    const data = { users: [{name: 'Alice'}, {name: 'Bob'}] };\n    \n    // 5. Render the template and inject it into the DOM\n    const renderedHtml = ejs.render(template, data);\n    document.getElementById('output').innerHTML = renderedHtml;\n  </script>\n</body>\n</html>",
+                            "output": "The div with id 'output' will be populated with an unordered list containing the names Alice and Bob."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Syntax and Functionality",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Using Custom Delimiters",
+                            "tags": [
+                                "ejs",
+                                "advanced",
+                                "delimiters",
+                                "customization"
+                            ],
+                            "language": "javascript",
+                            "code": "// You can change the EJS tags from '<%' to something else, like '[%'.\n// This is useful to avoid conflicts with other template syntaxes.\n\nconst ejs = require('ejs');\n\nconst template = '<h1>Hello, [%= user %]!</h1>';\nconst data = { user: 'World' };\n\n// Pass the 'delimiter' option to the render function\nconst renderedHtml = ejs.render(template, data, { delimiter: '%' });\n\nconsole.log(renderedHtml);",
+                            "output": "<h1>Hello, World!</h1>"
+                        },
+                        {
+                            "sub_section_heading": "Asynchronous Support with 'await'",
+                            "tags": [
+                                "ejs",
+                                "advanced",
+                                "async",
+                                "await",
+                                "promise"
+                            ],
+                            "language": "ejs",
+                            "code": "<%-- EJS supports top-level await for asynchronous operations. --%>\n<%# Assume 'fetchUsername' is an async function passed from the server #%>\n\n<% let username = await fetchUsername(123); %>\n<p>Username from async call: <%= username %></p>",
+                            "output": "EJS will wait for the promise from 'fetchUsername' to resolve before rendering the template, then display the resulting username."
+                        },
+                        {
+                            "sub_section_heading": "Passing Helper Functions to Templates",
+                            "tags": [
+                                "ejs",
+                                "advanced",
+                                "functions",
+                                "helpers"
+                            ],
+                            "language": "javascript",
+                            "code": "// --- In your server.js file ---\napp.get('/', (req, res) => {\n  const data = {\n    someText: \"welcome to my page\",\n    // Pass a function as part of your data object\n    capitalize: function(str) {\n      return str.charAt(0).toUpperCase() + str.slice(1);\n    }\n  };\n  res.render('index', data);\n});\n\n// --- In your views/index.ejs file ---\n// <p><%= capitalize(someText) %></p>",
+                            "output": "<p>Welcome to my page</p>"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "EJS",
+        "category": "Advanced EJS",
+        "title": "Technical Reference: Options, Tags & CLI",
+        "description": "A technical reference for EJS configuration options, a complete list of all tags, and how to use the command-line interface (CLI) for server-less rendering.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "EJS Options (for `render`)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Configuration Options",
+                            "tags": [
+                                "ejs",
+                                "advanced",
+                                "options",
+                                "configuration",
+                                "render"
+                            ],
+                            "language": "javascript",
+                            "code": "// These options can be passed as the third argument to ejs.render(str, data, options)\n\nconst options = {\n  // cache: (Boolean) Caches the compiled function for better performance. Requires 'filename'.\n  cache: true,\n\n  // filename: (String) Used for caching and resolving includes with relative paths.\n  filename: 'path/to/template.ejs',\n\n  // context: (Object) The 'this' context for the template execution.\n  context: null,\n\n  // compileDebug: (Boolean) When false, no debug instrumentation is compiled.\n  compileDebug: true,\n\n  // client: (Boolean) If true, returns a standalone function for client-side use.\n  client: false,\n\n  // delimiter: (String) The character to use for the EJS tag delimiter (e.g., '?' for <? ?>).\n  delimiter: '%',\n\n  // async: (Boolean) Set to true to enable support for top-level 'await' calls.\n  async: false\n};",
+                            "output": "These options give you fine-grained control over how EJS compiles and renders your templates."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Complete Tag Reference",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "All EJS Tags",
+                            "tags": [
+                                "ejs",
+                                "tags",
+                                "syntax",
+                                "reference"
+                            ],
+                            "language": "ejs",
+                            "code": "<%   'Scriptlet' tag: For control flow, variable declarations, etc. No output.\n<%_  'Whitespace Slurping' Scriptlet: Removes leading whitespace.\n<%=  Outputs the value into the template (HTML escaped).\n<%-  Outputs the raw value into the template (not escaped).\n<%#  Comment tag: Not executed, not included in output.\n<%%  Outputs a literal '<%' character.\n%>   Plain ending tag.\n-%>  'Trim mode' (slurp) ending tag: Trims the trailing newline.\n_%>  'Whitespace Slurping' ending tag: Removes all trailing whitespace.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Command-Line Interface (CLI)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Installation and Usage",
+                            "tags": [
+                                "ejs",
+                                "cli",
+                                "command-line",
+                                "terminal"
+                            ],
+                            "language": "bash",
+                            "code": "# 1. Install the EJS CLI globally\nnpm install ejs -g\n\n# 2. Basic Usage\n# ejs [template_file] -o [output_file]\n\n# 3. Example with data from a JSON file\n# ejs users.ejs -f data.json -o users.html",
+                            "output": "Allows you to compile .ejs files into .html files directly from your terminal."
+                        },
+                        {
+                            "sub_section_heading": "CLI Example",
+                            "tags": [
+                                "ejs",
+                                "cli",
+                                "example"
+                            ],
+                            "language": "text",
+                            "code": "/* --- File: users.ejs --- */\n<h1>Users</h1>\n<ul>\n<% users.forEach(function(user){ %>\n  <li><%= user.name %></li>\n<% }); %>\n</ul>\n\n/* --- File: data.json --- */\n{\n  \"users\": [\n    { \"name\": \"Alice\" },\n    { \"name\": \"Bob\" },\n    { \"name\": \"Charlie\" }\n  ]\n}\n\n# --- Command --- #\n# ejs users.ejs -f data.json -o users.html",
+                            "output": "\n<h1>Users</h1>\n<ul>\n  <li>Alice</li>\n  <li>Bob</li>\n  <li>Charlie</li>\n</ul>"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+]

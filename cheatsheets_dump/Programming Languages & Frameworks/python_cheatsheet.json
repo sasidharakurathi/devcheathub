@@ -1,0 +1,1819 @@
+[
+    {
+        "parent_category": "Python",
+        "category": "Python Basics",
+        "title": "Variables and Assignment",
+        "description": "How to declare and assign values to variables. Python is dynamically typed, so you don't need to specify the type.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Core Concepts",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Variable Assignment",
+                            "tags": [
+                                "variables",
+                                "assignment"
+                            ],
+                            "language": "python",
+                            "code": "# A variable is created the moment you first assign a value to it.\nname = \"Alice\"\nage = 30\nheight = 5.5\n\nprint(name)\nprint(age)\nprint(height)",
+                            "output": "Alice\n30\n5.5"
+                        },
+                        {
+                            "sub_section_heading": "Multiple Assignment",
+                            "tags": [
+                                "variables",
+                                "assignment",
+                                "multiple"
+                            ],
+                            "language": "python",
+                            "code": "# You can assign multiple variables on one line.\nx, y, z = \"Orange\", \"Banana\", \"Cherry\"\nprint(x)\nprint(y)\nprint(z)",
+                            "output": "Orange\nBanana\nCherry"
+                        },
+                        {
+                            "sub_section_heading": "One Value to Multiple Variables",
+                            "tags": [
+                                "variables",
+                                "assignment",
+                                "multiple"
+                            ],
+                            "language": "python",
+                            "code": "# You can assign the same value to multiple variables.\na = b = c = \"Apple\"\nprint(a)\nprint(b)\nprint(c)",
+                            "output": "Apple\nApple\nApple"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Python",
+        "category": "Python Basics",
+        "title": "Comments",
+        "description": "How to add comments to your Python code to make it more readable.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Syntax",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Single-Line Comments",
+                            "tags": [
+                                "comments",
+                                "syntax"
+                            ],
+                            "language": "python",
+                            "code": "# This is a single-line comment.\nprint(\"Hello, World!\") # This comment is at the end of a line.",
+                            "output": "Hello, World!"
+                        },
+                        {
+                            "sub_section_heading": "Multi-Line Comments (Docstrings)",
+                            "tags": [
+                                "comments",
+                                "docstring",
+                                "multiline"
+                            ],
+                            "language": "python",
+                            "code": "\"\"\"\nThis is a multi-line comment.\nIt is often used for function docstrings.\nPython will ignore string literals that are not assigned to a variable.\n\"\"\"\nprint(\"Multi-line comments are useful for explanations.\")",
+                            "output": "Multi-line comments are useful for explanations."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Python",
+        "category": "Python Basics",
+        "title": "Data Types",
+        "description": "Overview of Python's fundamental built-in data types for storing different kinds of data.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Numeric & Boolean Types",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Integer (int)",
+                            "tags": [
+                                "data types",
+                                "int",
+                                "integer",
+                                "numbers"
+                            ],
+                            "language": "python",
+                            "code": "x = 10\nprint(x)\nprint(type(x))",
+                            "output": "10\n<class 'int'>"
+                        },
+                        {
+                            "sub_section_heading": "Float (float)",
+                            "tags": [
+                                "data types",
+                                "float",
+                                "decimal",
+                                "numbers"
+                            ],
+                            "language": "python",
+                            "code": "y = 3.14\nprint(y)\nprint(type(y))",
+                            "output": "3.14\n<class 'float'>"
+                        },
+                        {
+                            "sub_section_heading": "Boolean (bool)",
+                            "tags": [
+                                "data types",
+                                "bool",
+                                "boolean",
+                                "true",
+                                "false"
+                            ],
+                            "language": "python",
+                            "code": "is_active = True\nis_admin = False\nprint(is_active)\nprint(type(is_admin))",
+                            "output": "True\n<class 'bool'>"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Text & Sequence Types",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "String (str)",
+                            "tags": [
+                                "data types",
+                                "string",
+                                "str",
+                                "text"
+                            ],
+                            "language": "python",
+                            "code": "greeting = \"Hello, Python!\"\nprint(greeting)\nprint(type(greeting))",
+                            "output": "Hello, Python!\n<class 'str'>"
+                        },
+                        {
+                            "sub_section_heading": "List (list)",
+                            "tags": [
+                                "data types",
+                                "list",
+                                "sequence",
+                                "mutable"
+                            ],
+                            "language": "python",
+                            "code": "# A mutable, ordered collection of items.\nmy_list = [\"apple\", \"banana\", 10, True]\nprint(my_list)\nprint(type(my_list))",
+                            "output": "['apple', 'banana', 10, True]\n<class 'list'>"
+                        },
+                        {
+                            "sub_section_heading": "Tuple (tuple)",
+                            "tags": [
+                                "data types",
+                                "tuple",
+                                "sequence",
+                                "immutable"
+                            ],
+                            "language": "python",
+                            "code": "# An immutable, ordered collection of items.\nmy_tuple = (\"apple\", \"banana\", 10, True)\nprint(my_tuple)\nprint(type(my_tuple))",
+                            "output": "('apple', 'banana', 10, True)\n<class 'tuple'>"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Mapping & Set Types",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Dictionary (dict)",
+                            "tags": [
+                                "data types",
+                                "dictionary",
+                                "dict",
+                                "mapping",
+                                "key-value"
+                            ],
+                            "language": "python",
+                            "code": "# An unordered collection of key-value pairs.\nmy_dict = {\"name\": \"John\", \"age\": 36}\nprint(my_dict)\nprint(type(my_dict))",
+                            "output": "{'name': 'John', 'age': 36}\n<class 'dict'>"
+                        },
+                        {
+                            "sub_section_heading": "Set (set)",
+                            "tags": [
+                                "data types",
+                                "set",
+                                "collection",
+                                "unique"
+                            ],
+                            "language": "python",
+                            "code": "# An unordered collection of unique items.\nmy_set = {\"apple\", \"banana\", \"cherry\", \"apple\"}\nprint(my_set)\nprint(type(my_set))",
+                            "output": "{'cherry', 'apple', 'banana'}\n<class 'set'>"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Python",
+        "category": "Python Basics",
+        "title": "Type Casting",
+        "description": "How to convert variables from one data type to another using constructor functions.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Common Conversions",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "To Integer (int)",
+                            "tags": [
+                                "type casting",
+                                "conversion",
+                                "int"
+                            ],
+                            "language": "python",
+                            "code": "float_num = 9.8\nstr_num = \"123\"\n\nint_from_float = int(float_num)\nint_from_str = int(str_num)\n\nprint(int_from_float)\nprint(int_from_str)",
+                            "output": "9\n123"
+                        },
+                        {
+                            "sub_section_heading": "To Float (float)",
+                            "tags": [
+                                "type casting",
+                                "conversion",
+                                "float"
+                            ],
+                            "language": "python",
+                            "code": "int_num = 100\nstr_num = \"45.67\"\n\nfloat_from_int = float(int_num)\nfloat_from_str = float(str_num)\n\nprint(float_from_int)\nprint(float_from_str)",
+                            "output": "100.0\n45.67"
+                        },
+                        {
+                            "sub_section_heading": "To String (str)",
+                            "tags": [
+                                "type casting",
+                                "conversion",
+                                "string"
+                            ],
+                            "language": "python",
+                            "code": "num = 88\nis_ok = True\n\nstr_from_num = str(num)\nstr_from_bool = str(is_ok)\n\nprint(str_from_num + ' is a string')\nprint(str_from_bool + ' is a string')",
+                            "output": "88 is a string\nTrue is a string"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Python",
+        "category": "Python Basics",
+        "title": "Operators",
+        "description": "How to use operators to perform operations on variables and values. Operators are special symbols in Python that carry out arithmetic or logical computation.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Arithmetic Operators",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Addition, Subtraction, Multiplication",
+                            "tags": [
+                                "operators",
+                                "arithmetic",
+                                "math"
+                            ],
+                            "language": "python",
+                            "code": "a = 10\nb = 3\n\nprint(f'Addition: {a + b}')\nprint(f'Subtraction: {a - b}')\nprint(f'Multiplication: {a * b}')",
+                            "output": "Addition: 13\nSubtraction: 7\nMultiplication: 30"
+                        },
+                        {
+                            "sub_section_heading": "Division (float) (/)",
+                            "tags": [
+                                "operators",
+                                "arithmetic",
+                                "division",
+                                "float"
+                            ],
+                            "language": "python",
+                            "code": "a = 10\nb = 3\n\nprint(f'Division: {a / b}')",
+                            "output": "Division: 3.3333333333333335"
+                        },
+                        {
+                            "sub_section_heading": "Floor Division (//)",
+                            "tags": [
+                                "operators",
+                                "arithmetic",
+                                "division",
+                                "integer",
+                                "floor"
+                            ],
+                            "language": "python",
+                            "code": "# Floor division discards the fractional part.\na = 10\nb = 3\n\nprint(f'Floor Division: {a // b}')",
+                            "output": "Floor Division: 3"
+                        },
+                        {
+                            "sub_section_heading": "Modulus (%)",
+                            "tags": [
+                                "operators",
+                                "arithmetic",
+                                "modulus",
+                                "remainder"
+                            ],
+                            "language": "python",
+                            "code": "# Modulus returns the remainder of the division.\na = 10\nb = 3\n\nprint(f'Modulus: {a % b}')",
+                            "output": "Modulus: 1"
+                        },
+                        {
+                            "sub_section_heading": "Exponentiation (**)",
+                            "tags": [
+                                "operators",
+                                "arithmetic",
+                                "exponent",
+                                "power"
+                            ],
+                            "language": "python",
+                            "code": "a = 10\nb = 3\n\nprint(f'Exponent: {a ** b}') # 10 to the power of 3",
+                            "output": "Exponent: 1000"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Assignment Operators",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Basic and Additive Assignment",
+                            "tags": [
+                                "operators",
+                                "assignment"
+                            ],
+                            "language": "python",
+                            "code": "x = 5 # Basic assignment\nprint(f'Initial x: {x}')\n\nx += 3 # Equivalent to x = x + 3\nprint(f'After x += 3: {x}')",
+                            "output": "Initial x: 5\nAfter x += 3: 8"
+                        },
+                        {
+                            "sub_section_heading": "Other Assignment Operators",
+                            "tags": [
+                                "operators",
+                                "assignment",
+                                "shorthand"
+                            ],
+                            "language": "python",
+                            "code": "y = 10\ny -= 4  # y = y - 4\nprint(f'y -= 4 is {y}')\n\ny *= 2  # y = y * 2\nprint(f'y *= 2 is {y}')\n\ny /= 3  # y = y / 3\nprint(f'y /= 3 is {y}')",
+                            "output": "y -= 4 is 6\ny *= 2 is 12\ny /= 3 is 4.0"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Comparison Operators",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Equal and Not Equal",
+                            "tags": [
+                                "operators",
+                                "comparison",
+                                "boolean"
+                            ],
+                            "language": "python",
+                            "code": "a = 5\nb = 10\n\nprint(f'Is a equal to 5? {a == 5}')\nprint(f'Is a not equal to b? {a != b}')",
+                            "output": "Is a equal to 5? True\nIs a not equal to b? True"
+                        },
+                        {
+                            "sub_section_heading": "Greater Than / Less Than",
+                            "tags": [
+                                "operators",
+                                "comparison",
+                                "boolean"
+                            ],
+                            "language": "python",
+                            "code": "a = 5\nb = 10\n\nprint(f'Is a less than b? {a < b}')\nprint(f'Is b greater than or equal to 10? {b >= 10}')",
+                            "output": "Is a less than b? True\nIs b greater than or equal to 10? True"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Logical Operators",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "and",
+                            "tags": [
+                                "operators",
+                                "logical",
+                                "boolean",
+                                "and"
+                            ],
+                            "language": "python",
+                            "code": "# Returns True if both statements are true.\nx = 5\nprint(x > 3 and x < 10)",
+                            "output": "True"
+                        },
+                        {
+                            "sub_section_heading": "or",
+                            "tags": [
+                                "operators",
+                                "logical",
+                                "boolean",
+                                "or"
+                            ],
+                            "language": "python",
+                            "code": "# Returns True if one of the statements is true.\nx = 5\nprint(x > 3 or x < 4)",
+                            "output": "True"
+                        },
+                        {
+                            "sub_section_heading": "not",
+                            "tags": [
+                                "operators",
+                                "logical",
+                                "boolean",
+                                "not"
+                            ],
+                            "language": "python",
+                            "code": "# Reverses the result, returns False if the result is true.\nx = 5\nprint(not(x > 3 and x < 10))",
+                            "output": "False"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Python",
+        "category": "Python Basics",
+        "title": "Input and Output",
+        "description": "How to display information to the console and get input from a user.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Console Output",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "The print() Function",
+                            "tags": [
+                                "output",
+                                "print",
+                                "console"
+                            ],
+                            "language": "python",
+                            "code": "# The print() function outputs text, numbers, or other data to the console.\nprint(\"Hello, World!\")\nprint(123)\nprint(\"You can print\", \"multiple items.\")",
+                            "output": "Hello, World!\n123\nYou can print multiple items."
+                        },
+                        {
+                            "sub_section_heading": "Formatted Strings (f-strings)",
+                            "tags": [
+                                "output",
+                                "print",
+                                "string",
+                                "f-string",
+                                "formatting"
+                            ],
+                            "language": "python",
+                            "code": "# f-strings provide a concise way to embed expressions inside string literals.\nname = \"Alice\"\nage = 30\nprint(f\"My name is {name} and I am {age} years old.\")",
+                            "output": "My name is Alice and I am 30 years old."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "User Input",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "The input() Function",
+                            "tags": [
+                                "input",
+                                "user input",
+                                "console"
+                            ],
+                            "language": "python",
+                            "code": "# The input() function pauses program execution to allow the user to type in a line of text.\n# Note: It always returns the data as a string.\n\nprint(\"What is your name?\")\n# The code below is commented out to prevent it from running in this example.\n# user_name = input()\n# print(f\"Hello, {user_name}!\")\n\n# Example of needing to cast input\n# age_str = input(\"Enter your age: \")\n# age_int = int(age_str)\n# print(f\"Next year you will be {age_int + 1}\")",
+                            "output": "What is your name?\n(Program waits for user input here)"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Python",
+        "category": "Python Basics",
+        "title": "Control Flow",
+        "description": "How to control the order in which code is executed using conditional statements (if/elif/else) and loops (for/while).",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Conditional Statements",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "if Statement",
+                            "tags": [
+                                "control flow",
+                                "if",
+                                "conditional"
+                            ],
+                            "language": "python",
+                            "code": "# Executes a block of code only if a specified condition is true.\ntemperature = 35\nif temperature > 30:\n    print(\"It's a hot day!\")",
+                            "output": "It's a hot day!"
+                        },
+                        {
+                            "sub_section_heading": "if-else Statement",
+                            "tags": [
+                                "control flow",
+                                "if",
+                                "else",
+                                "conditional"
+                            ],
+                            "language": "python",
+                            "code": "# Executes one block of code if the condition is true, and another if it's false.\nage = 16\nif age >= 18:\n    print(\"You are eligible to vote.\")\nelse:\n    print(\"You are not eligible to vote yet.\")",
+                            "output": "You are not eligible to vote yet."
+                        },
+                        {
+                            "sub_section_heading": "if-elif-else Statement",
+                            "tags": [
+                                "control flow",
+                                "if",
+                                "elif",
+                                "else",
+                                "conditional"
+                            ],
+                            "language": "python",
+                            "code": "# Checks multiple conditions in order and executes a block for the first one that is true.\nscore = 85\nif score >= 90:\n    grade = \"A\"\nelif score >= 80:\n    grade = \"B\"\nelif score >= 70:\n    grade = \"C\"\nelse:\n    grade = \"D\"\n\nprint(f\"Your grade is: {grade}\")",
+                            "output": "Your grade is: B"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "For Loops",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Iterating Over a Sequence",
+                            "tags": [
+                                "control flow",
+                                "loop",
+                                "for",
+                                "iteration",
+                                "list"
+                            ],
+                            "language": "python",
+                            "code": "# A for loop is used for iterating over a sequence (like a list, tuple, or string).\nfruits = [\"apple\", \"banana\", \"cherry\"]\nfor fruit in fruits:\n    print(fruit)",
+                            "output": "apple\nbanana\ncherry"
+                        },
+                        {
+                            "sub_section_heading": "Using the range() Function",
+                            "tags": [
+                                "control flow",
+                                "loop",
+                                "for",
+                                "iteration",
+                                "range"
+                            ],
+                            "language": "python",
+                            "code": "# The range() function generates a sequence of numbers.\n# It can be used to loop a specific number of times.\nfor i in range(5): # Generates numbers from 0 to 4\n    print(f\"Loop number: {i}\")",
+                            "output": "Loop number: 0\nLoop number: 1\nLoop number: 2\nLoop number: 3\nLoop number: 4"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "While Loops",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Basic While Loop",
+                            "tags": [
+                                "control flow",
+                                "loop",
+                                "while",
+                                "iteration"
+                            ],
+                            "language": "python",
+                            "code": "# A while loop executes a set of statements as long as a condition is true.\ncount = 1\nwhile count <= 5:\n    print(f\"Count is: {count}\")\n    count += 1 # Important: update the counter to avoid an infinite loop!",
+                            "output": "Count is: 1\nCount is: 2\nCount is: 3\nCount is: 4\nCount is: 5"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Loop Control Statements",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "break",
+                            "tags": [
+                                "control flow",
+                                "loop",
+                                "break"
+                            ],
+                            "language": "python",
+                            "code": "# The break statement stops the loop even if the while condition is true.\nfor i in range(10):\n    if i == 5:\n        break # Exit the loop when i is 5\n    print(i)",
+                            "output": "0\n1\n2\n3\n4"
+                        },
+                        {
+                            "sub_section_heading": "continue",
+                            "tags": [
+                                "control flow",
+                                "loop",
+                                "continue"
+                            ],
+                            "language": "python",
+                            "code": "# The continue statement stops the current iteration and continues with the next.\nfor i in range(10):\n    if i % 2 == 0: # If i is even\n        continue   # Skip this iteration and go to the next\n    print(i)",
+                            "output": "1\n3\n5\n7\n9"
+                        },
+                        {
+                            "sub_section_heading": "pass",
+                            "tags": [
+                                "control flow",
+                                "loop",
+                                "pass",
+                                "placeholder"
+                            ],
+                            "language": "python",
+                            "code": "# The pass statement is a null operation; nothing happens when it executes.\n# It's used as a placeholder where syntax requires a statement, but you have nothing to write.\ndef my_empty_function():\n    pass # We'll add code here later\n\nfor i in range(3):\n    if i == 1:\n        pass # Do nothing special for i=1\n    print(i)",
+                            "output": "0\n1\n2"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Python",
+        "category": "Data Structures",
+        "title": "List Methods",
+        "description": "Common methods and operations for manipulating lists. Lists are mutable, ordered collections that can store duplicate elements.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Adding Elements",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "append()",
+                            "tags": [
+                                "list",
+                                "methods",
+                                "add",
+                                "append"
+                            ],
+                            "language": "python",
+                            "code": "# Adds an element to the end of the list.\nitems = ['apple', 'banana']\nitems.append('cherry')\nprint(items)",
+                            "output": "['apple', 'banana', 'cherry']"
+                        },
+                        {
+                            "sub_section_heading": "insert()",
+                            "tags": [
+                                "list",
+                                "methods",
+                                "add",
+                                "insert"
+                            ],
+                            "language": "python",
+                            "code": "# Inserts an element at a specified index.\nitems = ['apple', 'banana']\nitems.insert(1, 'cherry') # Insert at index 1\nprint(items)",
+                            "output": "['apple', 'cherry', 'banana']"
+                        },
+                        {
+                            "sub_section_heading": "extend()",
+                            "tags": [
+                                "list",
+                                "methods",
+                                "add",
+                                "extend",
+                                "merge"
+                            ],
+                            "language": "python",
+                            "code": "# Appends elements from another list (or any iterable).\nitems = ['apple', 'banana']\nmore_items = ['cherry', 'date']\nitems.extend(more_items)\nprint(items)",
+                            "output": "['apple', 'banana', 'cherry', 'date']"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Removing Elements",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "remove()",
+                            "tags": [
+                                "list",
+                                "methods",
+                                "remove",
+                                "delete"
+                            ],
+                            "language": "python",
+                            "code": "# Removes the first occurrence of a specified value.\nitems = ['apple', 'banana', 'cherry', 'banana']\nitems.remove('banana')\nprint(items)",
+                            "output": "['apple', 'cherry', 'banana']"
+                        },
+                        {
+                            "sub_section_heading": "pop()",
+                            "tags": [
+                                "list",
+                                "methods",
+                                "remove",
+                                "pop"
+                            ],
+                            "language": "python",
+                            "code": "# Removes and returns the element at a specified index (or the last item if index is not specified).\nitems = ['apple', 'banana', 'cherry']\nremoved_item = items.pop(1)\nprint(f\"Removed: {removed_item}\")\nprint(f\"List is now: {items}\")",
+                            "output": "Removed: banana\nList is now: ['apple', 'cherry']"
+                        },
+                        {
+                            "sub_section_heading": "clear()",
+                            "tags": [
+                                "list",
+                                "methods",
+                                "remove",
+                                "clear",
+                                "empty"
+                            ],
+                            "language": "python",
+                            "code": "# Removes all elements from the list.\nitems = ['apple', 'banana', 'cherry']\nitems.clear()\nprint(items)",
+                            "output": "[]"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Accessing & Utility",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Indexing and Slicing",
+                            "tags": [
+                                "list",
+                                "access",
+                                "index",
+                                "slicing"
+                            ],
+                            "language": "python",
+                            "code": "items = ['a', 'b', 'c', 'd', 'e', 'f']\nprint(f\"First item: {items[0]}\")\nprint(f\"Last item: {items[-1]}\")\nprint(f\"Slice from index 2 to 5: {items[2:5]}\")",
+                            "output": "First item: a\nLast item: f\nSlice from index 2 to 5: ['c', 'd', 'e']"
+                        },
+                        {
+                            "sub_section_heading": "sort()",
+                            "tags": [
+                                "list",
+                                "methods",
+                                "sort",
+                                "order"
+                            ],
+                            "language": "python",
+                            "code": "# Sorts the list in place.\nnumbers = [3, 1, 4, 1, 5, 9, 2]\nnumbers.sort() # Ascending\nprint(numbers)\nnumbers.sort(reverse=True) # Descending\nprint(numbers)",
+                            "output": "[1, 1, 2, 3, 4, 5, 9]\n[9, 5, 4, 3, 2, 1, 1]"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Python",
+        "category": "Data Structures",
+        "title": "Dictionary Methods",
+        "description": "Common methods for working with dictionaries, which store data in key-value pairs. Dictionaries are mutable and unordered (in Python < 3.7).",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Accessing & Modifying Data",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Accessing by Key",
+                            "tags": [
+                                "dictionary",
+                                "dict",
+                                "access",
+                                "key"
+                            ],
+                            "language": "python",
+                            "code": "person = {'name': 'Alice', 'age': 30}\nprint(person['name'])\n\n# Adding or updating an item\nperson['age'] = 31\nperson['city'] = 'New York'\nprint(person)",
+                            "output": "Alice\n{'name': 'Alice', 'age': 31, 'city': 'New York'}"
+                        },
+                        {
+                            "sub_section_heading": "get()",
+                            "tags": [
+                                "dictionary",
+                                "dict",
+                                "access",
+                                "get"
+                            ],
+                            "language": "python",
+                            "code": "# Safely access a key, returning a default value (None) if the key does not exist.\nperson = {'name': 'Alice', 'age': 30}\nprint(person.get('age'))\nprint(person.get('city')) # Returns None\nprint(person.get('city', 'Unknown')) # Returns 'Unknown'",
+                            "output": "30\nNone\nUnknown"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Iterating and Viewing",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "keys()",
+                            "tags": [
+                                "dictionary",
+                                "dict",
+                                "methods",
+                                "keys",
+                                "iteration"
+                            ],
+                            "language": "python",
+                            "code": "# Returns a view object displaying a list of all the keys.\nperson = {'name': 'Alice', 'age': 30}\nfor key in person.keys():\n    print(key)",
+                            "output": "name\nage"
+                        },
+                        {
+                            "sub_section_heading": "values()",
+                            "tags": [
+                                "dictionary",
+                                "dict",
+                                "methods",
+                                "values",
+                                "iteration"
+                            ],
+                            "language": "python",
+                            "code": "# Returns a view object displaying a list of all the values.\nperson = {'name': 'Alice', 'age': 30}\nfor value in person.values():\n    print(value)",
+                            "output": "Alice\n30"
+                        },
+                        {
+                            "sub_section_heading": "items()",
+                            "tags": [
+                                "dictionary",
+                                "dict",
+                                "methods",
+                                "items",
+                                "iteration"
+                            ],
+                            "language": "python",
+                            "code": "# Returns a view object displaying a list of key-value tuple pairs.\nperson = {'name': 'Alice', 'age': 30}\nfor key, value in person.items():\n    print(f\"{key}: {value}\")",
+                            "output": "name: Alice\nage: 30"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Removing Elements",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "pop()",
+                            "tags": [
+                                "dictionary",
+                                "dict",
+                                "methods",
+                                "pop",
+                                "remove"
+                            ],
+                            "language": "python",
+                            "code": "# Removes the item with the specified key and returns its value.\nperson = {'name': 'Alice', 'age': 30, 'city': 'New York'}\nage = person.pop('age')\nprint(f\"Removed age: {age}\")\nprint(person)",
+                            "output": "Removed age: 30\n{'name': 'Alice', 'city': 'New York'}"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Python",
+        "category": "Data Structures",
+        "title": "Tuple Operations",
+        "description": "Operations for tuples. Tuples are immutable (cannot be changed after creation), ordered collections.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Core Concepts",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Creating and Accessing",
+                            "tags": [
+                                "tuple",
+                                "access",
+                                "index",
+                                "immutable"
+                            ],
+                            "language": "python",
+                            "code": "point = (10, 20, 30)\nprint(f\"First element: {point[0]}\")\n\n# Tuples are immutable. The following line would cause an error:\n# point[0] = 15 # TypeError: 'tuple' object does not support item assignment",
+                            "output": "First element: 10"
+                        },
+                        {
+                            "sub_section_heading": "Tuple Unpacking",
+                            "tags": [
+                                "tuple",
+                                "unpacking",
+                                "assignment"
+                            ],
+                            "language": "python",
+                            "code": "coordinates = (12.5, 34.9)\nx, y = coordinates\nprint(f\"x is {x}\")\nprint(f\"y is {y}\")",
+                            "output": "x is 12.5\ny is 34.9"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Python",
+        "category": "Data Structures",
+        "title": "Set Methods",
+        "description": "Methods for sets, which are mutable, unordered collections of unique elements.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Adding & Removing Elements",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "add()",
+                            "tags": [
+                                "set",
+                                "methods",
+                                "add"
+                            ],
+                            "language": "python",
+                            "code": "# Adds a single element to the set. Duplicates are ignored.\ncolors = {'red', 'green'}\ncolors.add('blue')\ncolors.add('red') # This will be ignored\nprint(colors)",
+                            "output": "{'green', 'red', 'blue'}"
+                        },
+                        {
+                            "sub_section_heading": "update()",
+                            "tags": [
+                                "set",
+                                "methods",
+                                "update",
+                                "add"
+                            ],
+                            "language": "python",
+                            "code": "# Adds all elements from another set (or any iterable).\ncolors = {'red'}\nmore_colors = ['green', 'blue', 'red']\ncolors.update(more_colors)\nprint(colors)",
+                            "output": "{'green', 'red', 'blue'}"
+                        },
+                        {
+                            "sub_section_heading": "remove() vs discard()",
+                            "tags": [
+                                "set",
+                                "methods",
+                                "remove",
+                                "discard"
+                            ],
+                            "language": "python",
+                            "code": "items = {'a', 'b', 'c'}\nitems.remove('b') # Removes 'b'\nprint(f\"After remove: {items}\")\n# items.remove('d') # This would raise a KeyError\n\nitems.discard('c') # Removes 'c'\nitems.discard('d') # This will NOT raise an error\nprint(f\"After discard: {items}\")",
+                            "output": "After remove: {'a', 'c'}\nAfter discard: {'a'}"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Set Operations",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Union (|)",
+                            "tags": [
+                                "set",
+                                "methods",
+                                "operators",
+                                "union"
+                            ],
+                            "language": "python",
+                            "code": "# Returns a new set containing all items from both sets.\na = {1, 2, 3}\nb = {3, 4, 5}\nprint(a.union(b))\nprint(a | b) # Operator syntax",
+                            "output": "{1, 2, 3, 4, 5}\n{1, 2, 3, 4, 5}"
+                        },
+                        {
+                            "sub_section_heading": "Intersection (&)",
+                            "tags": [
+                                "set",
+                                "methods",
+                                "operators",
+                                "intersection"
+                            ],
+                            "language": "python",
+                            "code": "# Returns a new set containing only items present in both sets.\na = {1, 2, 3}\nb = {3, 4, 5}\nprint(a.intersection(b))\nprint(a & b) # Operator syntax",
+                            "output": "{3}\n{3}"
+                        },
+                        {
+                            "sub_section_heading": "Difference (-)",
+                            "tags": [
+                                "set",
+                                "methods",
+                                "operators",
+                                "difference"
+                            ],
+                            "language": "python",
+                            "code": "# Returns a new set with items in the first set but not in the second.\na = {1, 2, 3}\nb = {3, 4, 5}\nprint(a.difference(b))\nprint(a - b) # Operator syntax",
+                            "output": "{1, 2}\n{1, 2}"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Python",
+        "category": "Functions",
+        "title": "Functions and Scope",
+        "description": "How to create reusable blocks of code with functions, handle various types of arguments, and understand variable scope.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Defining Functions",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Basic Function with 'def'",
+                            "tags": [
+                                "functions",
+                                "def",
+                                "define"
+                            ],
+                            "language": "python",
+                            "code": "# A function is defined using the 'def' keyword.\n# It runs when it is called.\n\ndef greet():\n  print(\"Hello from a function!\")\n\ngreet() # Calling the function",
+                            "output": "Hello from a function!"
+                        },
+                        {
+                            "sub_section_heading": "Arguments and 'return' Statement",
+                            "tags": [
+                                "functions",
+                                "arguments",
+                                "parameters",
+                                "return"
+                            ],
+                            "language": "python",
+                            "code": "# Information can be passed into functions as arguments.\n# Functions can return data as a result.\n\ndef add_numbers(x, y):\n  return x + y\n\nresult = add_numbers(5, 3)\nprint(f\"The sum is: {result}\")",
+                            "output": "The sum is: 8"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Function Arguments",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Positional vs. Keyword Arguments",
+                            "tags": [
+                                "functions",
+                                "arguments",
+                                "positional",
+                                "keyword"
+                            ],
+                            "language": "python",
+                            "code": "def describe_pet(animal_type, pet_name):\n  print(f\"I have a {animal_type} named {pet_name}.\")\n\n# Positional arguments (order matters)\ndescribe_pet(\"hamster\", \"Harry\")\n\n# Keyword arguments (order doesn't matter)\ndescribe_pet(pet_name=\"Willie\", animal_type=\"dog\")",
+                            "output": "I have a hamster named Harry.\nI have a dog named Willie."
+                        },
+                        {
+                            "sub_section_heading": "Default Argument Values",
+                            "tags": [
+                                "functions",
+                                "arguments",
+                                "default"
+                            ],
+                            "language": "python",
+                            "code": "# You can define a default value for an argument.\ndef describe_pet(pet_name, animal_type='dog'):\n  print(f\"I have a {animal_type} named {pet_name}.\")\n\ndescribe_pet(pet_name=\"Rex\") # Uses the default 'dog'\ndescribe_pet(pet_name=\"Fluffy\", animal_type=\"cat\") # Overrides the default",
+                            "output": "I have a dog named Rex.\nI have a cat named Fluffy."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Arbitrary Arguments: *args and **kwargs",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "*args (Non-Keyword Arguments)",
+                            "tags": [
+                                "functions",
+                                "arguments",
+                                "args",
+                                "arbitrary"
+                            ],
+                            "language": "python",
+                            "code": "# If you don't know how many arguments will be passed, use *args.\n# It receives a tuple of arguments.\n\ndef make_pizza(*toppings):\n  print(\"Making a pizza with the following toppings:\")\n  for topping in toppings:\n    print(f\"- {topping}\")\n\nmake_pizza('mushrooms', 'green peppers', 'extra cheese')",
+                            "output": "Making a pizza with the following toppings:\n- mushrooms\n- green peppers\n- extra cheese"
+                        },
+                        {
+                            "sub_section_heading": "**kwargs (Keyword Arguments)",
+                            "tags": [
+                                "functions",
+                                "arguments",
+                                "kwargs",
+                                "arbitrary",
+                                "keyword"
+                            ],
+                            "language": "python",
+                            "code": "# If you don't know how many keyword arguments will be passed, use **kwargs.\n# It receives a dictionary of arguments.\n\ndef build_profile(first, last, **user_info):\n  profile = {}\n  profile['first_name'] = first\n  profile['last_name'] = last\n  for key, value in user_info.items():\n    profile[key] = value\n  return profile\n\nuser = build_profile('albert', 'einstein', location='princeton', field='physics')\nprint(user)",
+                            "output": "{'first_name': 'albert', 'last_name': 'einstein', 'location': 'princeton', 'field': 'physics'}"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Lambda (Anonymous) Functions",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Lambda Syntax",
+                            "tags": [
+                                "functions",
+                                "lambda",
+                                "anonymous"
+                            ],
+                            "language": "python",
+                            "code": "# A small, anonymous function defined with the 'lambda' keyword.\n# Syntax: lambda arguments: expression\n\n# A regular function\ndef double(x):\n  return x * 2\n\n# The equivalent lambda function\ndouble_lambda = lambda x: x * 2\n\nprint(f\"Regular function: {double(5)}\")\nprint(f\"Lambda function: {double_lambda(5)}\")",
+                            "output": "Regular function: 10\nLambda function: 10"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Variable Scope",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Local vs. Global Scope",
+                            "tags": [
+                                "functions",
+                                "scope",
+                                "variable",
+                                "local",
+                                "global"
+                            ],
+                            "language": "python",
+                            "code": "x = \"global\" # This is a global variable\n\ndef my_function():\n  y = \"local\" # This is a local variable\n  print(f\"Inside function, can access local y: {y}\")\n  print(f\"Inside function, can access global x: {x}\")\n\nmy_function()\n\nprint(f\"\\nOutside function, can access global x: {x}\")\n# The following line would cause an error because 'y' is local to the function\n# print(f\"Outside function, cannot access local y: {y}\") # NameError",
+                            "output": "Inside function, can access local y: local\nInside function, can access global x: global\n\nOutside function, can access global x: global"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Python",
+        "category": "Object-Oriented Programming (OOP)",
+        "title": "Classes and Objects",
+        "description": "How to define blueprints for objects using classes. An object is an instance of a class, with its own attributes and methods.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Defining a Class and Creating an Object",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "The 'class' Keyword",
+                            "tags": [
+                                "oop",
+                                "class",
+                                "object",
+                                "instance"
+                            ],
+                            "language": "python",
+                            "code": "# 'class' creates a blueprint. 'pass' means an empty block.\nclass Dog:\n  pass\n\n# Creating an object (or instance) from the class\nd1 = Dog()\n\nprint(d1)\nprint(type(d1))",
+                            "output": "<__main__.Dog object at 0x...>\n<class '__main__.Dog'>"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "The '__init__()' Method (Constructor)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Initializing Object Attributes",
+                            "tags": [
+                                "oop",
+                                "class",
+                                "init",
+                                "constructor",
+                                "self",
+                                "attribute"
+                            ],
+                            "language": "python",
+                            "code": "# The __init__() method is called automatically when an object is created.\n# 'self' refers to the instance of the class itself.\n\nclass Dog:\n  def __init__(self, name, age):\n    self.name = name  # Instance attribute\n    self.age = age    # Instance attribute\n\n# Now we must provide arguments when creating an instance\ndoggo = Dog(\"Rex\", 5)\n\nprint(f\"My dog's name is {doggo.name}.\")\nprint(f\"He is {doggo.age} years old.\")",
+                            "output": "My dog's name is Rex.\nHe is 5 years old."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Instance Methods",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Defining Methods in a Class",
+                            "tags": [
+                                "oop",
+                                "class",
+                                "method",
+                                "self"
+                            ],
+                            "language": "python",
+                            "code": "# Methods are functions that belong to an object.\n# The 'self' parameter is a reference to the current instance.\n\nclass Dog:\n  def __init__(self, name, age):\n    self.name = name\n    self.age = age\n\n  def bark(self):\n    return f\"{self.name} says Woof!\"\n\n  def get_age(self):\n    return self.age\n\nsparky = Dog(\"Sparky\", 3)\n\nprint(sparky.bark())\nprint(f\"Sparky's age is {sparky.get_age()}.\")",
+                            "output": "Sparky says Woof!\nSparky's age is 3."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Inheritance",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Creating a Child Class",
+                            "tags": [
+                                "oop",
+                                "class",
+                                "inheritance",
+                                "parent",
+                                "child"
+                            ],
+                            "language": "python",
+                            "code": "# Inheritance allows a class (child) to inherit attributes and methods from another class (parent).\n\n# Parent Class\nclass Animal:\n  def __init__(self, name):\n    self.name = name\n\n  def speak(self):\n    return f\"{self.name} makes a sound.\"\n\n# Child Class\nclass Cat(Animal):\n  pass # Cat inherits everything from Animal\n\nmy_cat = Cat(\"Whiskers\")\nprint(my_cat.speak())",
+                            "output": "Whiskers makes a sound."
+                        },
+                        {
+                            "sub_section_heading": "Overriding Methods and 'super()'",
+                            "tags": [
+                                "oop",
+                                "class",
+                                "inheritance",
+                                "override",
+                                "super"
+                            ],
+                            "language": "python",
+                            "code": "# Child classes can override parent methods to provide specific implementations.\n# super() is used to call the parent class's method.\n\nclass Animal:\n  def __init__(self, name):\n    self.name = name\n\n  def speak(self):\n    return f\"{self.name} makes a sound.\"\n\nclass Dog(Animal):\n  def __init__(self, name, breed):\n    super().__init__(name) # Call parent's __init__\n    self.breed = breed\n\n  def speak(self): # Override parent's speak method\n    return f\"{self.name} barks!\"\n\nmy_dog = Dog(\"Buddy\", \"Golden Retriever\")\nprint(my_dog.speak())\nprint(f\"Buddy is a {my_dog.breed}.\")",
+                            "output": "Buddy barks!\nBuddy is a Golden Retriever."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Python",
+        "category": "File I/O",
+        "title": "File Handling",
+        "description": "How to read data from and write data to files. This is essential for making programs persistent.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Reading Files",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "The 'with open()' Statement",
+                            "tags": [
+                                "files",
+                                "io",
+                                "read",
+                                "open",
+                                "with"
+                            ],
+                            "language": "python",
+                            "code": "# The 'with' statement is the recommended way to open files.\n# It automatically handles closing the file, even if errors occur.\n\n# First, let's create a demo file to read from.\nwith open('example.txt', 'w') as f:\n    f.write('Hello Python!\\nSecond line.')\n\n# Now, read from it\nwith open('example.txt', 'r') as f:\n    content = f.read()\n    print(content)",
+                            "output": "Hello Python!\nSecond line."
+                        },
+                        {
+                            "sub_section_heading": "Reading Line by Line",
+                            "tags": [
+                                "files",
+                                "io",
+                                "read",
+                                "loops"
+                            ],
+                            "language": "python",
+                            "code": "# It's memory-efficient to read a large file line by line.\nwith open('example.txt', 'r') as f:\n    for line in f:\n        print(line.strip()) # .strip() removes leading/trailing whitespace",
+                            "output": "Hello Python!\nSecond line."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Writing Files",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Write Mode ('w')",
+                            "tags": [
+                                "files",
+                                "io",
+                                "write",
+                                "overwrite"
+                            ],
+                            "language": "python",
+                            "code": "# 'w' mode opens a file for writing. \n# WARNING: This will overwrite the entire file if it already exists.\nwith open('new_file.txt', 'w') as f:\n    f.write('This is a brand new file.')\n\n# You can verify the content by reading it back\nwith open('new_file.txt', 'r') as f:\n    print(f.read())",
+                            "output": "This is a brand new file."
+                        },
+                        {
+                            "sub_section_heading": "Append Mode ('a')",
+                            "tags": [
+                                "files",
+                                "io",
+                                "write",
+                                "append"
+                            ],
+                            "language": "python",
+                            "code": "# 'a' mode opens a file for appending.\n# New data will be added to the end of the file.\nwith open('new_file.txt', 'a') as f:\n    f.write('\\nThis line was appended.')\n\n# Reading it back to see the result\nwith open('new_file.txt', 'r') as f:\n    print(f.read())",
+                            "output": "This is a brand new file.\nThis line was appended."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Python",
+        "category": "Modules and Packages",
+        "title": "Working with Modules",
+        "description": "How to import and use code from other Python files (modules) to add functionality without reinventing the wheel.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Importing Modules",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "import module",
+                            "tags": [
+                                "modules",
+                                "import",
+                                "library"
+                            ],
+                            "language": "python",
+                            "code": "# Imports the entire module. You must prefix items with the module name.\nimport math\n\nprint(f\"The value of Pi is {math.pi}\")\nprint(f\"The square root of 16 is {math.sqrt(16)}\")",
+                            "output": "The value of Pi is 3.141592653589793\nThe square root of 16 is 4.0"
+                        },
+                        {
+                            "sub_section_heading": "from module import item",
+                            "tags": [
+                                "modules",
+                                "import",
+                                "from"
+                            ],
+                            "language": "python",
+                            "code": "# Imports a specific item from a module, so you can use it directly.\nfrom datetime import datetime\n\nnow = datetime.now()\nprint(f\"Current date and time: {now}\")",
+                            "output": "Current date and time: 2025-10-09 23:04:43.123456"
+                        },
+                        {
+                            "sub_section_heading": "Importing with an Alias",
+                            "tags": [
+                                "modules",
+                                "import",
+                                "alias",
+                                "as"
+                            ],
+                            "language": "python",
+                            "code": "# You can give a module a shorter alias to make it easier to use.\n# This is a very common convention for libraries like pandas and numpy.\nimport random as rd\n\nrandom_number = rd.randint(1, 10) # Generate a random integer between 1 and 10\nprint(f\"A random number: {random_number}\")",
+                            "output": "A random number: 7"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Popular Standard Library Modules",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Useful Built-in Modules",
+                            "tags": [
+                                "modules",
+                                "library",
+                                "standard library"
+                            ],
+                            "language": "python",
+                            "code": "# Python comes with a rich 'standard library' of modules.\n# os: Interact with the operating system (e.g., file paths).\n# sys: Access system-specific parameters and functions.\n# json: Work with JSON data.\n# random: Generate pseudo-random numbers.\n# datetime: Work with dates and times.\n\nimport os\nprint(f\"Current working directory: {os.getcwd()}\")",
+                            "output": "Current working directory: /path/to/your/directory"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Python",
+        "category": "Error Handling",
+        "title": "Error and Exception Handling",
+        "description": "How to handle runtime errors gracefully using the try, except, else, and finally blocks to prevent your program from crashing.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "The 'try...except' Block",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Basic 'try...except'",
+                            "tags": [
+                                "error handling",
+                                "exception",
+                                "try",
+                                "except"
+                            ],
+                            "language": "python",
+                            "code": "# The 'try' block lets you test a block of code for errors.\n# The 'except' block lets you handle the error.\n\ntry:\n  result = 10 / 0\nexcept ZeroDivisionError:\n  print(\"Error: You cannot divide by zero!\")",
+                            "output": "Error: You cannot divide by zero!"
+                        },
+                        {
+                            "sub_section_heading": "Handling Specific Exceptions",
+                            "tags": [
+                                "error handling",
+                                "exception",
+                                "try",
+                                "except",
+                                "ValueError"
+                            ],
+                            "language": "python",
+                            "code": "# It's best practice to specify the type of exception you expect.\n\ntry:\n  age = int(input(\"Enter your age: \"))\n  print(f\"You are {age} years old.\")\nexcept ValueError:\n  print(\"Invalid input. Please enter a number.\")",
+                            "output": "Invalid input. Please enter a number."
+                        },
+                        {
+                            "sub_section_heading": "Handling Multiple Exceptions",
+                            "tags": [
+                                "error handling",
+                                "exception",
+                                "try",
+                                "except",
+                                "multiple"
+                            ],
+                            "language": "python",
+                            "code": "# You can handle multiple exception types in a single block.\n\ntry:\n  # This could be a ValueError or ZeroDivisionError\n  num = int(input(\"Enter a number to divide 10 by: \"))\n  result = 10 / num\n  print(f\"Result is {result}\")\nexcept (ValueError, ZeroDivisionError) as e:\n  print(f\"An error occurred: {e}\")",
+                            "output": "An error occurred: division by zero"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "The 'else' and 'finally' Clauses",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "The 'else' Clause",
+                            "tags": [
+                                "error handling",
+                                "exception",
+                                "try",
+                                "else"
+                            ],
+                            "language": "python",
+                            "code": "# The 'else' block executes only if no errors were raised in the 'try' block.\n\ntry:\n  num = int(input(\"Enter a number: \"))\nexcept ValueError:\n  print(\"Invalid input!\")\nelse:\n  print(f\"You entered the number {num}.\")",
+                            "output": "You entered the number 5."
+                        },
+                        {
+                            "sub_section_heading": "The 'finally' Clause",
+                            "tags": [
+                                "error handling",
+                                "exception",
+                                "try",
+                                "finally",
+                                "cleanup"
+                            ],
+                            "language": "python",
+                            "code": "# The 'finally' block executes regardless of whether an exception occurred or not.\n# It is often used for cleanup actions, like closing a file.\n\ntry:\n  f = open('example.txt', 'r')\n  # Potentially risky code here\n  print(\"File opened.\")\n  # result = 10 / 0 # Uncomment to see finally run with an error\nexcept:\n  print(\"An error occurred.\")\nfinally:\n  print(\"Executing finally block. File is now closed.\")\n  # f.close() # In a real scenario, you'd close the file here.",
+                            "output": "File opened.\nExecuting finally block. File is now closed."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Raising Exceptions",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "The 'raise' Keyword",
+                            "tags": [
+                                "error handling",
+                                "exception",
+                                "raise"
+                            ],
+                            "language": "python",
+                            "code": "# You can choose to throw an exception if a condition occurs.\n\ndef set_age(age):\n  if age < 0:\n    raise ValueError(\"Age cannot be negative.\")\n  print(f\"Age is set to {age}\")\n\ntry:\n  set_age(-5)\nexcept ValueError as e:\n  print(f\"Error caught: {e}\")",
+                            "output": "Error caught: Age cannot be negative."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Python",
+        "category": "Advanced Python",
+        "title": "Pythonic Techniques: Comprehensions & Lambdas",
+        "description": "How to write more efficient, readable, and 'Pythonic' code using comprehensions and advanced applications of lambda functions.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Comprehensions",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "List Comprehensions",
+                            "tags": [
+                                "advanced",
+                                "comprehension",
+                                "list",
+                                "pythonic"
+                            ],
+                            "language": "python",
+                            "code": "# A concise way to create lists.\n# Syntax: [expression for item in iterable if condition]\n\n# Alternative 1: Traditional for-loop\nsquares_loop = []\nfor x in range(10):\n    if x % 2 == 0:\n        squares_loop.append(x**2)\n\n# Alternative 2: List comprehension (more Pythonic)\nsquares_comp = [x**2 for x in range(10) if x % 2 == 0]\n\nprint(f\"Using a loop:       {squares_loop}\")\nprint(f\"Using comprehension: {squares_comp}\")",
+                            "output": "Using a loop:       [0, 4, 16, 36, 64]\nUsing comprehension: [0, 4, 16, 36, 64]"
+                        },
+                        {
+                            "sub_section_heading": "Dictionary Comprehensions",
+                            "tags": [
+                                "advanced",
+                                "comprehension",
+                                "dict",
+                                "dictionary"
+                            ],
+                            "language": "python",
+                            "code": "# A concise way to create dictionaries.\n# Syntax: {key_expression: value_expression for item in iterable}\n\nnumbers = [1, 2, 3, 4]\n\nsquares_dict = {num: num**2 for num in numbers}\n\nprint(squares_dict)",
+                            "output": "{1: 1, 2: 4, 3: 9, 4: 16}"
+                        },
+                        {
+                            "sub_section_heading": "Set Comprehensions",
+                            "tags": [
+                                "advanced",
+                                "comprehension",
+                                "set",
+                                "unique"
+                            ],
+                            "language": "python",
+                            "code": "# A concise way to create sets (ensuring unique elements).\n# Syntax: {expression for item in iterable}\n\nwords = ['hello', 'world', 'hello', 'python', 'world']\n\nunique_lengths = {len(word) for word in words}\n\nprint(unique_lengths)",
+                            "output": "{5, 6}"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Functional Programming with Lambdas",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Using 'map()'",
+                            "tags": [
+                                "advanced",
+                                "lambda",
+                                "map",
+                                "functional"
+                            ],
+                            "language": "python",
+                            "code": "# map() applies a function to every item of an iterable.\nnumbers = [1, 2, 3, 4]\n\n# Alternative 1: Using map() with a lambda\nsquares_map = map(lambda x: x**2, numbers)\nprint(f\"Using map():    {list(squares_map)}\")\n\n# Alternative 2: Using a list comprehension (often preferred for readability)\nsquares_comp = [x**2 for x in numbers]\nprint(f\"Using list comp: {squares_comp}\")",
+                            "output": "Using map():    [1, 4, 9, 16]\nUsing list comp: [1, 4, 9, 16]"
+                        },
+                        {
+                            "sub_section_heading": "Using 'filter()'",
+                            "tags": [
+                                "advanced",
+                                "lambda",
+                                "filter",
+                                "functional"
+                            ],
+                            "language": "python",
+                            "code": "# filter() creates a new iterable with elements that pass a test.\nnumbers = [1, 2, 3, 4, 5, 6, 7, 8]\n\n# Alternative 1: Using filter() with a lambda\neven_filter = filter(lambda x: x % 2 == 0, numbers)\nprint(f\"Using filter(): {list(even_filter)}\")\n\n# Alternative 2: Using a list comprehension\neven_comp = [x for x in numbers if x % 2 == 0]\nprint(f\"Using list comp: {even_comp}\")",
+                            "output": "Using filter(): [2, 4, 6, 8]\nUsing list comp: [2, 4, 6, 8]"
+                        },
+                        {
+                            "sub_section_heading": "Using 'sorted()'",
+                            "tags": [
+                                "advanced",
+                                "lambda",
+                                "sorted",
+                                "key",
+                                "functional"
+                            ],
+                            "language": "python",
+                            "code": "# The 'key' argument in sorted() specifies a function to be called on each element prior to making comparisons.\n\nstudents = [\n    {'name': 'John', 'grade': 90},\n    {'name': 'Jane', 'grade': 85},\n    {'name': 'Dave', 'grade': 95}\n]\n\n# Alternative 1: Using a lambda function (most common)\nsorted_by_grade = sorted(students, key=lambda student: student['grade'])\nprint(f\"Sorted with lambda: {sorted_by_grade}\")\n\n# Alternative 2: Using a standard 'def' function\ndef get_grade(student):\n    return student['grade']\n\nsorted_by_function = sorted(students, key=get_grade)\nprint(f\"Sorted with function: {sorted_by_function}\")",
+                            "output": "Sorted with lambda: [{'name': 'Jane', 'grade': 85}, {'name': 'John', 'grade': 90}, {'name': 'Dave', 'grade': 95}]\nSorted with function: [{'name': 'Jane', 'grade': 85}, {'name': 'John', 'grade': 90}, {'name': 'Dave', 'grade': 95}]"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Python",
+        "category": "Advanced Python",
+        "title": "Advanced Functions: Decorators & Generators",
+        "description": "Learn to extend function behavior with decorators and create memory-efficient data streams with generators.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Decorators",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Understanding Decorators (The Manual Way)",
+                            "tags": [
+                                "advanced",
+                                "decorators",
+                                "functions",
+                                "functional"
+                            ],
+                            "language": "python",
+                            "code": "# A decorator is a function that takes another function, adds functionality, and returns it.\n\ndef my_decorator(func):\n    def wrapper():\n        print(\"Something is happening before the function is called.\")\n        func()\n        print(\"Something is happening after the function is called.\")\n    return wrapper\n\ndef say_hello():\n    print(\"Hello!\")\n\n# The 'manual' way of applying a decorator\nsay_hello = my_decorator(say_hello)\nsay_hello()",
+                            "output": "Something is happening before the function is called.\nHello!\nSomething is happening after the function is called."
+                        },
+                        {
+                            "sub_section_heading": "Decorator Syntax (The '@' Way)",
+                            "tags": [
+                                "advanced",
+                                "decorators",
+                                "syntax",
+                                "pythonic",
+                                "@"
+                            ],
+                            "language": "python",
+                            "code": "# The '@' symbol is syntactic sugar for the manual process shown above.\n\ndef my_decorator(func):\n    def wrapper(*args, **kwargs):\n        print(\"--- Action Before ---\")\n        func(*args, **kwargs) # Pass arguments to the original function\n        print(\"--- Action After ---\")\n    return wrapper\n\n@my_decorator\ndef greet(name, greeting=\"Hello\"):\n    print(f\"{greeting}, {name}!\")\n\ngreet(\"Alice\")",
+                            "output": "--- Action Before ---\nHello, Alice!\n--- Action After ---"
+                        },
+                        {
+                            "sub_section_heading": "Decorators with Arguments",
+                            "tags": [
+                                "advanced",
+                                "decorators",
+                                "arguments",
+                                "factory"
+                            ],
+                            "language": "python",
+                            "code": "# To create a decorator that accepts its own arguments, you need an extra layer of nesting.\n\ndef repeat(num_times):\n    def decorator_repeat(func):\n        def wrapper(*args, **kwargs):\n            for _ in range(num_times):\n                func(*args, **kwargs)\n        return wrapper\n    return decorator_repeat\n\n@repeat(num_times=3)\ndef say_whee():\n    print(\"Whee!\")\n\nsay_whee()",
+                            "output": "Whee!\nWhee!\nWhee!"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Generators",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Generator Function with 'yield'",
+                            "tags": [
+                                "advanced",
+                                "generators",
+                                "yield",
+                                "iterator",
+                                "memory"
+                            ],
+                            "language": "python",
+                            "code": "# A generator function produces a sequence of values using 'yield'.\n# It saves memory by yielding one item at a time, instead of building a whole list.\n\n# Alternative 1: Standard function (high memory use for large n)\ndef get_cubes_list(n):\n    result = []\n    for i in range(n):\n        result.append(i**3)\n    return result\n\n# Alternative 2: Generator function (low memory use)\ndef get_cubes_generator(n):\n    for i in range(n):\n        yield i**3\n\n# Using the generator\nprint(\"Generator output:\")\nfor number in get_cubes_generator(5):\n    print(number)",
+                            "output": "Generator output:\n0\n1\n8\n27\n64"
+                        },
+                        {
+                            "sub_section_heading": "Generator Expressions",
+                            "tags": [
+                                "advanced",
+                                "generators",
+                                "expression",
+                                "comprehension"
+                            ],
+                            "language": "python",
+                            "code": "# A generator expression is a concise, comprehension-like syntax for creating generators.\n# It uses parentheses () instead of square brackets [].\n\n# Alternative 1: List comprehension (creates a full list in memory)\nlist_comp = [x**2 for x in range(5)]\nprint(f\"List comprehension: {list_comp}\")\n\n# Alternative 2: Generator expression (creates a generator object)\ngen_exp = (x**2 for x in range(5))\nprint(f\"Generator expression object: {gen_exp}\")\n\n# You still iterate over it the same way\nprint(\"Iterating over the generator:\")\nfor num in gen_exp:\n    print(num)",
+                            "output": "List comprehension: [0, 1, 4, 9, 16]\nGenerator expression object: <generator object <genexpr> at 0x...>\nIterating over the generator:\n0\n1\n4\n9\n16"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Python",
+        "category": "Advanced Python",
+        "title": "The `collections` Module",
+        "description": "Using specialized, high-performance container datatypes that provide alternatives to Python's general-purpose built-ins.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Counter",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Counting Hashable Objects",
+                            "tags": [
+                                "advanced",
+                                "collections",
+                                "counter",
+                                "counting"
+                            ],
+                            "language": "python",
+                            "code": "# A Counter is a dict subclass for counting hashable objects.\nfrom collections import Counter\n\nmy_list = ['a', 'b', 'c', 'a', 'b', 'a']\n\n# Alternative 1: Manual counting with a standard dict\ncounts = {}\nfor item in my_list:\n    counts[item] = counts.get(item, 0) + 1\nprint(f\"Manual count: {counts}\")\n\n# Alternative 2: Using Counter (more efficient and readable)\ncounter_obj = Counter(my_list)\nprint(f\"Counter object: {counter_obj}\")\nprint(f\"Most common: {counter_obj.most_common(1)}\")",
+                            "output": "Manual count: {'a': 3, 'b': 2, 'c': 1}\nCounter object: Counter({'a': 3, 'b': 2, 'c': 1})\nMost common: [('a', 3)]"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "defaultdict",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Dictionary with Default Values",
+                            "tags": [
+                                "advanced",
+                                "collections",
+                                "defaultdict",
+                                "dictionary"
+                            ],
+                            "language": "python",
+                            "code": "# A defaultdict is a dict subclass that calls a factory function to supply missing values.\nfrom collections import defaultdict\n\ndata = [('fruit', 'apple'), ('color', 'red'), ('fruit', 'banana')]\n\n# Alternative 1: Standard dict needs a key check\ngroups = {}\nfor key, value in data:\n    if key not in groups:\n        groups[key] = []\n    groups[key].append(value)\nprint(f\"Standard dict: {dict(groups)}\")\n\n# Alternative 2: defaultdict simplifies this greatly\ndefault_groups = defaultdict(list)\nfor key, value in data:\n    default_groups[key].append(value)\nprint(f\"defaultdict: {dict(default_groups)}\")",
+                            "output": "Standard dict: {'fruit': ['apple', 'banana'], 'color': ['red']}\ndefaultdict: {'fruit': ['apple', 'banana'], 'color': ['red']}"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "deque",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Double-Ended Queue",
+                            "tags": [
+                                "advanced",
+                                "collections",
+                                "deque",
+                                "queue",
+                                "stack"
+                            ],
+                            "language": "python",
+                            "code": "# A deque (deck) is a list-like container with fast appends and pops from both ends.\nfrom collections import deque\n\n# A standard list is slow at popping from the left (pop(0)).\n# A deque is optimized for this.\nd = deque(['b', 'c', 'd'])\n\nd.appendleft('a')      # Fast append to the left\nd.append('e')          # Fast append to the right\n\nprint(f\"Deque after appends: {d}\")\n\nd.popleft()            # Fast pop from the left\nd.pop()                # Fast pop from the right\n\nprint(f\"Deque after pops: {d}\")",
+                            "output": "Deque after appends: deque(['a', 'b', 'c', 'd', 'e'])\nDeque after pops: deque(['b', 'c', 'd'])"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Python",
+        "category": "Advanced Python",
+        "title": "Regular Expressions (`re` module)",
+        "description": "A powerful mini-language for finding and manipulating complex patterns in strings.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Core Functions",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "re.search() - Find First Match",
+                            "tags": [
+                                "advanced",
+                                "regex",
+                                "re",
+                                "search",
+                                "pattern"
+                            ],
+                            "language": "python",
+                            "code": "import re\n\ntext = \"The price is $19.99 for the item.\"\n# \\d+ matches one or more digits. \\. matches a literal dot.\npattern = r'\\$\\d+\\.\\d+'\n\nmatch = re.search(pattern, text)\n\nif match:\n    print(f\"Found: {match.group(0)}\")",
+                            "output": "Found: $19.99"
+                        },
+                        {
+                            "sub_section_heading": "re.findall() - Find All Matches",
+                            "tags": [
+                                "advanced",
+                                "regex",
+                                "re",
+                                "findall",
+                                "pattern"
+                            ],
+                            "language": "python",
+                            "code": "import re\n\ntext = \"Contact us at info@example.com or support@example.org\"\n# A simple email-matching pattern\npattern = r'\\w+@\\w+\\.\\w+'\n\nemails = re.findall(pattern, text)\nprint(f\"Emails found: {emails}\")",
+                            "output": "Emails found: ['info@example.com', 'support@example.org']"
+                        },
+                        {
+                            "sub_section_heading": "re.sub() - Substitute Matches",
+                            "tags": [
+                                "advanced",
+                                "regex",
+                                "re",
+                                "sub",
+                                "replace"
+                            ],
+                            "language": "python",
+                            "code": "import re\n\ntext = \"Agent Smith and Agent Johnson reporting.\"\n\n# Replace 'Agent' followed by a word with 'REDACTED'\nnew_text = re.sub(r'Agent \\w+', 'REDACTED', text)\nprint(new_text)",
+                            "output": "REDACTED and REDACTED reporting."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Implementation Methods",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Compiling Patterns for Performance",
+                            "tags": [
+                                "advanced",
+                                "regex",
+                                "re",
+                                "compile",
+                                "performance"
+                            ],
+                            "language": "python",
+                            "code": "# For patterns used many times, compiling them first is more efficient.\nimport re\n\n# Alternative 1: Using the module-level functions directly\ntext = \"User_1, User_2, User_3\"\nusers1 = re.findall(r'User_\\d', text)\n\n# Alternative 2: Compiling the pattern first\npattern = re.compile(r'User_\\d')\nusers2 = pattern.findall(text)\n\nprint(f\"Direct findall: {users1}\")\nprint(f\"Compiled findall: {users2}\")",
+                            "output": "Direct findall: ['User_1', 'User_2', 'User_3']\nCompiled findall: ['User_1', 'User_2', 'User_3']"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "Python",
+        "category": "Advanced Python",
+        "title": "Introduction to Concurrency",
+        "description": "A high-level overview of the different models for running tasks concurrently in Python to handle I/O-bound and CPU-bound operations.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "1. Threading",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Best for I/O-Bound Tasks",
+                            "tags": [
+                                "advanced",
+                                "concurrency",
+                                "threading",
+                                "io-bound",
+                                "gil"
+                            ],
+                            "language": "python",
+                            "code": "# Threads are separate execution flows within the same process.\n# Best for tasks that wait for I/O (e.g., network requests, disk reads).\n# In CPython, the Global Interpreter Lock (GIL) prevents threads from running CPU-bound code in parallel.\nimport threading\nimport time\n\ndef simulate_io_task(name):\n    print(f\"Thread {name}: starting I/O task...\")\n    time.sleep(2) # Simulate waiting for a network response\n    print(f\"Thread {name}: finished.\")\n\nt1 = threading.Thread(target=simulate_io_task, args=(\"A\",))\nt2 = threading.Thread(target=simulate_io_task, args=(\"B\",))\n\nt1.start()\nt2.start()\n\nt1.join() # Wait for thread 1 to finish\nt2.join() # Wait for thread 2 to finish\nprint(\"All threads are done.\")",
+                            "output": "Thread A: starting I/O task...\nThread B: starting I/O task...\n(after ~2 seconds)\nThread A: finished.\nThread B: finished.\nAll threads are done."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "2. Multiprocessing",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Best for CPU-Bound Tasks",
+                            "tags": [
+                                "advanced",
+                                "concurrency",
+                                "multiprocessing",
+                                "cpu-bound",
+                                "parallelism"
+                            ],
+                            "language": "python",
+                            "code": "# Multiprocessing runs tasks in separate processes, each with its own Python interpreter and memory.\n# This bypasses the GIL, allowing for true parallelism on multi-core CPUs.\n# Best for heavy, CPU-bound calculations.\nfrom multiprocessing import Process\n\ndef cpu_heavy_task(n):\n    print(f\"Process starting to calculate sum up to {n}...\")\n    count = sum(i for i in range(n))\n    print(f\"Process finished with sum: {count}\")\n\nif __name__ == \"__main__\":\n    p = Process(target=cpu_heavy_task, args=(10**7,))\n    p.start()\n    p.join()\n    print(\"Process is done.\")",
+                            "output": "Process starting to calculate sum up to 10000000...\nProcess finished with sum: 49999995000000\nProcess is done."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "3. AsyncIO",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Modern Concurrency for Asynchronous I/O",
+                            "tags": [
+                                "advanced",
+                                "concurrency",
+                                "asyncio",
+                                "async",
+                                "await"
+                            ],
+                            "language": "python",
+                            "code": "# AsyncIO uses a single-threaded event loop to manage and switch between multiple I/O-bound tasks.\n# The 'async' and 'await' keywords allow a task to 'pause' and let others run while it waits for I/O.\nimport asyncio\n\nasync def async_io_task(name):\n    print(f\"Task {name}: starting...\")\n    await asyncio.sleep(2) # Pauses this task, allows others to run\n    print(f\"Task {name}: finished.\")\n\nasync def main():\n    # Run tasks concurrently\n    await asyncio.gather(\n        async_io_task(\"A\"),\n        async_io_task(\"B\")\n    )\n\n# In a real script you would run this with asyncio.run(main())\nprint(\"Running asyncio tasks...\")",
+                            "output": "Running asyncio tasks...\n(Output in an actual async runtime would be similar to the threading example)"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "4. The High-Level Way: concurrent.futures",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "A Simpler Interface for Threading & Multiprocessing",
+                            "tags": [
+                                "advanced",
+                                "concurrency",
+                                "futures",
+                                "executor",
+                                "pool"
+                            ],
+                            "language": "python",
+                            "code": "# This module provides a high-level interface for managing pools of threads or processes.\n# This is often the simplest way to parallelize tasks.\nfrom concurrent.futures import ThreadPoolExecutor\nimport time\n\ndef io_task_with_return(seconds):\n    time.sleep(seconds)\n    return f\"Task finished after {seconds} seconds\"\n\n# Manages a pool of 2 threads\nwith ThreadPoolExecutor(max_workers=2) as executor:\n    # .map applies the function to each item in the list concurrently\n    results = executor.map(io_task_with_return, [2, 3])\n\n    for result in results:\n        print(result)",
+                            "output": "Task finished after 2 seconds\nTask finished after 3 seconds"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+]

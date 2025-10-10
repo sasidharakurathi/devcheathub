@@ -160,7 +160,7 @@ def live_search(request):
         search_results = CheatSheet.objects.filter(
             Q(status='APPROVED') & 
             (Q(title__icontains=query) | Q(description__icontains=query) | Q(content__icontains=query))
-        ).select_related('category')
+        ).select_related('category')[:25]
 
         for result in search_results:
             # Get sections and tags from the new model method

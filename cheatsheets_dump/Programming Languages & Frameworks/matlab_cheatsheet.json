@@ -1,0 +1,853 @@
+[
+    {
+        "parent_category": "MATLAB",
+        "category": "MATLAB Basics",
+        "title": "MATLAB Basics & Environment",
+        "description": "An introduction to the MATLAB desktop, basic syntax for variables, and the fundamental data types.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "The MATLAB Desktop",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Key Windows",
+                            "tags": [
+                                "environment",
+                                "desktop",
+                                "ide"
+                            ],
+                            "language": "text",
+                            "code": "The MATLAB Desktop is an integrated development environment (IDE). The main windows are:\n\n1. Command Window: For entering commands and seeing immediate output.\n2. Workspace: Shows all the variables you have created.\n3. Editor: For writing and editing script files (.m files) and functions.\n4. Current Folder: To browse and manage your files.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Variables and Syntax",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Variable Assignment",
+                            "tags": [
+                                "variables",
+                                "assignment",
+                                "syntax"
+                            ],
+                            "language": "matlab",
+                            "code": "% Variables are created automatically when you assign a value to them.\n% There is no need for a type declaration.\na = 10\nb = 'hello'\nc = true",
+                            "output": "a =\n    10\n\nb =\n    'hello'\n\nc =\n    logical\n     1"
+                        },
+                        {
+                            "sub_section_heading": "Suppressing Output with Semicolons (;)",
+                            "tags": [
+                                "syntax",
+                                "semicolon",
+                                "output"
+                            ],
+                            "language": "matlab",
+                            "code": "% A semicolon at the end of a line prevents the output from being displayed.\nx = 5       % Output is displayed\ny = 10;     % Output is suppressed\n\n% To see the value of y, just type its name:\ny",
+                            "output": "x =\n     5\n\ny =\n    10"
+                        },
+                        {
+                            "sub_section_heading": "Comments (%)",
+                            "tags": [
+                                "syntax",
+                                "comments"
+                            ],
+                            "language": "matlab",
+                            "code": "% Single-line comments start with a percentage sign.\n\n%{\n  Multi-line comments are enclosed\n  between '%{' and '%}'.\n%}\nd = 25; % This is an inline comment",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Fundamental Data Types",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Numeric (double)",
+                            "tags": [
+                                "data types",
+                                "numeric",
+                                "double"
+                            ],
+                            "language": "matlab",
+                            "code": "% By default, all numbers are stored as double-precision floating points.\nx = 12.5;\ny = 7;\nclass(x)",
+                            "output": "ans =\n    'double'"
+                        },
+                        {
+                            "sub_section_heading": "Character (char)",
+                            "tags": [
+                                "data types",
+                                "char",
+                                "string",
+                                "text"
+                            ],
+                            "language": "matlab",
+                            "code": "% Text is stored in character arrays, using single quotes.\nmy_char = 'A';\nmy_text = 'Hello, MATLAB!';\nclass(my_text)",
+                            "output": "ans =\n    'char'"
+                        },
+                        {
+                            "sub_section_heading": "Logical (logical)",
+                            "tags": [
+                                "data types",
+                                "logical",
+                                "boolean",
+                                "true",
+                                "false"
+                            ],
+                            "language": "matlab",
+                            "code": "% Logicals are used for true/false values.\nis_valid = true;\nis_finished = false;\nclass(is_valid)",
+                            "output": "ans =\n    'logical'"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "MATLAB",
+        "category": "MATLAB Basics",
+        "title": "Vector & Matrix Creation",
+        "description": "How to create vectors and matrices, the fundamental array data structures in MATLAB, using various methods.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Creating Vectors",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Row and Column Vectors",
+                            "tags": [
+                                "vector",
+                                "matrix",
+                                "array",
+                                "row",
+                                "column"
+                            ],
+                            "language": "matlab",
+                            "code": "% A row vector uses spaces or commas between elements.\nrow_vec = [1 2 3 4];\n\n% A column vector uses semicolons between elements.\ncol_vec = [5; 6; 7; 8];\n\nrow_vec\ncol_vec",
+                            "output": "row_vec =\n     1     2     3     4\n\ncol_vec =\n     5\n     6\n     7\n     8"
+                        },
+                        {
+                            "sub_section_heading": "The Colon Operator (:)",
+                            "tags": [
+                                "vector",
+                                "colon",
+                                "range",
+                                "series"
+                            ],
+                            "language": "matlab",
+                            "code": "% The colon is used to create evenly spaced vectors.\n% Syntax: start:step:end\n\nvec1 = 1:5             % Creates a vector from 1 to 5 with a step of 1\nvec2 = 0:2:10          % Creates a vector from 0 to 10 with a step of 2\nvec3 = 5:-1:1          % Creates a vector counting down",
+                            "output": "vec1 =\n     1     2     3     4     5\n\nvec2 =\n     0     2     4     6     8    10\n\nvec3 =\n     5     4     3     2     1"
+                        },
+                        {
+                            "sub_section_heading": "Using `linspace`",
+                            "tags": [
+                                "vector",
+                                "linspace",
+                                "series"
+                            ],
+                            "language": "matlab",
+                            "code": "% `linspace` creates a vector with a specified number of points.\n% Syntax: linspace(start, end, number_of_points)\n\n% Create 10 points between 0 and 1 (inclusive)\nvec = linspace(0, 1, 10);",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Creating Matrices",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Direct Entry",
+                            "tags": [
+                                "matrix",
+                                "array",
+                                "semicolon"
+                            ],
+                            "language": "matlab",
+                            "code": "% Semicolons are used to separate rows in a matrix.\nA = [1 2 3; 4 5 6; 7 8 9]",
+                            "output": "A =\n     1     2     3\n     4     5     6\n     7     8     9"
+                        },
+                        {
+                            "sub_section_heading": "Using Built-in Functions",
+                            "tags": [
+                                "matrix",
+                                "zeros",
+                                "ones",
+                                "rand"
+                            ],
+                            "language": "matlab",
+                            "code": "% Create special matrices quickly.\n\nZ = zeros(2, 3)    % A 2x3 matrix of all zeros\nO = ones(3, 2)     % A 3x2 matrix of all ones\nR = rand(2, 2)     % A 2x2 matrix of random numbers between 0 and 1",
+                            "output": "Z =\n     0     0     0\n     0     0     0\n\nO =\n     1     1\n     1     1\n     1     1\n\nR =\n    0.8147    0.1270\n    0.9058    0.9134"
+                        },
+                        {
+                            "sub_section_heading": "Identity Matrix (`eye`)",
+                            "tags": [
+                                "matrix",
+                                "identity",
+                                "eye"
+                            ],
+                            "language": "matlab",
+                            "code": "% `eye(n)` creates an n x n identity matrix (1s on the diagonal).\nI = eye(3)",
+                            "output": "I =\n     1     0     0\n     0     1     0\n     0     0     1"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "MATLAB",
+        "category": "MATLAB Basics",
+        "title": "Array Indexing & Operations",
+        "description": "How to access, manipulate, and perform mathematical operations on MATLAB arrays (vectors and matrices).",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Array Indexing",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Accessing Single Elements",
+                            "tags": [
+                                "indexing",
+                                "matrix",
+                                "array",
+                                "element"
+                            ],
+                            "language": "matlab",
+                            "code": "% MATLAB uses 1-based indexing (the first element is at index 1).\n% Syntax: A(row, column)\nA = [10 20 30; 40 50 60; 70 80 90];\n\n% Get the element in the 2nd row, 3rd column\nelement = A(2, 3);\n\n% The 'end' keyword refers to the last row or column\nlast_element = A(end, end);",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "Using the Colon (:) for Slicing",
+                            "tags": [
+                                "indexing",
+                                "slicing",
+                                "colon",
+                                "matrix"
+                            ],
+                            "language": "matlab",
+                            "code": "% The colon operator is used to select entire rows, columns, or ranges.\nA = [10 20 30; 40 50 60; 70 80 90];\n\nsecond_row = A(2, :)   % Get all columns of the second row\nfirst_col = A(:, 1)    % Get all rows of the first column\nsub_matrix = A(1:2, 2:3) % Get a 2x2 sub-matrix",
+                            "output": "second_row =\n    40    50    60\n\nfirst_col =\n    10\n    40\n    70\n\nsub_matrix =\n    20    30\n    50    60"
+                        },
+                        {
+                            "sub_section_heading": "Logical Indexing",
+                            "tags": [
+                                "indexing",
+                                "logical",
+                                "boolean",
+                                "condition"
+                            ],
+                            "language": "matlab",
+                            "code": "% Use a logical condition to select elements that meet the criteria.\nA = [1 5 9; 2 6 10; 3 7 11];\n\n% Find all elements in A that are greater than 5\nlarge_elements = A(A > 5)",
+                            "output": "large_elements =\n     6\n     7\n     9\n    10\n    11"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Array Operations",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Element-Wise Operations (.*, ./, .^)",
+                            "tags": [
+                                "operations",
+                                "element-wise",
+                                "dot operator"
+                            ],
+                            "language": "matlab",
+                            "code": "% The dot operator (.) performs operations on corresponding elements of two matrices.\n% Matrices must be the same size.\nA = [1 2; 3 4];\nB = [10 20; 30 40];\n\nC_mult = A .* B  % Element-wise multiplication\nC_div = A ./ B   % Element-wise division",
+                            "output": "C_mult =\n    10    40\n    90   160\n\nC_div =\n    0.1000    0.1000\n    0.1000    0.1000"
+                        },
+                        {
+                            "sub_section_heading": "Matrix Multiplication (*)",
+                            "tags": [
+                                "operations",
+                                "matrix multiplication",
+                                "linear algebra"
+                            ],
+                            "language": "matlab",
+                            "code": "% The standard asterisk (*) performs linear algebra matrix multiplication.\n% The inner dimensions must match (e.g., [m x n] * [n x p]).\nA = [1 2; 3 4];     % 2x2 matrix\nB = [10; 20];       % 2x1 vector\n\nC = A * B",
+                            "output": "C =\n    50\n   110"
+                        },
+                        {
+                            "sub_section_heading": "Transpose Operator (')",
+                            "tags": [
+                                "operations",
+                                "transpose",
+                                "matrix"
+                            ],
+                            "language": "matlab",
+                            "code": "% The apostrophe (') transposes a matrix (flips rows and columns).\nA = [1 2 3; 4 5 6];  % A is 2x3\n\nA_transposed = A'      % A_transposed is 3x2",
+                            "output": "A_transposed =\n     1     4\n     2     5\n     3     6"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Common Array Functions",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Getting Array Size (`size`, `length`)",
+                            "tags": [
+                                "functions",
+                                "size",
+                                "length",
+                                "dimensions"
+                            ],
+                            "language": "matlab",
+                            "code": "A = rand(3, 5); % Create a 3x5 matrix\n\n% `size` returns the dimensions [rows, columns]\nsz = size(A)\n\n% `length` returns the size of the longest dimension\nlen = length(A)",
+                            "output": "sz =\n     3     5\n\nlen =\n     5"
+                        },
+                        {
+                            "sub_section_heading": "Concatenating Arrays",
+                            "tags": [
+                                "functions",
+                                "concatenation",
+                                "matrix",
+                                "combine"
+                            ],
+                            "language": "matlab",
+                            "code": "A = [1; 2];\nB = [3; 4];\n\n% Horizontal concatenation (side-by-side)\nC_horz = [A B]\n\n% Vertical concatenation (one on top of the other)\nC_vert = [A; B]",
+                            "output": "C_horz =\n     1     3\n     2     4\n\nC_vert =\n     1\n     2\n     3\n     4"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "MATLAB",
+        "category": "MATLAB Basics",
+        "title": "Control Flow",
+        "description": "How to control the order of command execution in MATLAB programs using conditional statements (if, switch) and loops (for, while).",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Conditional Statements",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "if-elseif-else Statements",
+                            "tags": [
+                                "control flow",
+                                "if",
+                                "elseif",
+                                "else",
+                                "conditional"
+                            ],
+                            "language": "matlab",
+                            "code": "% Executes blocks of code based on a condition.\n% NOTE: Every block must be terminated with an 'end' keyword.\n\ngrade = 85;\n\nif grade >= 90\n    disp('Excellent! Grade is A.')\nelseif grade >= 80\n    disp('Good job. Grade is B.')\nelse\n    disp('Grade is C or lower.')\nend",
+                            "output": "Good job. Grade is B."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Loops",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "for Loops",
+                            "tags": [
+                                "control flow",
+                                "loop",
+                                "for",
+                                "iteration"
+                            ],
+                            "language": "matlab",
+                            "code": "% A for loop repeats a group of statements a fixed number of times.\n% It is commonly used to iterate over the elements of a vector.\n\n% Loop from 1 to 5\nfor i = 1:5\n    % Display the square of the current number\n    disp(['The square of ', num2str(i), ' is ', num2str(i^2)])\nend",
+                            "output": "The square of 1 is 1\nThe square of 2 is 4\nThe square of 3 is 9\nThe square of 4 is 16\nThe square of 5 is 25"
+                        },
+                        {
+                            "sub_section_heading": "while Loops",
+                            "tags": [
+                                "control flow",
+                                "loop",
+                                "while"
+                            ],
+                            "language": "matlab",
+                            "code": "% A while loop repeats a group of statements as long as a condition is true.\n\nn = 1;\nwhile n <= 5\n    disp(['Current number is: ', num2str(n)])\n    n = n + 1; % Important: Increment the counter to avoid an infinite loop\nend",
+                            "output": "Current number is: 1\nCurrent number is: 2\nCurrent number is: 3\nCurrent number is: 4\nCurrent number is: 5"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Switch Statements",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "switch-case Statements",
+                            "tags": [
+                                "control flow",
+                                "switch",
+                                "case",
+                                "conditional"
+                            ],
+                            "language": "matlab",
+                            "code": "% A switch statement is a good alternative to long if-elseif-else chains.\n% It executes a specific block of code based on the value of a variable.\n\ninput_value = 'blue';\n\nswitch input_value\n    case 'red'\n        disp('The color is red.')\n    case 'blue'\n        disp('The color is blue.')\n    case 'green'\n        disp('The color is green.')\n    otherwise\n        disp('Unknown color.')\nend",
+                            "output": "The color is blue."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "MATLAB",
+        "category": "Plotting & Visualization",
+        "title": "2D Plotting & Visualization",
+        "description": "How to create and customize 2D line plots in MATLAB to visualize data effectively.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Basic Plotting",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Creating a Simple 2D Plot",
+                            "tags": [
+                                "plot",
+                                "visualization",
+                                "2d"
+                            ],
+                            "language": "matlab",
+                            "code": "% The `plot(x, y)` function is the primary way to create a 2D plot.\n\n% First, create some data to plot.\nx = 0:0.1:2*pi; % Create an x-vector from 0 to 2*pi\ny = sin(x);     % Create a y-vector\n\nfigure;         % Create a new figure window\nplot(x, y);     % Plot y versus x",
+                            "output": "A plot window appears showing a single sine wave."
+                        },
+                        {
+                            "sub_section_heading": "Adding Labels and a Title",
+                            "tags": [
+                                "plot",
+                                "labels",
+                                "title",
+                                "legend"
+                            ],
+                            "language": "matlab",
+                            "code": "% It is crucial to label your plots for clarity.\nx = linspace(0, 10, 100);\ny = x.^2;\n\nfigure;\nplot(x, y);\n\ntitle('My First Plot');\nxlabel('Time (s)');\nylabel('Velocity (m/s)');\nlegend('Data Series 1');\ngrid on; % Adds a grid to the plot",
+                            "output": "A plot window appears showing a parabola with a title, axis labels, a legend, and a grid."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Customization and Multiple Plots",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Customizing Line Style and Color",
+                            "tags": [
+                                "plot",
+                                "customization",
+                                "line style",
+                                "color"
+                            ],
+                            "language": "matlab",
+                            "code": "% You can specify the line style, color, and marker in the plot command.\n% '--ro' means a dashed red line with circle markers.\nx = 0:0.5:10;\ny = x.^2;\n\nfigure;\nplot(x, y, '--ro'); % Dashed (--), red (r), circle markers (o)\ntitle('Customized Plot');\nxlabel('X-axis');\nylabel('Y-axis');",
+                            "output": "A plot window appears showing a red, dashed line with circle markers."
+                        },
+                        {
+                            "sub_section_heading": "Plotting Multiple Lines (`hold on`)",
+                            "tags": [
+                                "plot",
+                                "multiple plots",
+                                "hold on",
+                                "legend"
+                            ],
+                            "language": "matlab",
+                            "code": "% `hold on` allows you to add new plots to the current figure without erasing existing ones.\nx = 0:0.1:2*pi;\ny1 = sin(x);\ny2 = cos(x);\n\nfigure;\nplot(x, y1, 'b-'); % Plot sin(x) as a solid blue line\nhold on;           % Keep this plot active\nplot(x, y2, 'r--'); % Plot cos(x) as a dashed red line\nhold off;          % Release the hold\n\ntitle('Sine and Cosine Waves');\nxlabel('Radians');\nylabel('Value');\nlegend('sin(x)', 'cos(x)');",
+                            "output": "A plot window appears showing both a sine and a cosine wave on the same axes."
+                        },
+                        {
+                            "sub_section_heading": "Creating Subplots",
+                            "tags": [
+                                "plot",
+                                "subplot",
+                                "multiple plots"
+                            ],
+                            "language": "matlab",
+                            "code": "% `subplot` divides the current figure into a grid of smaller axes.\n% Syntax: subplot(rows, cols, index)\n\nx = 0:0.1:2*pi;\ny1 = sin(x);\ny2 = cos(x);\n\nfigure;\n\n% Create a 2x1 grid, and access the 1st subplot\nsubplot(2, 1, 1);\nplot(x, y1);\ntitle('Top Plot: sin(x)');\n\n% Access the 2nd subplot\nsubplot(2, 1, 2);\nplot(x, y2);\ntitle('Bottom Plot: cos(x)');",
+                            "output": "A plot window appears with two plots stacked vertically: a sine wave on top and a cosine wave on the bottom."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "MATLAB",
+        "category": "Scripts & Functions",
+        "title": "Scripts & Functions",
+        "description": "How to write reusable code in MATLAB by creating script files and defining your own custom functions.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Script Files",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Creating and Running a Script",
+                            "tags": [
+                                "script",
+                                "m-file",
+                                "automation"
+                            ],
+                            "language": "matlab",
+                            "code": "% --- Contents of a file named 'plot_circle.m' ---\n\n% A script is a collection of MATLAB commands that are executed in order.\n% All variables created in a script are added to the main workspace.\n\ndisp('Creating data for a circle...');\nr = 5; % Radius\ntheta = linspace(0, 2*pi, 100);\nx = r * cos(theta);\ny = r * sin(theta);\n\nfigure;\nplot(x, y);\ntitle('A Circle');\naxis equal; % Makes the circle look circular, not oval\ngrid on;",
+                            "output": "To run this, save the code as 'plot_circle.m' and type 'plot_circle' in the Command Window. A plot window will appear."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "User-Defined Functions",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Basic Function Definition",
+                            "tags": [
+                                "function",
+                                "m-file",
+                                "reusability",
+                                "input",
+                                "output"
+                            ],
+                            "language": "matlab",
+                            "code": "% --- Contents of a file named 'calculate_area.m' ---\n\n% A function takes inputs and returns outputs.\n% Its variables are separate from the main workspace (local scope).\n% The file name MUST match the function name.\n\nfunction area = calculate_area(radius)\n    % This function calculates the area of a circle.\n    area = pi * radius^2;\nend",
+                            "output": "In the Command Window, you would call this function like so:\n>> circle_area = calculate_area(5)\n\ncircle_area =\n   78.5398"
+                        },
+                        {
+                            "sub_section_heading": "Functions with Multiple Inputs/Outputs",
+                            "tags": [
+                                "function",
+                                "multiple inputs",
+                                "multiple outputs"
+                            ],
+                            "language": "matlab",
+                            "code": "% --- Contents of a file named 'get_stats.m' ---\n\nfunction [mean_val, std_val] = get_stats(data_vector)\n    % This function returns the mean and standard deviation of a vector.\n    mean_val = mean(data_vector);\n    std_val = std(data_vector);\nend",
+                            "output": "In the Command Window:\n>> my_data = [1 5 2 8 4];\n>> [avg, stdev] = get_stats(my_data)\n\navg =\n     4\n\nstdev =\n    2.7386"
+                        },
+                        {
+                            "sub_section_heading": "Scripts vs. Functions (Workspace)",
+                            "tags": [
+                                "script",
+                                "function",
+                                "workspace",
+                                "scope"
+                            ],
+                            "language": "matlab",
+                            "code": "% --- SCRIPT BEHAVIOR ---\n% In a script, variables are created in the main (base) workspace.\na = 10; % After running the script, 'a' will exist in your workspace.\n\n% --- FUNCTION BEHAVIOR ---\nfunction my_func()\n    b = 20; % 'b' only exists while my_func is running. It is NOT\n            % added to the main workspace.\nend",
+                            "output": "Scripts share the base workspace. Functions have their own private workspaces."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "MATLAB",
+        "category": "Data Handling",
+        "title": "Data Handling: Importing & Saving",
+        "description": "How to import data from external files (like .csv) into MATLAB and how to save your workspace variables to .mat files for later use.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Importing Data from Files",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "readmatrix (For Numeric Data)",
+                            "tags": [
+                                "data handling",
+                                "import",
+                                "readmatrix",
+                                "csv",
+                                "numeric"
+                            ],
+                            "language": "matlab",
+                            "code": "% --- Assume you have a file 'my_numeric_data.csv' with contents: ---\n% 1,2,3\n% 4,5,6\n% 7,8,9\n\n% `readmatrix` is the modern, recommended function for reading numeric data.\ndata = readmatrix('my_numeric_data.csv');",
+                            "output": "data =\n     1     2     3\n     4     5     6\n     7     8     9"
+                        },
+                        {
+                            "sub_section_heading": "readtable (For Mixed Data with Headers)",
+                            "tags": [
+                                "data handling",
+                                "import",
+                                "readtable",
+                                "csv",
+                                "table"
+                            ],
+                            "language": "matlab",
+                            "code": "% --- Assume 'my_patient_data.csv' with contents: ---\n% Name,Age,Height\n% John,34,70\n% Jane,28,65\n\n% `readtable` is best for mixed data types and preserves headers.\n% It creates a 'table' data type.\nT = readtable('my_patient_data.csv');",
+                            "output": "T =\n  3\u00c3\u20143 table\n\n    Name      Age    Height\n    _______    ___    ______\n\n    \"John\"      34      70\n    \"Jane\"      28      65"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Saving and Loading Workspace",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "save - Storing Variables",
+                            "tags": [
+                                "data handling",
+                                "save",
+                                "workspace",
+                                "mat-file"
+                            ],
+                            "language": "matlab",
+                            "code": "% Create some variables in the workspace.\nA = [1 2; 3 4];\nb = 'my string';\n\n% `save` command stores workspace variables into a .mat file.\n% Syntax: save('filename', 'var1', 'var2', ...)\nsave('my_workspace.mat', 'A', 'b');\n\n% If you don't specify variables, it saves the entire workspace.\nsave('full_workspace.mat');",
+                            "output": "Creates files named 'my_workspace.mat' and 'full_workspace.mat' in the current folder."
+                        },
+                        {
+                            "sub_section_heading": "load - Retrieving Variables",
+                            "tags": [
+                                "data handling",
+                                "load",
+                                "workspace",
+                                "mat-file",
+                                "clear"
+                            ],
+                            "language": "matlab",
+                            "code": "% First, let's clear the workspace to simulate a new session.\nclear\n\n% `load` brings variables from a .mat file back into the workspace.\nload('my_workspace.mat');\n\n% Now, the variables A and b exist again.\nwhos % Display variables in the workspace",
+                            "output": "  Name      Size            Bytes  Class     Attributes\n\n  A         2x2                32  double              \n  b         1x9                18  char"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "MATLAB",
+        "category": "Advanced MATLAB",
+        "title": "Advanced Data Types: `cell` & `struct`",
+        "description": "How to store and organize complex or mixed data using cell arrays and structures (structs).",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Cell Arrays",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Creating a Cell Array",
+                            "tags": [
+                                "advanced",
+                                "cell array",
+                                "cell",
+                                "mixed data"
+                            ],
+                            "language": "matlab",
+                            "code": "% A cell array is an array where each element (cell) can hold any type of data.\n% They are created using curly braces {}.\n\nC = { ...\n    'some text', ...           % A char array\n    [1 2 3; 4 5 6], ...      % A 2x3 double matrix\n    true, ...                % A logical\n    {'another', 'cell'} ...  % Another cell array\n};",
+                            "output": "C =\n  1\u00c3\u20144 cell array\n    {1\u00c3\u20149 char}    {2\u00c3\u20143 double}    {1\u00c3\u20141 logical}    {1\u00c3\u20142 cell}"
+                        },
+                        {
+                            "sub_section_heading": "Accessing Cell Array Data",
+                            "tags": [
+                                "advanced",
+                                "cell array",
+                                "indexing",
+                                "curly braces"
+                            ],
+                            "language": "matlab",
+                            "code": "C = {'hello', [1 2 3], true};\n\n% Use curly braces {} for CONTENT indexing (gets the data INSIDE the cell).\ndata_inside = C{2}\n\n% Use parentheses () for CELL indexing (gets the cell ITSELF).\ncell_container = C(2)",
+                            "output": "data_inside =\n     1     2     3\n\ncell_container =\n  1\u00c3\u20141 cell array\n    {1\u00c3\u20143 double}"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Structures (structs)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Creating a Struct",
+                            "tags": [
+                                "advanced",
+                                "struct",
+                                "structure",
+                                "dot notation"
+                            ],
+                            "language": "matlab",
+                            "code": "% A struct groups related data together using named 'fields'.\n% Use dot notation to create fields and assign data.\n\npatient.name = 'John Doe';\npatient.age = 35;\npatient.vitals = [72, 120, 98.6];\n\n% Display the struct\npatient",
+                            "output": "patient =\n  struct with fields:\n\n      name: 'John Doe'\n       age: 35\n    vitals: [72 120 98.6000]"
+                        },
+                        {
+                            "sub_section_heading": "Creating an Array of Structs",
+                            "tags": [
+                                "advanced",
+                                "struct",
+                                "struct array",
+                                "database"
+                            ],
+                            "language": "matlab",
+                            "code": "% You can create an array where each element is a struct.\n% All structs in an array must have the same field names.\n\nstudents(1).name = 'Alice';\nstudents(1).id = 101;\n\nstudents(2).name = 'Bob';\nstudents(2).id = 102;\n\n% Access data from the array\nsecond_student_name = students(2).name",
+                            "output": "second_student_name =\n    'Bob'"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "MATLAB",
+        "category": "Advanced MATLAB",
+        "title": "3D Plotting & Advanced Visualization",
+        "description": "How to create 3D line plots, surfaces, and meshes to visualize data in three dimensions.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "3D Line Plots",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "plot3 - Lines in 3D Space",
+                            "tags": [
+                                "advanced",
+                                "plot",
+                                "3d",
+                                "plot3",
+                                "visualization"
+                            ],
+                            "language": "matlab",
+                            "code": "% `plot3` is the 3D equivalent of `plot`. It takes x, y, and z vectors.\n\n% Create data for a helical spiral\nt = 0:pi/50:10*pi;\nx = sin(t);\ny = cos(t);\nz = t;\n\nfigure;\nplot3(x, y, z, 'r', 'LineWidth', 2); % Plot a red line with width 2\n\ntitle('3D Helix Plot');\nxlabel('X-axis');\nylabel('Y-axis');\nzlabel('Z-axis');\ngrid on;",
+                            "output": "A plot window appears showing a 3D helical spiral."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Surface and Mesh Plots",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "meshgrid - Creating a 2D Grid",
+                            "tags": [
+                                "advanced",
+                                "3d",
+                                "meshgrid",
+                                "surface"
+                            ],
+                            "language": "matlab",
+                            "code": "% To plot a function z = f(x, y), you first need to create a grid of (X, Y) points.\n% `meshgrid` is the standard way to do this.\n\n[X, Y] = meshgrid(-8:0.5:8); % Create X and Y grids from -8 to 8\n\n% Now, calculate the Z value for each point on the grid\nR = sqrt(X.^2 + Y.^2) + eps; % eps avoids division by zero\nZ = sin(R) ./ R; % The 'sinc' function",
+                            "output": "Creates 2D grid matrices X, Y, and a corresponding Z matrix for a surface plot."
+                        },
+                        {
+                            "sub_section_heading": "surf - Creating a 3D Surface Plot",
+                            "tags": [
+                                "advanced",
+                                "3d",
+                                "surf",
+                                "surface",
+                                "visualization"
+                            ],
+                            "language": "matlab",
+                            "code": "% `surf` creates a 3D surface plot with solid, colored faces.\n\n[X, Y] = meshgrid(-8:0.5:8);\nR = sqrt(X.^2 + Y.^2) + eps;\nZ = sin(R) ./ R;\n\nfigure;\nsurf(X, Y, Z);\ntitle('3D Surface Plot of sinc Function');\nxlabel('X');\nylabel('Y');\nzlabel('Z');",
+                            "output": "A plot window appears showing a colored 3D surface with peaks and valleys."
+                        },
+                        {
+                            "sub_section_heading": "mesh - Creating a 3D Mesh Plot",
+                            "tags": [
+                                "advanced",
+                                "3d",
+                                "mesh",
+                                "wireframe",
+                                "visualization"
+                            ],
+                            "language": "matlab",
+                            "code": "% `mesh` is similar to `surf`, but it creates a wireframe plot.\n\n[X, Y] = meshgrid(-8:0.5:8);\nR = sqrt(X.^2 + Y.^2) + eps;\nZ = sin(R) ./ R;\n\nfigure;\nmesh(X, Y, Z);\ntitle('3D Mesh Plot of sinc Function');",
+                            "output": "A plot window appears showing a wireframe mesh of the sinc function surface."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Plot Customization",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Colormaps and Color Bars",
+                            "tags": [
+                                "advanced",
+                                "3d",
+                                "colormap",
+                                "colorbar",
+                                "customization"
+                            ],
+                            "language": "matlab",
+                            "code": "% `colormap` changes the color scheme of a surface plot.\n% `colorbar` displays a scale showing the data-to-color mapping.\n\n[X, Y, Z] = peaks(25); % Use a built-in sample dataset\n\nfigure;\nsurf(X, Y, Z);\n\ntitle('Surface Plot with Custom Colormap');\ncolormap(hot);  % Use the 'hot' colormap (black-red-yellow-white)\ncolorbar;       % Display the color scale bar",
+                            "output": "A plot window appears showing the 'peaks' dataset with a 'hot' color scheme and a color bar."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "MATLAB",
+        "category": "Advanced MATLAB",
+        "title": "Code Performance & Vectorization",
+        "description": "Essential techniques for writing fast and efficient MATLAB code by avoiding slow loops (vectorization) and pre-allocating arrays.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Vectorization: Replacing Loops with Array Operations",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Slow Loop vs. Fast Vectorization",
+                            "tags": [
+                                "advanced",
+                                "performance",
+                                "vectorization",
+                                "loops",
+                                "tic toc"
+                            ],
+                            "language": "matlab",
+                            "code": "% Vectorization is the process of replacing for-loops with equivalent matrix/vector operations.\n% MATLAB is highly optimized for vector and matrix operations.\n\nx = rand(1, 10000000); % Create a large vector\ny = zeros(size(x));\n\n% --- Method 1: Slow for-loop ---\ntic; % Start timer\nfor i = 1:length(x)\n    if x(i) > 0.5\n        y(i) = x(i)^2;\n    end\nend\ntoc; % Stop timer\n\n% --- Method 2: Fast Vectorization ---\ntic; % Start timer\nlogical_indices = x > 0.5; % Create a logical index array\ny(logical_indices) = x(logical_indices).^2;\ntoc; % Stop timer",
+                            "output": "Elapsed time is 0.213456 seconds.\nElapsed time is 0.045678 seconds.\n(Note: Actual times will vary, but the vectorized version will be significantly faster.)"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Pre-allocation: Avoiding Dynamic Array Growth",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Slow Growth vs. Fast Pre-allocation",
+                            "tags": [
+                                "advanced",
+                                "performance",
+                                "preallocation",
+                                "memory",
+                                "zeros"
+                            ],
+                            "language": "matlab",
+                            "code": "% Pre-allocation involves creating a full-sized array before a loop to avoid resizing it on each iteration.\n\nn = 50000;\n\n% --- Method 1: Slow (growing the array in a loop) ---\ntic;\ndata1 = []; % Start with an empty array\nfor i = 1:n\n    data1(i) = i;\nend\ntoc;\n\n% --- Method 2: Fast (pre-allocating with zeros) ---\ntic;\ndata2 = zeros(1, n); % Pre-allocate the final size\nfor i = 1:n\n    data2(i) = i;\nend\ntoc;",
+                            "output": "Elapsed time is 0.587654 seconds.\nElapsed time is 0.001234 seconds.\n(Note: The performance gain from pre-allocation is often dramatic.)"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "MATLAB",
+        "category": "Advanced MATLAB",
+        "title": "Object-Oriented Programming (OOP)",
+        "description": "How to define and use custom classes in MATLAB to create modular and reusable objects with their own data (properties) and functions (methods).",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Defining a Class (`classdef`)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Basic Class Structure",
+                            "tags": [
+                                "advanced",
+                                "oop",
+                                "class",
+                                "classdef",
+                                "properties",
+                                "methods"
+                            ],
+                            "language": "matlab",
+                            "code": "% --- Contents of a file named 'BasicRobot.m' ---\n\nclassdef BasicRobot\n    % A simple class to represent a robot.\n    \n    properties\n        % Properties are the data associated with an object.\n        Name string\n        Position (1,2) double = [0, 0] % A 1x2 array with a default value\n    end\n    \n    methods\n        % Methods are functions that belong to the class.\n        \n        % --- Constructor Method ---\n        function obj = BasicRobot(robotName)\n            % The constructor creates an instance of the object.\n            % Its name must match the class name.\n            obj.Name = robotName;\n        end\n        \n        % --- Regular Method ---\n        function move(obj, distance)\n            % This method modifies the object's properties.\n            obj.Position(1) = obj.Position(1) + distance;\n            disp([obj.Name, ' moved to new position: ' num2str(obj.Position(1))]);\n        end\n    end\nend",
+                            "output": "This code defines a class. To use it, save it in a file named 'BasicRobot.m'."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Using a Custom Class",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Creating and Using an Object",
+                            "tags": [
+                                "advanced",
+                                "oop",
+                                "class",
+                                "object",
+                                "instance"
+                            ],
+                            "language": "matlab",
+                            "code": "% Once the class is defined in its .m file, you can create objects from it.\n\n% Create an instance of the BasicRobot class\nr1 = BasicRobot(\"RoboUnit-01\");\n\n% Access a property\ndisp(['Created robot named: ', r1.Name]);\n\n% Call a method\nr1.move(10); % The object 'r1' is passed automatically as the 'obj' argument\nr1.move(5);",
+                            "output": "Created robot named: RoboUnit-01\nRoboUnit-01 moved to new position: 10\nRoboUnit-01 moved to new position: 15"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+]
