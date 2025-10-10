@@ -53,7 +53,7 @@ p {
     background-color: var(--border-color);
     height: 1px;
     border: none;
-    margin: 3rem 0;
+    margin: 1.5rem 0;
 }
 
 /* ========================================= */
@@ -667,9 +667,9 @@ pre code {
     width: 100%;
     max-width: 500px;
     height: auto;
-    border-radius: 12px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-    border: 1px solid rgba(76, 72, 98, 0.6);
+    /* border-radius: 12px; */
+    /* box-shadow: 0 15px 30px rgba(0,0,0,0.4); */
+    /* border: 1px solid rgba(76, 72, 98, 0.6); */
     pointer-events: none;
 }
 
@@ -1200,7 +1200,7 @@ pre code {
     background-color: var(--primary-bg);
     border-top: 1px solid var(--border-color);
     /* padding: 1.5rem 0; */
-    margin-top: 4rem;
+    margin-top: 2rem;
 }
 
 .footer-content-simple {
@@ -1946,4 +1946,50 @@ input[type="file"]::file-selector-button:hover {
         width: 16px !important;
         height: 16px !important;
     }
+}
+
+
+/* -- Contributor Section Styles -- */
+.contributor-section {
+    margin-top: 1rem;
+}
+
+.contributor-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: rgba(44, 40, 66, 0.5);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    max-width: 400px; /* Or remove for full-width */
+    margin: auto;
+}
+
+.contributor-card .profile-picture {
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+}
+
+.contributor-name {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.4rem;
+    color: var(--text-primary);
+}
+
+.contributor-info .social-link {
+    font-size: 0.9rem;
+}
+
+.contributor-section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-align: center;
+    /* margin-bottom: 3rem; */
+    position: relative;
+}
+
+.contributor-link {
+    text-decoration: none;
 }

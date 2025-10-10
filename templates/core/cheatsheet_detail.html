@@ -38,4 +38,23 @@
         {% endfor %}
     {% endfor %}
 </div>
+<hr class="separator">
+<div class="contributor-section">
+    <h2 class="contributor-section-title" style="margin-left: 2rem; text-align: left; font-size: 1.8rem;">Contributor</h2>
+    <a href="{% url 'profile' cheatsheet.author.username %}" class="contributor-link">
+        <div class="contributor-card">
+            <img class="profile-picture" src="{{ cheatsheet.author.profile.avatar_url }}" alt="{{ cheatsheet.author.username }}'s profile picture">
+            <div class="contributor-info" style="color: #8C52FF;">
+                <h3 class="contributor-name">{{ cheatsheet.author.get_full_name|default:cheatsheet.author.username }}</h3>
+                {% if cheatsheet.author.profile.github_url %}
+                    <a href="{{ cheatsheet.author.profile.github_url }}" class="social-link" target="_blank" rel="noopener noreferrer">View GitHub</a>
+                {% endif %}
+                |
+                {% if cheatsheet.author.profile.linkedin_url %}
+                    <a href="{{ cheatsheet.author.profile.linkedin_url }}" class="social-link" target="_blank" rel="noopener noreferrer">View LinkedIn</a>
+                {% endif %}
+            </div>
+        </div>
+    </a>
+</div>
 {% endblock %}

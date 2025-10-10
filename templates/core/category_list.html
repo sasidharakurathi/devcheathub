@@ -8,8 +8,7 @@
 <section class="hero-section">
     <div class="container hero-content">
         <div class="hero-text">
-            <p class="hero-intro stagger-visual">Introducing DevCheatHub</p>
-            <h1 class="hero-headline stagger-visual">The Developer's <br>Ultimate Reference</h1>
+            <h1 class="hero-headline stagger-visual" style="color: #8C52FF;">The Developer's <br>Ultimate Reference</h1>
             <p class="hero-tagline stagger-visual">Find any command, snippet, or concept in milliseconds. Optimized for quick lookups and learning.</p>
             <div class="hero-cta-buttons stagger-visual">
                 {% if not user.is_authenticated %}
@@ -19,10 +18,7 @@
             </div>
         </div>
         <div class="hero-graphic stagger-visual">
-            <video autoplay loop muted playsinline class="hero-video">
-                <source src="{% static 'videos/hero-animation.mp4' %}" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+            <img src="https://res.cloudinary.com/dmphcbabx/image/upload/v1760099771/white_on_trans_nisblr.png" alt="logo" class="hero-video">
         </div>
     </div>
 </section>
@@ -39,7 +35,6 @@
                             <img src="{{ category.icon.url }}" alt="{{ category.name }} logo" class="card-icon">
                         {% endif %}
                         <h3 class="card-title">{{ category.name }}</h3>
-                        {% comment %} <p class="card-count">{{ category.cheatsheets.count }} Cheatsheet{{ category.cheatsheets.count|pluralize }}</p> {% endcomment %}
                     </div>
                 </a>
             {% empty %}

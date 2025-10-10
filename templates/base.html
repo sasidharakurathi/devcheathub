@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}DevCheatHub{% endblock %}</title>
 
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
@@ -35,7 +37,7 @@
                     </button>
                     <div class="nav-auth">
                         {% if user.is_authenticated %}
-                            <a href="{% url 'profile' %}" class="welcome-text">Hello, {{ user.username }}</a>
+                            <a href="{% url 'profile' user.username %}" class="welcome-text">Hello, {{ user.username }}</a>
                             <form action="{% url 'logout' %}" method="post" style="display: inline;">
                                 {% csrf_token %}
                                 <button type="submit" class="btn btn-secondary">Logout</button>
