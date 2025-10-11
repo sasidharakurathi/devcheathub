@@ -35,7 +35,7 @@ def category_detail(request, category_slug):
         return render(request, 'core/subcategory_list.html', context)
     else:
         # Get all cheatsheets for the category first
-        cheatsheet_list = CheatSheet.objects.filter(category=category, status='APPROVED')
+        cheatsheet_list = CheatSheet.objects.filter(category=category, status='APPROVED').order_by('id')
         
         # Create a Paginator object
         paginator = Paginator(cheatsheet_list, 10) # Show 10 cheatsheets per page
@@ -66,7 +66,7 @@ def search_results(request):
         result_list = CheatSheet.objects.filter(
             Q(status='APPROVED') & 
             (Q(title__icontains=query) | Q(description__icontains=query) | Q(content__icontains=query))
-        )
+        ).order_by('id')
     else:
         result_list = []
 
@@ -124,7 +124,7 @@ def contribute(request):
                             description=item.get('description', ''),
                             content=item.get('content', {}),
                             status='PENDING'
-                        )
+                        ).order_by('id')
                 
                 messages.success(request, f'Thank you! Your submission of {len(data_list)} cheatsheet(s) is awaiting review.')
                 return redirect('category_list')
@@ -160,7 +160,7 @@ def live_search(request):
         search_results = CheatSheet.objects.filter(
             Q(status='APPROVED') & 
             (Q(title__icontains=query) | Q(description__icontains=query) | Q(content__icontains=query))
-        ).select_related('category')[:15]
+        ).order_by('id').select_related('category')[:15]
 
         for result in search_results:
             # Get sections and tags from the new model method
