@@ -25,10 +25,9 @@
 
 * **Backend:** Django
 * **Database:** MySQL
-* **Frontend:** Django Templates, Tailwind CSS
-* **Interactivity:** Alpine.js, HTMX
+* **Frontend:** Django Templates, CSS, JavaScript, JQuery
 * **Animations:** Anime.js
-* **Hosting:** Railway.app (or similar)
+* **Hosting:** Railway.app
 
 ---
 
