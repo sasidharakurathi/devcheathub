@@ -1,0 +1,1848 @@
+[
+    {
+        "parent_category": "DSA",
+        "category": "DSA Basics",
+        "title": "Introduction to DSA",
+        "description": "An overview of what Data Structures and Algorithms (DSA) are, their importance in programming, and the basics of time/space complexity and Big O notation.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "What is DSA?",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Core Definitions",
+                            "tags": [
+                                "dsa",
+                                "data structures",
+                                "algorithms",
+                                "definition"
+                            ],
+                            "language": "text",
+                            "code": "- DSA = Data Structures + Algorithms.\n- Data Structures are like containers to hold data. Imagine your data is like fruits, and data structures are baskets or boxes to keep those fruits organized.\n- Examples of data structures: Arrays, Linked Lists, Stacks, Queues, Trees, etc.\n- Algorithms are the step-by-step instructions or recipes you follow to solve a problem using data structures.\n- Example: To find a fruit in your basket, you might look through it one by one or sort the fruits first to find it quickly. That's an algorithm!\n- Why use DSA? Because it helps computers solve problems faster and use less memory.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Why is DSA important in programming and interviews?",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Practical Importance",
+                            "tags": [
+                                "dsa",
+                                "interviews",
+                                "programming",
+                                "efficiency"
+                            ],
+                            "language": "text",
+                            "code": "- When companies hire programmers, they want to see if you can solve problems efficiently.\n- Knowing DSA helps you solve tricky problems quickly.\n- Many tech interviews ask questions based on DSA, so it's a must-know skill.\n- Good knowledge of DSA also helps you build better apps and games that run faster.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Time and Space Complexity Basics",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Measuring Efficiency",
+                            "tags": [
+                                "dsa",
+                                "complexity",
+                                "time complexity",
+                                "space complexity",
+                                "performance"
+                            ],
+                            "language": "text",
+                            "code": "- When you write a program, you want it to run fast (time) and use less memory (space).\n- Time complexity tells us how the running time of a program changes when the input size grows.\n- Space complexity tells us how much extra memory the program uses.\n- For example, if your program takes 1 second for 10 inputs, it might take 10 seconds for 100 inputs (linear growth, called O(n)).",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Big O Notation Explained",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Understanding Asymptotic Analysis",
+                            "tags": [
+                                "dsa",
+                                "big o",
+                                "notation",
+                                "complexity",
+                                "worst-case"
+                            ],
+                            "language": "text",
+                            "code": "- Big O notation is a way to describe how fast or slow an algorithm is.\n- It tells us the worst-case scenario \u2014 the longest time or most space your program might need.\n\nExamples:\n- O(1): Instant! The program takes the same time no matter how big the input is.\n- O(n): Time grows linearly as input grows.\n- O(n^2): Time grows much faster as input grows (like nested loops).\n- O(log n): Very efficient, grows slowly (like binary search).",
+                            "output": null
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "DSA",
+        "category": "DSA Basics",
+        "title": "Mathematics for DSA",
+        "description": "An overview of essential mathematical concepts frequently used in DSA, including prime numbers, GCD/LCM, modular arithmetic, fast exponentiation, and bit manipulation.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Prime Numbers",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Definition and Method",
+                            "tags": [
+                                "dsa",
+                                "math",
+                                "prime numbers",
+                                "algorithms"
+                            ],
+                            "language": "text",
+                            "code": "- Prime numbers are numbers greater than 1 that only divide evenly by 1 and themselves.\n- Examples: 2, 3, 5, 7, 11\n- To check if a number is prime, try dividing it by every number from 2 up to its square root. If any divides evenly, it's not prime.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "GCD and LCM (Euclidean Algorithm)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Definitions and Algorithm",
+                            "tags": [
+                                "dsa",
+                                "math",
+                                "gcd",
+                                "lcm",
+                                "euclidean algorithm"
+                            ],
+                            "language": "text",
+                            "code": "- GCD (Greatest Common Divisor): The biggest number that divides two numbers without a remainder.\n- LCM (Least Common Multiple): The smallest number divisible by two numbers.\n- Euclidean Algorithm is a fast way to find GCD: Keep dividing the bigger number by the smaller one and replacing the numbers, until the remainder is 0. The last non-zero remainder is the GCD.",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "LCM Formula",
+                            "tags": [
+                                "dsa",
+                                "math",
+                                "lcm",
+                                "gcd",
+                                "formula"
+                            ],
+                            "language": "text",
+                            "code": "LCM(a, b) = (a * b) / GCD(a, b)",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Modular Arithmetic",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Concept and Example",
+                            "tags": [
+                                "dsa",
+                                "math",
+                                "modular arithmetic",
+                                "mod"
+                            ],
+                            "language": "text",
+                            "code": "- Imagine a clock \u2014 after 12 hours, it resets to 1. Modular arithmetic works the same way, \"wrapping around\" numbers.\n- It's useful to keep numbers small in big calculations (like in coding contests).\n- Example: (8 + 7) mod 5 = 15 mod 5 = 0.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Sieve of Eratosthenes",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Algorithm to Find Primes",
+                            "tags": [
+                                "dsa",
+                                "math",
+                                "sieve of eratosthenes",
+                                "prime numbers",
+                                "algorithms"
+                            ],
+                            "language": "text",
+                            "code": "- A method to find all prime numbers up to a number 'n' quickly.\n- How it works:\n  - Start with a list of all numbers from 2 to n, marked as prime.\n  - Start with 2, remove all its multiples.\n  - Move to the next number still marked prime and remove its multiples.\n  - Continue until you reach the square root of n.\n  - At the end, the numbers still marked prime are the primes.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Fast Exponentiation",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Divide and Conquer Approach",
+                            "tags": [
+                                "dsa",
+                                "math",
+                                "fast exponentiation",
+                                "divide and conquer",
+                                "logarithmic"
+                            ],
+                            "language": "text",
+                            "code": "- Calculating 'a^b' by doing 'a * a * ...' b times takes a long time.\n- Fast exponentiation reduces the steps by using:\n  - If b is even, 'a^b = (a^(b/2)) * (a^(b/2))'\n  - If b is odd, 'a^b = a * (a^(b-1))'\n- This method uses divide and conquer to calculate power in 'O(log b)' steps.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Bit Manipulation Basics",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Core Concept and Operations",
+                            "tags": [
+                                "dsa",
+                                "math",
+                                "bit manipulation",
+                                "bitwise",
+                                "and",
+                                "or",
+                                "xor",
+                                "not"
+                            ],
+                            "language": "text",
+                            "code": "- Computers work in bits (0s and 1s). Bit manipulation means changing or checking individual bits for quick math or logic.\n- Important bit operations:\n  - AND (&): Both bits 1 -> 1, else 0\n  - OR (|): At least one bit 1 -> 1\n  - XOR (^): Bits different -> 1, else 0\n  - NOT (~): Flip bits (0 -> 1, 1 -> 0)\n  - Left shift (<<): Multiply by 2\n  - Right shift (>>): Divide by 2\n- Example: Check if a number is even or odd by `num & 1` (1 means odd).",
+                            "output": null
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "DSA",
+        "category": "Data Structures",
+        "title": "Arrays",
+        "description": "An overview of arrays, including basic operations, common techniques like prefix sums, sliding window, two pointers, and sorting algorithms.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Introduction to Arrays",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Core Concepts",
+                            "tags": [
+                                "dsa",
+                                "arrays",
+                                "data structures",
+                                "indexing"
+                            ],
+                            "language": "text",
+                            "code": "- An array is a collection of items stored next to each other in memory.\n- You can access each item using its index (starting from 0).\n- Example: In `arr = [10, 20, 30, 40]`, `arr[2]` is 30.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Traversal, Insertion, Deletion",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Basic Operations",
+                            "tags": [
+                                "dsa",
+                                "arrays",
+                                "traversal",
+                                "insertion",
+                                "deletion",
+                                "complexity"
+                            ],
+                            "language": "text",
+                            "code": "- Traversal: Going through each element one by one.\n- Insertion: Adding an element at a position.\n- Deletion: Removing an element from a position.\n- In arrays, insertion and deletion in the middle require shifting elements, which takes 'O(n)' time.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Prefix Sum & Sliding Window",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Prefix Sum",
+                            "tags": [
+                                "dsa",
+                                "arrays",
+                                "prefix sum",
+                                "subarray"
+                            ],
+                            "language": "text",
+                            "code": "- Prefix Sum: Pre-calculated sums from the start up to each position.\n- Helps find the sum of any subarray quickly.\n- Example: If prefix sums are `[2, 5, 9, 14]`, the sum from index 1 to 3 is `14 - 2 = 12`.",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "Sliding Window",
+                            "tags": [
+                                "dsa",
+                                "arrays",
+                                "sliding window",
+                                "subarray",
+                                "technique"
+                            ],
+                            "language": "text",
+                            "code": "- Sliding Window: A technique to find results over a continuous window of a fixed size `k`.\n- Instead of summing all elements each time, you update the sum by removing the leftmost element and adding the rightmost element.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Two Pointer Technique",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Core Concept",
+                            "tags": [
+                                "dsa",
+                                "arrays",
+                                "two pointers",
+                                "technique"
+                            ],
+                            "language": "text",
+                            "code": "- Use two pointers (indexes) moving through the array.\n- Useful for sorted arrays to find pairs or subarrays.\n- Move pointers based on a condition to reach the solution faster.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Kadane's Algorithm (Max Subarray Sum)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Algorithm",
+                            "tags": [
+                                "dsa",
+                                "arrays",
+                                "kadane's algorithm",
+                                "subarray",
+                                "dynamic programming"
+                            ],
+                            "language": "text",
+                            "code": "- Purpose: Find the contiguous subarray with the maximum sum.\n- Method: Keep track of the current subarray sum and the maximum sum found so far.\n- If the current sum becomes negative, reset it to zero (effectively starting a new subarray).",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Sorting Techniques",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Overview of Sorting",
+                            "tags": [
+                                "dsa",
+                                "arrays",
+                                "sorting",
+                                "bubble sort",
+                                "selection sort",
+                                "insertion sort",
+                                "merge sort"
+                            ],
+                            "language": "text",
+                            "code": "- Sorting means arranging numbers in order (ascending or descending).\n- Some simple sorting methods:\n  - Bubble Sort: Compare neighbors, swap if out of order. Repeat.\n  - Selection Sort: Find the smallest item and place it at the start.\n  - Insertion Sort: Build a sorted array by inserting one element at a time.\n- Faster, advanced sorting methods:\n  - Merge Sort: Divide the array into halves, sort each half, then merge them.",
+                            "output": null
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "DSA",
+        "category": "Data Structures",
+        "title": "Strings",
+        "description": "An overview of string operations, common problems like palindrome and anagram checks, and various string matching algorithms including Naive, KMP, Rabin-Karp, Z-Algorithm, and Manacher's Algorithm.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "String Basics and Operations",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Core Concepts",
+                            "tags": [
+                                "dsa",
+                                "strings",
+                                "basics",
+                                "operations"
+                            ],
+                            "language": "text",
+                            "code": "- A string is a sequence of characters, like \"hello\" or \"123abc\".\n- Strings are stored as arrays of characters.\n- Basic operations:\n  - Access characters by index: `str[0] = 'h'`\n  - Concatenate strings: `\"hello\" + \" world\" = \"hello world\"`\n  - Length gives the number of characters.\n  - Substring extracts part of a string.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Palindrome Check",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "How to Check",
+                            "tags": [
+                                "dsa",
+                                "strings",
+                                "palindrome",
+                                "two pointers"
+                            ],
+                            "language": "text",
+                            "code": "- A palindrome reads the same forwards and backwards (e.g., \"madam\", \"racecar\").\n- How to check: Compare characters from the start and end, moving towards the center. If all pairs match, it's a palindrome.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Anagram Check",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "How to Check",
+                            "tags": [
+                                "dsa",
+                                "strings",
+                                "anagram",
+                                "sorting",
+                                "hashing"
+                            ],
+                            "language": "text",
+                            "code": "- Two strings are anagrams if they have the same letters in any order (e.g., \"listen\" and \"silent\").\n- How to check:\n  - Sort both strings and compare.\n  - Or count character frequency and compare the counts.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "String Matching Algorithms",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Overview",
+                            "tags": [
+                                "dsa",
+                                "strings",
+                                "pattern matching",
+                                "naive",
+                                "kmp",
+                                "rabin-karp"
+                            ],
+                            "language": "text",
+                            "code": "- These algorithms find if a pattern exists inside a text.\n- Naive algorithm: Check every position in the text if the pattern matches. Simple but slow for big data ('O(n*m)').\n- KMP (Knuth-Morris-Pratt): Faster ('O(n+m)'). Uses a prefix table to avoid repeating comparisons.\n- Rabin-Karp: Uses hashing to find patterns quickly. Good for multiple pattern searching.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Pattern Matching",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Applications",
+                            "tags": [
+                                "dsa",
+                                "strings",
+                                "pattern matching",
+                                "applications"
+                            ],
+                            "language": "text",
+                            "code": "- Finding occurrences of a pattern in text.\n- Uses the algorithms mentioned above to efficiently locate patterns.\n- Useful in search engines, plagiarism detection, and DNA sequencing.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Z-Algorithm",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Core Concept",
+                            "tags": [
+                                "dsa",
+                                "strings",
+                                "z-algorithm",
+                                "pattern matching"
+                            ],
+                            "language": "text",
+                            "code": "- Calculates an array (Z-array) which tells how many characters from a position match the prefix of the string.\n- Helps in pattern searching and string problems.\n- Runs in 'O(n)' time.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Manacher's Algorithm (Advanced)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Longest Palindromic Substring",
+                            "tags": [
+                                "dsa",
+                                "strings",
+                                "manacher's algorithm",
+                                "palindrome",
+                                "advanced"
+                            ],
+                            "language": "text",
+                            "code": "- Finds the longest palindromic substring in a string efficiently.\n- Runs in 'O(n)' time (much faster than checking all substrings).\n- Complex but useful in advanced string problems.",
+                            "output": null
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "DSA",
+        "category": "Data Structures",
+        "title": "Linked Lists",
+        "description": "An overview of different types of linked lists (Singly, Doubly, Circular), common operations, and algorithms like cycle detection and merging.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Singly Linked List",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Core Concepts",
+                            "tags": [
+                                "dsa",
+                                "linked list",
+                                "singly",
+                                "node",
+                                "pointer"
+                            ],
+                            "language": "text",
+                            "code": "- A linked list is a chain of nodes.\n- Each node has data and a pointer to the next node.\n- Singly linked list means each node points only to the next node.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Doubly Linked List",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Core Concepts",
+                            "tags": [
+                                "dsa",
+                                "linked list",
+                                "doubly",
+                                "node",
+                                "pointer"
+                            ],
+                            "language": "text",
+                            "code": "- Each node has a pointer to the next and previous nodes.\n- Can move forward and backward easily.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Circular Linked List",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Core Concepts",
+                            "tags": [
+                                "dsa",
+                                "linked list",
+                                "circular",
+                                "round-robin"
+                            ],
+                            "language": "text",
+                            "code": "- The last node points back to the head node.\n- Can be singly or doubly linked.\n- Useful for applications like round-robin scheduling.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Operations: Insert, Delete, Reverse",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Common Operations",
+                            "tags": [
+                                "dsa",
+                                "linked list",
+                                "operations",
+                                "insert",
+                                "delete",
+                                "reverse"
+                            ],
+                            "language": "text",
+                            "code": "- Insert: Add a node at the beginning, end, or middle.\n- Delete: Remove a node by value or position.\n- Reverse: Change pointers so the list order reverses.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Detect Cycle (Floyd's Algorithm)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Tortoise and Hare Technique",
+                            "tags": [
+                                "dsa",
+                                "linked list",
+                                "cycle detection",
+                                "floyd's algorithm",
+                                "tortoise and hare"
+                            ],
+                            "language": "text",
+                            "code": "- Sometimes a linked list has a cycle (loop).\n- Floyd's Cycle Detection (Tortoise and Hare):\n  - Use two pointers moving at different speeds.\n  - If they meet, a cycle exists.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Intersection Point, Merge Two Lists",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Common Problems",
+                            "tags": [
+                                "dsa",
+                                "linked list",
+                                "intersection",
+                                "merge"
+                            ],
+                            "language": "text",
+                            "code": "- Intersection point: Find the node where two linked lists merge.\n  - Can be found by comparing nodes or using the difference in lengths.\n- Merge two sorted lists: Combine into one sorted list by comparing nodes one by one.",
+                            "output": null
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "DSA",
+        "category": "Data Structures",
+        "title": "Stacks",
+        "description": "An overview of the Stack data structure, its operations (push/pop), and common applications like expression conversion, valid parentheses, next greater element, and min stack.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Stack Basics",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "LIFO Principle",
+                            "tags": [
+                                "dsa",
+                                "stack",
+                                "lifo",
+                                "basics"
+                            ],
+                            "language": "text",
+                            "code": "- Stack is a Last In, First Out (LIFO) data structure.\n- Imagine a stack of books: the last book you put on top is the first one you take off.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Push/Pop Operations",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Core Operations",
+                            "tags": [
+                                "dsa",
+                                "stack",
+                                "push",
+                                "pop",
+                                "operations",
+                                "complexity"
+                            ],
+                            "language": "text",
+                            "code": "- Push: Add element on top of the stack.\n- Pop: Remove element from the top of the stack.\n- Both operations run in O(1) time.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Infix to Postfix/Prefix Conversion",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Expression Conversion",
+                            "tags": [
+                                "dsa",
+                                "stack",
+                                "infix",
+                                "postfix",
+                                "prefix",
+                                "expression"
+                            ],
+                            "language": "text",
+                            "code": "- Infix expression: Operators between operands (e.g., A + B).\n- Postfix expression: Operators after operands (e.g., A B +).\n- Prefix expression: Operators before operands (e.g., + A B).\n- Why convert? It's easier to evaluate postfix or prefix expressions programmatically.\n- How stacks help: Use a stack to hold operators and decide their order based on precedence.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Valid Parentheses",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "How to Check",
+                            "tags": [
+                                "dsa",
+                                "stack",
+                                "valid parentheses",
+                                "problem"
+                            ],
+                            "language": "text",
+                            "code": "- Check if every opening bracket has a matching closing bracket in the correct order.\n- How to check:\n  - Traverse the string.\n  - Push opening brackets onto the stack.\n  - When a closing bracket is found, pop the stack and check if it matches the type.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Next Greater Element",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "How to do efficiently?",
+                            "tags": [
+                                "dsa",
+                                "stack",
+                                "next greater element",
+                                "problem"
+                            ],
+                            "language": "text",
+                            "code": "- For each element in an array, find the next element to the right that is greater.\n- How to do it efficiently:\n  - Use a stack to keep track of elements for which we need to find the next greater element.\n  - Traverse from right to left, popping smaller elements until a greater one is found.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Min Stack",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "How?",
+                            "tags": [
+                                "dsa",
+                                "stack",
+                                "min stack",
+                                "problem",
+                                "auxiliary stack"
+                            ],
+                            "language": "text",
+                            "code": "- A stack that supports returning the minimum element in O(1) time.\n- How?\n  - Use an auxiliary stack to store minimum values.\n  - When pushing, also update the minimum stack.\n  - When popping, pop from the minimum stack if the top matches.",
+                            "output": null
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "DSA",
+        "category": "Data Structures",
+        "title": "Queues",
+        "description": "An overview of the Queue data structure, including its types (Circular, Deque, Priority), operations, and implementations.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Queue Basics",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "FIFO Principle and Operations",
+                            "tags": [
+                                "dsa",
+                                "queue",
+                                "fifo",
+                                "enqueue",
+                                "dequeue"
+                            ],
+                            "language": "text",
+                            "code": "- Definition: A Queue is a linear data structure that follows the First In, First Out (FIFO) principle.\n- Analogy: Like people standing in a line \u2014 the person who enters first gets served first.\n- Operations:\n  - Enqueue: Add an element at the rear.\n  - Dequeue: Remove an element from the front.\n  - Peek/Front: See the front element.\n  - isEmpty: Check if the queue is empty.\n- Use Cases: Print queues, task scheduling, real-time systems.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Circular Queue",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Efficient Space Usage",
+                            "tags": [
+                                "dsa",
+                                "queue",
+                                "circular queue",
+                                "modular arithmetic"
+                            ],
+                            "language": "text",
+                            "code": "- Problem in normal queue: After many dequeues, the front moves forward and space at the start is wasted.\n- Solution: A Circular Queue wraps around and uses space efficiently.\n- Circular behavior: When the rear reaches the end, it goes to index 0 if space is available.\n- Implemented with: Arrays using modular arithmetic, e.g., `rear = (rear + 1) % size`.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Deque (Double Ended Queue)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Definition and Operations",
+                            "tags": [
+                                "dsa",
+                                "queue",
+                                "deque"
+                            ],
+                            "language": "text",
+                            "code": "- Definition: A Deque allows insertion and deletion from both the front and rear ends.\n- Operations: pushFront, pushRear, popFront, popRear.\n- Use Cases: Palindrome checker, sliding window problems, browser history.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Priority Queue / Heap",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Priority-Based Processing",
+                            "tags": [
+                                "dsa",
+                                "queue",
+                                "priority queue",
+                                "heap",
+                                "min-heap",
+                                "max-heap"
+                            ],
+                            "language": "text",
+                            "code": "- Priority Queue: Elements are served based on priority instead of the order they arrived.\n- Implementation: Usually done using a Heap.\n- Types:\n  - Min-Heap: Smallest element at the top.\n  - Max-Heap: Largest element at the top.\n- Use Cases: CPU scheduling, Dijkstra's algorithm (shortest path), Top K frequent elements.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Stack using Queue and vice versa",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Implementation Swaps",
+                            "tags": [
+                                "dsa",
+                                "stack",
+                                "queue",
+                                "implementation"
+                            ],
+                            "language": "text",
+                            "code": "- Stack using Queue: Use 2 queues. For push, enqueue in one. For pop, dequeue all except the last element and swap.\n- Queue using Stack: Use 2 stacks. For enqueue, push normally. For dequeue, reverse the stack using the second one.",
+                            "output": null
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "DSA",
+        "category": "Algorithms",
+        "title": "Recursion and Backtracking",
+        "description": "An overview of recursion, a technique where a function calls itself, and backtracking, an algorithmic approach to solving problems by trying out solutions and backtracking when they fail.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Recursion Basics",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Core Concept",
+                            "tags": [
+                                "dsa",
+                                "recursion",
+                                "base case",
+                                "recursive case"
+                            ],
+                            "language": "text",
+                            "code": "- What is recursion? A function calling itself to solve smaller subproblems.\n- Every recursive function has:\n  - Base case: A condition to stop the recursion.\n  - Recursive case: The part where the function calls itself with smaller input.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Factorial, Fibonacci",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Classic Examples",
+                            "tags": [
+                                "dsa",
+                                "recursion",
+                                "factorial",
+                                "fibonacci",
+                                "memoization"
+                            ],
+                            "language": "python",
+                            "code": "# Factorial(n): n! = n * (n-1)!\ndef fact(n):\n    if n == 0: return 1\n    return n * fact(n-1)\n\n# Fibonacci(n): f(n) = f(n-1) + f(n-2)\n# Use memoization or DP to avoid recomputation.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Tower of Hanoi",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Recursive Problem",
+                            "tags": [
+                                "dsa",
+                                "recursion",
+                                "tower of hanoi"
+                            ],
+                            "language": "text",
+                            "code": "- Problem: Move n disks from a source to a destination rod using a helper rod.\n- Rules:\n  - Move only one disk at a time.\n  - A larger disk cannot be placed on a smaller one.\n- Recursive logic:\n  a. Move n-1 disks to the helper rod.\n  b. Move the nth disk to the destination rod.\n  c. Move n-1 disks from the helper to the destination rod.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "N-Queens Problem",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Backtracking Approach",
+                            "tags": [
+                                "dsa",
+                                "recursion",
+                                "backtracking",
+                                "n-queens"
+                            ],
+                            "language": "text",
+                            "code": "- Goal: Place N queens on an N\u00d7N board so that no two queens attack each other.\n- Approach: Backtracking \u2014 try placing a queen in each row and check for safety.\n- Key function: `isSafe(row, col)` checks if it's safe to place a queen at that position.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Sudoku Solver",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Backtracking Approach",
+                            "tags": [
+                                "dsa",
+                                "recursion",
+                                "backtracking",
+                                "sudoku"
+                            ],
+                            "language": "text",
+                            "code": "- Problem: Fill a 9x9 board so every row, column, and 3x3 box has numbers 1 to 9 without repetition.\n- Approach: Backtracking\n  - Try numbers from 1-9 at each empty cell.\n  - If the number is valid, move to the next cell.\n  - If not valid, backtrack (undo the choice and try a different number).",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Subset / Permutation / Combination Generation",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Recursive Patterns",
+                            "tags": [
+                                "dsa",
+                                "recursion",
+                                "backtracking",
+                                "subset",
+                                "permutation",
+                                "combination"
+                            ],
+                            "language": "python",
+                            "code": "# Subset (Power Set): Include or exclude each element.\ndef subsets(nums, i=0, path=[]):\n    if i == len(nums): print(path); return\n    subsets(nums, i+1, path+[nums[i]]) # Include\n    subsets(nums, i+1, path)            # Exclude\n\n# Permutations: Swap each element and recurse.\n# Combinations: Choose k elements from n without caring about order.",
+                            "output": null
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "DSA",
+        "category": "Algorithms",
+        "title": "Searching Algorithms",
+        "description": "An overview of common searching algorithms including Linear Search, Binary Search, and variations like searching in rotated arrays and finding lower/upper bounds.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Linear Search",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Definition and Steps",
+                            "tags": [
+                                "dsa",
+                                "searching",
+                                "linear search",
+                                "unsorted"
+                            ],
+                            "language": "text",
+                            "code": "Definition:\n- Linear Search is the most basic searching technique. It checks each element of the array one by one until the target element is found or the end is reached.\n\nSteps:\n1. Start from the first element.\n2. Compare it with the target.\n3. If it matches, return the index.\n4. If not, move to the next element.\n5. If you reach the end without finding the target, return -1.",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "Example and Complexity",
+                            "tags": [
+                                "dsa",
+                                "searching",
+                                "linear search",
+                                "complexity"
+                            ],
+                            "language": "python",
+                            "code": "def linear_search(arr, target):\n    for i in range(len(arr)):\n        if arr[i] == target:\n            return i\n    return -1\n\n# Time Complexity:\n# - Best Case: O(1) (target is at the start)\n# - Worst Case: O(n) (target is at the end or not found)\n# Use Case: When the array is unsorted or small in size.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Binary Search",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Definition and Steps",
+                            "tags": [
+                                "dsa",
+                                "searching",
+                                "binary search",
+                                "sorted",
+                                "divide and conquer"
+                            ],
+                            "language": "text",
+                            "code": "Definition:\n- Binary Search is an efficient algorithm that works on sorted arrays by repeatedly dividing the search interval in half.\n\nSteps:\n1. Find the middle index.\n2. If the middle element equals the target, return the index.\n3. If the target is smaller, search in the left half.\n4. If the target is larger, search in the right half.\n5. Repeat the process until the search space is empty.",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "Example and Complexity",
+                            "tags": [
+                                "dsa",
+                                "searching",
+                                "binary search",
+                                "complexity"
+                            ],
+                            "language": "python",
+                            "code": "def binary_search(arr, target):\n    low = 0\n    high = len(arr) - 1\n    while low <= high:\n        mid = (low + high) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            low = mid + 1\n        else:\n            high = mid - 1\n    return -1\n\n# Time Complexity: Always O(log n)\n# Use Case: Only when the array is sorted.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Binary Search on Answer",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Definition and Use Cases",
+                            "tags": [
+                                "dsa",
+                                "searching",
+                                "binary search",
+                                "optimization"
+                            ],
+                            "language": "text",
+                            "code": "Definition:\n- Used when you're not searching for a specific value in an array, but trying to optimize or find a boundary/limit (e.g., the smallest value that satisfies a condition).\n\nTypical Use Cases:\n- Minimum number of pages a student can read per day (Book Allocation Problem).\n- Minimum time to complete tasks under certain constraints.",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "Steps",
+                            "tags": [
+                                "dsa",
+                                "binary search",
+                                "optimization",
+                                "steps"
+                            ],
+                            "language": "text",
+                            "code": "1. Define the search space (e.g., min and max possible answers).\n2. Apply binary search in that range.\n3. Use a helper function to check if a `mid` value is a valid solution.\n4. Narrow the search space based on the result.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Search in Rotated Sorted Array",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Definition and Steps",
+                            "tags": [
+                                "dsa",
+                                "searching",
+                                "binary search",
+                                "rotated array"
+                            ],
+                            "language": "text",
+                            "code": "Definition:\n- This is a modified binary search problem where the array is sorted but rotated at some pivot.\n- Example: [6, 7, 8, 1, 2, 3, 4, 5] \u2014 a sorted array rotated at index 3.\n\nSteps:\n1. Use binary search.\n2. Check if the left half or right half is sorted.\n3. Decide where to continue searching based on which part is sorted and where the target may lie.",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "Example and Complexity",
+                            "tags": [
+                                "dsa",
+                                "searching",
+                                "binary search",
+                                "rotated array"
+                            ],
+                            "language": "python",
+                            "code": "def search_rotated_array(arr, target):\n    low, high = 0, len(arr) - 1\n    while low <= high:\n        mid = (low + high) // 2\n        if arr[mid] == target: return mid\n        # Left half is sorted\n        if arr[low] <= arr[mid]:\n            if arr[low] <= target < arr[mid]: high = mid - 1\n            else: low = mid + 1\n        # Right half is sorted\n        else:\n            if arr[mid] < target <= arr[high]: low = mid + 1\n            else: high = mid - 1\n    return -1\n\n# Time Complexity: O(log n)",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Lower Bound / Upper Bound",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Definitions",
+                            "tags": [
+                                "dsa",
+                                "searching",
+                                "binary search",
+                                "lower bound",
+                                "upper bound",
+                                "bisect"
+                            ],
+                            "language": "text",
+                            "code": "- Lower Bound: The first index where the element is greater than or equal to the target. Useful in sorted arrays and can be found using binary search.\n- Upper Bound: The first index where the element is strictly greater than the target.",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "Example and Complexity",
+                            "tags": [
+                                "dsa",
+                                "binary search",
+                                "lower bound",
+                                "upper bound",
+                                "bisect"
+                            ],
+                            "language": "python",
+                            "code": "import bisect\n\narr = [1, 2, 4, 4, 5, 6]\n\n# Lower bound of 4 (first position where 4 or more starts)\nprint(bisect.bisect_left(arr, 4)) # Output: 2\n\n# Upper bound of 4 (first position where value is > 4)\nprint(bisect.bisect_right(arr, 4)) # Output: 4\n\n# Time Complexity: O(log n)\n# Use Case: Binary search-related problems, frequency count, range queries, etc.",
+                            "output": null
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "DSA",
+        "category": "Algorithms",
+        "title": "Sorting Algorithms",
+        "description": "An overview of various sorting algorithms, from basic methods like Bubble, Selection, and Insertion Sort to advanced techniques like Merge, Quick, Heap, Counting, Radix, and Bucket Sort.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Basic Sorting Algorithms",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Bubble Sort",
+                            "tags": [
+                                "dsa",
+                                "sorting",
+                                "bubble sort",
+                                "comparison sort"
+                            ],
+                            "language": "python",
+                            "code": "def bubble_sort(arr):\n    n = len(arr)\n    for i in range(n):\n        for j in range(n - i - 1):\n            if arr[j] > arr[j + 1]:\n                arr[j], arr[j+1] = arr[j+1], arr[j]\n\n# Idea: Repeatedly swap adjacent elements if they're in the wrong order.\n# Time Complexity:\n# - Best: O(n) (if already sorted)\n# - Worst: O(n^2)",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "Selection Sort",
+                            "tags": [
+                                "dsa",
+                                "sorting",
+                                "selection sort",
+                                "comparison sort"
+                            ],
+                            "language": "python",
+                            "code": "def selection_sort(arr):\n    n = len(arr)\n    for i in range(n):\n        min_idx = i\n        for j in range(i+1, n):\n            if arr[j] < arr[min_idx]:\n                min_idx = j\n        arr[i], arr[min_idx] = arr[min_idx], arr[i]\n\n# Idea: Select the minimum element and place it at the beginning.\n# Time Complexity: Always O(n^2)",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "Insertion Sort",
+                            "tags": [
+                                "dsa",
+                                "sorting",
+                                "insertion sort",
+                                "comparison sort"
+                            ],
+                            "language": "python",
+                            "code": "def insertion_sort(arr):\n    for i in range(1, len(arr)):\n        key = arr[i]\n        j = i - 1\n        while j >= 0 and arr[j] > key:\n            arr[j + 1] = arr[j]\n            j -= 1\n        arr[j + 1] = key\n\n# Idea: Pick one element and place it in the correct position of the sorted part.\n# Time Complexity:\n# - Best: O(n)\n# - Worst: O(n^2)",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Advanced Sorting Algorithms",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Merge Sort",
+                            "tags": [
+                                "dsa",
+                                "sorting",
+                                "merge sort",
+                                "divide and conquer"
+                            ],
+                            "language": "python",
+                            "code": "def merge_sort(arr):\n    if len(arr) > 1:\n        mid = len(arr) // 2\n        L = arr[:mid]\n        R = arr[mid:]\n        merge_sort(L)\n        merge_sort(R)\n        i = j = k = 0\n        while i < len(L) and j < len(R):\n            if L[i] < R[j]:\n                arr[k] = L[i]; i += 1\n            else:\n                arr[k] = R[j]; j += 1\n            k += 1\n        while i < len(L):\n            arr[k] = L[i]; i += 1; k += 1\n        while j < len(R):\n            arr[k] = R[j]; j += 1; k += 1\n\n# Idea: Divide array into halves, sort each half, then merge them.\n# Time Complexity: Always O(n log n)\n# Space Complexity: O(n)",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "Quick Sort",
+                            "tags": [
+                                "dsa",
+                                "sorting",
+                                "quick sort",
+                                "divide and conquer",
+                                "pivot"
+                            ],
+                            "language": "python",
+                            "code": "def quick_sort(arr):\n    if len(arr) <= 1: return arr\n    pivot = arr[0]\n    left = [x for x in arr[1:] if x < pivot]\n    right = [x for x in arr[1:] if x >= pivot]\n    return quick_sort(left) + [pivot] + quick_sort(right)\n\n# Idea: Pick a pivot, place elements smaller on left, greater on right, then recursively sort.\n# Time Complexity:\n# - Best: O(n log n)\n# - Worst: O(n^2) (if pivot is badly chosen)",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "Heap Sort",
+                            "tags": [
+                                "dsa",
+                                "sorting",
+                                "heap sort",
+                                "heap"
+                            ],
+                            "language": "python",
+                            "code": "import heapq\n\ndef heap_sort(arr):\n    heapq.heapify(arr)\n    return [heapq.heappop(arr) for _ in range(len(arr))]\n\n# Idea: Use a heap to extract max/min repeatedly and sort.\n# Time Complexity: O(n log n)\n# Space Complexity: O(1) if using an in-place heap.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Non-Comparison Sorting Algorithms",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Counting Sort",
+                            "tags": [
+                                "dsa",
+                                "sorting",
+                                "counting sort",
+                                "non-comparison"
+                            ],
+                            "language": "python",
+                            "code": "def counting_sort(arr):\n    max_val = max(arr)\n    count = [0] * (max_val + 1)\n    for num in arr:\n        count[num] += 1\n    i = 0\n    for num in range(len(count)):\n        for c in range(count[num]):\n            arr[i] = num\n            i += 1\n\n# Idea: Count occurrences and use that to place elements in sorted order.\n# Only for non-negative integers.\n# Time Complexity: O(n + k) (k = max element)",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "Radix Sort",
+                            "tags": [
+                                "dsa",
+                                "sorting",
+                                "radix sort",
+                                "non-comparison"
+                            ],
+                            "language": "python",
+                            "code": "def counting_sort_for_radix(arr, exp):\n    n = len(arr)\n    output, count = [0]*n, [0]*10\n    for i in range(n):\n        index = (arr[i] // exp) % 10\n        count[index] += 1\n    for i in range(1, 10):\n        count[i] += count[i-1]\n    i = n - 1\n    while i >= 0:\n        index = (arr[i] // exp) % 10\n        output[count[index] - 1] = arr[i]\n        count[index] -= 1\n        i -= 1\n    for i in range(n):\n        arr[i] = output[i]\n\ndef radix_sort(arr):\n    max_val = max(arr)\n    exp = 1\n    while max_val // exp > 0:\n        counting_sort_for_radix(arr, exp)\n        exp *= 10\n\n# Idea: Sort numbers digit-by-digit using Counting Sort as a subroutine.\n# Only for integers.\n# Time Complexity: O(nk) (k = number of digits)",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "Bucket Sort",
+                            "tags": [
+                                "dsa",
+                                "sorting",
+                                "bucket sort",
+                                "non-comparison"
+                            ],
+                            "language": "python",
+                            "code": "def bucket_sort(arr):\n    buckets = [[] for _ in range(10)]\n    for num in arr:\n        index = int(num * 10)\n        buckets[index].append(num)\n    for i in range(10):\n        buckets[i].sort()\n    return [num for bucket in buckets for num in bucket]\n\n# Idea: Distribute elements into buckets, sort each bucket, then combine.\n# Best for uniformly distributed floats (e.g., [0.2, 0.5, 0.8]).\n# Time Complexity: O(n + k)",
+                            "output": null
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "DSA",
+        "category": "Data Structures",
+        "title": "Hash Tables",
+        "description": "An overview of hash tables (hash maps), a powerful data structure that uses a hash function to map keys to values for efficient lookup.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Core Concepts",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "What is a Hash Table?",
+                            "tags": [
+                                "dsa",
+                                "hash table",
+                                "hash map",
+                                "key-value"
+                            ],
+                            "language": "text",
+                            "code": "- A hash table is a data structure that stores data in a key-value format.\n- It uses a hash function to compute an index (a 'hash') into an array of buckets or slots, from which the desired value can be found.\n- Analogy: Imagine a library where each book's title (the key) is converted into a specific shelf number (the hash). You can go directly to that shelf instead of searching the whole library.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Hash Functions & Collisions",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Hash Function",
+                            "tags": [
+                                "dsa",
+                                "hash table",
+                                "hash function",
+                                "hashing"
+                            ],
+                            "language": "text",
+                            "code": "- A hash function is a special function that takes an input (the key) and returns a fixed-size integer (the hash or index).\n- A good hash function should distribute keys uniformly across the available slots.",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "Collision Handling",
+                            "tags": [
+                                "dsa",
+                                "hash table",
+                                "collision",
+                                "chaining",
+                                "probing"
+                            ],
+                            "language": "text",
+                            "code": "- A collision occurs when two different keys hash to the same index.\n- This is a common problem that must be handled.\n- Common methods for handling collisions:\n  - Separate Chaining: Each bucket stores a linked list of all the key-value pairs that hashed to that index.\n  - Open Addressing (Probing): If a slot is full, the algorithm probes for the next empty slot in the array (e.g., linear probing, quadratic probing).",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Complexity and Use Cases",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Time Complexity",
+                            "tags": [
+                                "dsa",
+                                "hash table",
+                                "complexity",
+                                "big o"
+                            ],
+                            "language": "text",
+                            "code": "- Average Case:\n  - Search: O(1)\n  - Insert: O(1)\n  - Delete: O(1)\n\n- Worst Case:\n  - Search/Insert/Delete: O(n)\n  - The worst case occurs when all keys hash to the same slot (a bad hash function), turning the hash table into a linked list.",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "Use Cases",
+                            "tags": [
+                                "dsa",
+                                "hash table",
+                                "use cases"
+                            ],
+                            "language": "text",
+                            "code": "- Implementing dictionaries or maps in programming languages.\n- Database indexing.\n- Caching (e.g., storing previously computed results).\n- Checking for duplicates in a collection of items.",
+                            "output": null
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "DSA",
+        "category": "Data Structures",
+        "title": "Trees (Binary & Binary Search Trees)",
+        "description": "An introduction to tree data structures, focusing on Binary Trees, Binary Search Trees (BSTs), and their essential traversal methods.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Tree Basics",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Core Concepts",
+                            "tags": [
+                                "dsa",
+                                "trees",
+                                "nodes",
+                                "root",
+                                "hierarchical"
+                            ],
+                            "language": "text",
+                            "code": "- A tree is a non-linear, hierarchical data structure consisting of nodes connected by edges.\n- Key Terminology:\n  - Node: An entity that contains a key or value.\n  - Edge: The connection between two nodes.\n  - Root: The topmost node in a tree.\n  - Parent: A node that has a child node.\n  - Child: A node that has a parent node.\n  - Leaf: A node with no children.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Binary Tree",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Definition",
+                            "tags": [
+                                "dsa",
+                                "trees",
+                                "binary tree"
+                            ],
+                            "language": "text",
+                            "code": "- A Binary Tree is a tree data structure in which each node has at most two children, which are referred to as the left child and the right child.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Tree Traversals (for Binary Trees)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "In-order, Pre-order, Post-order (DFS)",
+                            "tags": [
+                                "dsa",
+                                "trees",
+                                "traversal",
+                                "in-order",
+                                "pre-order",
+                                "post-order",
+                                "dfs"
+                            ],
+                            "language": "text",
+                            "code": "These are Depth-First Search (DFS) methods to visit every node in a tree.\n\n- In-order Traversal: Left -> Root -> Right\n  - For a BST, this visits nodes in ascending order.\n\n- Pre-order Traversal: Root -> Left -> Right\n  - Useful for copying a tree.\n\n- Post-order Traversal: Left -> Right -> Root\n  - Useful for deleting a tree.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Binary Search Tree (BST)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Definition and Properties",
+                            "tags": [
+                                "dsa",
+                                "trees",
+                                "binary search tree",
+                                "bst",
+                                "sorted"
+                            ],
+                            "language": "text",
+                            "code": "- A Binary Search Tree is a special type of binary tree with a specific ordering property.\n- Properties:\n  1. All nodes in the left subtree have values less than the root's value.\n  2. All nodes in the right subtree have values greater than the root's value.\n  3. Both the left and right subtrees must also be binary search trees.",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "Operations and Complexity",
+                            "tags": [
+                                "dsa",
+                                "bst",
+                                "search",
+                                "insert",
+                                "delete",
+                                "complexity"
+                            ],
+                            "language": "text",
+                            "code": "- Because of its ordered property, a BST allows for fast searching, insertion, and deletion of nodes.\n- Time Complexity (for a balanced BST):\n  - Search: O(log n)\n  - Insert: O(log n)\n  - Delete: O(log n)\n- Worst-Case Complexity (for an unbalanced tree): O(n), as it can become like a linked list.",
+                            "output": null
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "DSA",
+        "category": "Data Structures",
+        "title": "Heaps",
+        "description": "An overview of the Heap data structure, its properties (Min-Heap/Max-Heap), common operations, and its primary use as an implementation for Priority Queues.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Heap Basics",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "What is a Heap?",
+                            "tags": [
+                                "dsa",
+                                "heap",
+                                "tree",
+                                "complete binary tree",
+                                "heap property"
+                            ],
+                            "language": "text",
+                            "code": "- A Heap is a specialized tree-based data structure that satisfies the heap property.\n- It is a Complete Binary Tree, meaning all levels are completely filled except possibly the last level, which is filled from left to right.\n- Not a BST: The order is based on the parent-child relationship (heap property), not the left-right relationship like in a Binary Search Tree."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Types of Heaps",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Min-Heap vs. Max-Heap",
+                            "tags": [
+                                "dsa",
+                                "heap",
+                                "min-heap",
+                                "max-heap"
+                            ],
+                            "language": "text",
+                            "code": "- Min-Heap: The value of each node is less than or equal to the value of its children. The smallest element is always at the root.\n- Max-Heap: The value of each node is greater than or equal to the value of its children. The largest element is always at the root."
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Array Representation",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Implementing a Heap with an Array",
+                            "tags": [
+                                "dsa",
+                                "heap",
+                                "array",
+                                "implementation",
+                                "indexing"
+                            ],
+                            "language": "text",
+                            "code": "Heaps are usually implemented using arrays for efficiency. The parent-child relationship is maintained using array indices.\nFor a node at index `i`:\n- Parent is at index: `floor((i - 1) / 2)`\n- Left child is at index: `2 * i + 1`\n- Right child is at index: `2 * i + 2`"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Core Operations & Complexity",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Operations and Time Complexity",
+                            "tags": [
+                                "dsa",
+                                "heap",
+                                "insert",
+                                "extract",
+                                "heapify",
+                                "complexity",
+                                "big o"
+                            ],
+                            "language": "text",
+                            "code": "- Insert: Add a new element to the end and then \"heapify-up\" (sift up) to restore the heap property.\n- Extract-Min / Extract-Max: Remove the root element, replace it with the last element, and then \"heapify-down\" (sift down) to restore the heap property.\n- Peek: Return the root element without removing it.\n\n- Time Complexity:\n  - Insert: 'O(log n)'\n  - Extract-Min/Max: 'O(log n)'\n  - Peek: 'O(1)"
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Common Use Cases",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Where Heaps are Used",
+                            "tags": [
+                                "dsa",
+                                "heap",
+                                "priority queue",
+                                "heap sort",
+                                "dijkstra"
+                            ],
+                            "language": "text",
+                            "code": "- Priority Queues: Heaps are the most common way to implement priority queues.\n- Heap Sort: A fast, in-place sorting algorithm.\n- Graph Algorithms: Used in algorithms like Dijkstra's (to find the shortest path) and Prim's (for Minimum Spanning Trees).\n- Finding the 'k-th' smallest or largest element in a collection."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "DSA",
+        "category": "Data Structures",
+        "title": "Graphs (Representations, BFS & DFS)",
+        "description": "An introduction to graph data structures, their common representations (adjacency list/matrix), and the fundamental traversal algorithms: Breadth-First Search (BFS) and Depth-First Search (DFS).",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Graph Basics",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "What is a Graph? \ud83c\udf10",
+                            "tags": [
+                                "dsa",
+                                "graphs",
+                                "nodes",
+                                "edges",
+                                "vertex"
+                            ],
+                            "language": "text",
+                            "code": "- A graph is a non-linear data structure consisting of a set of vertices (or nodes) and a set of edges connecting these vertices.\n- Directed Graph: Edges have a direction (A -> B is not the same as B -> A).\n- Undirected Graph: Edges have no direction (A - B is the same as B - A).",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Graph Representations",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Adjacency List",
+                            "tags": [
+                                "dsa",
+                                "graphs",
+                                "representation",
+                                "adjacency list"
+                            ],
+                            "language": "text",
+                            "code": "- An array of lists. The size of the array is equal to the number of vertices.\n- An entry `adj[i]` contains a list of all vertices connected to vertex `i`.\n- Pros: Space-efficient for sparse graphs (graphs with few edges).\n- Cons: Checking for a specific edge between two vertices can be slow ('O(k)' where k is the number of neighbors).",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "Adjacency Matrix",
+                            "tags": [
+                                "dsa",
+                                "graphs",
+                                "representation",
+                                "adjacency matrix"
+                            ],
+                            "language": "text",
+                            "code": "- A 2D array (matrix) of size V x V where V is the number of vertices.\n- A slot `adj[i][j] = 1` indicates there is an edge from vertex `i` to `j`.\n- Pros: Fast to check if an edge exists between two vertices ('O(1)').\n- Cons: Uses a lot of space ('O(V^2)'), even for sparse graphs.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Graph Traversal Algorithms",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Breadth-First Search (BFS)",
+                            "tags": [
+                                "dsa",
+                                "graphs",
+                                "bfs",
+                                "traversal",
+                                "queue",
+                                "shortest path"
+                            ],
+                            "language": "text",
+                            "code": "- How it works: Traverses the graph level by level. It explores the starting node, then all its direct neighbors, then their neighbors, and so on.\n- Data Structure Used: A Queue.\n- Use Cases:\n  - Finding the shortest path in an unweighted graph.\n  - Web crawlers.\n  - Finding connected components.",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "Depth-First Search (DFS)",
+                            "tags": [
+                                "dsa",
+                                "graphs",
+                                "dfs",
+                                "traversal",
+                                "stack",
+                                "recursion",
+                                "cycle detection"
+                            ],
+                            "language": "text",
+                            "code": "- How it works: Traverses by exploring as far as possible down each branch before backtracking.\n- Data Structure Used: A Stack (often implemented implicitly using recursion).\n- Use Cases:\n  - Detecting cycles in a graph.\n  - Topological sorting.\n  - Solving puzzles like mazes.",
+                            "output": null
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "DSA",
+        "category": "Algorithms",
+        "title": "Advanced Graph Algorithms",
+        "description": "An overview of classic graph algorithms for finding the shortest path (Dijkstra's) and constructing a Minimum Spanning Tree (Prim's and Kruskal's).",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "Dijkstra's Algorithm (Shortest Path)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Core Concept \ud83d\uddfa\ufe0f",
+                            "tags": [
+                                "dsa",
+                                "graphs",
+                                "dijkstra",
+                                "shortest path",
+                                "weighted graph",
+                                "priority queue"
+                            ],
+                            "language": "text",
+                            "code": "- Purpose: Finds the shortest path from a single source vertex to all other vertices in a graph.\n- Constraint: Works only on graphs with non-negative edge weights.\n- Analogy: Like a GPS finding the fastest route from your home to all other locations in a city, assuming all travel times are positive.",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "How it Works",
+                            "tags": [
+                                "dsa",
+                                "graphs",
+                                "dijkstra",
+                                "algorithm",
+                                "greedy"
+                            ],
+                            "language": "text",
+                            "code": "Dijkstra's is a greedy algorithm that uses a priority queue to function:\n1. Initialize distances to all vertices as infinite, except for the source vertex (distance = 0).\n2. Add the source vertex to a priority queue.\n3. While the priority queue is not empty, extract the vertex with the smallest distance.\n4. For the current vertex, consider all its unvisited neighbors.\n5. For each neighbor, if a shorter path is found by going through the current vertex, update its distance and add it to the priority queue.\n6. Repeat until all vertices have been visited.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Minimum Spanning Tree (MST)",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Core Concept \ud83c\udf33",
+                            "tags": [
+                                "dsa",
+                                "graphs",
+                                "mst",
+                                "spanning tree",
+                                "weighted graph"
+                            ],
+                            "language": "text",
+                            "code": "- A spanning tree is a subset of edges from a connected, undirected graph that connects all the vertices together without forming any cycles.\n- A Minimum Spanning Tree (MST) is the spanning tree with the smallest possible total edge weight.\n- Analogy: Finding the cheapest way to lay cable to connect all houses in a neighborhood.",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "Prim's Algorithm",
+                            "tags": [
+                                "dsa",
+                                "graphs",
+                                "mst",
+                                "prim's algorithm",
+                                "greedy"
+                            ],
+                            "language": "text",
+                            "code": "- Approach: A greedy algorithm that builds the MST by growing a single tree.\n- How it works: It starts from an arbitrary vertex and, at each step, adds the cheapest possible edge that connects a vertex in the growing tree to a vertex outside the tree.",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "Kruskal's Algorithm",
+                            "tags": [
+                                "dsa",
+                                "graphs",
+                                "mst",
+                                "kruskal's algorithm",
+                                "greedy",
+                                "disjoint set"
+                            ],
+                            "language": "text",
+                            "code": "- Approach: A greedy algorithm that builds the MST by joining smaller trees (a forest) together.\n- How it works: It sorts all edges by weight in ascending order. It then iterates through the sorted edges, adding each edge to the MST as long as it does not form a cycle. A Disjoint Set Union (DSU) data structure is often used to detect cycles efficiently.",
+                            "output": null
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "DSA",
+        "category": "Algorithms",
+        "title": "Dynamic Programming (DP)",
+        "description": "An introduction to Dynamic Programming, a powerful technique for solving complex optimization problems by breaking them into simpler, overlapping subproblems.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "What is Dynamic Programming? \ud83e\udde0",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Core Concept",
+                            "tags": [
+                                "dsa",
+                                "dynamic programming",
+                                "dp",
+                                "optimization",
+                                "subproblems"
+                            ],
+                            "language": "text",
+                            "code": "Dynamic Programming is a method for solving complex problems by breaking them down into a collection of simpler subproblems, solving each of those subproblems just once, and storing their solutions.\n\nIt works on problems that have two key properties:\n- Overlapping Subproblems: The solution involves solving the same subproblem multiple times.\n- Optimal Substructure: The optimal solution to the overall problem can be constructed from the optimal solutions of its subproblems.\n\nAnalogy: To calculate `fib(5)`, you need `fib(4)` and `fib(3)`. To calculate `fib(4)`, you again need `fib(3)`. Instead of re-calculating `fib(3)`, DP saves its result and reuses it.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Two Approaches to DP",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Memoization (Top-Down)",
+                            "tags": [
+                                "dsa",
+                                "dp",
+                                "memoization",
+                                "top-down",
+                                "recursion",
+                                "cache"
+                            ],
+                            "language": "text",
+                            "code": "- Approach: This is a recursive approach where you solve the problem from the top and store the results of subproblems in a cache (like a map or array).\n- How it works:\n  1. Start with a recursive solution to the main problem.\n  2. Before computing a subproblem, check if its result is already in the cache.\n  3. If it is, return the cached result.\n  4. If not, compute it, store it in the cache, and then return it.",
+                            "output": null
+                        },
+                        {
+                            "sub_section_heading": "Tabulation (Bottom-Up)",
+                            "tags": [
+                                "dsa",
+                                "dp",
+                                "tabulation",
+                                "bottom-up",
+                                "iteration"
+                            ],
+                            "language": "text",
+                            "code": "- Approach: This is an iterative approach where you solve the problem from the bottom, starting with the smallest subproblems.\n- How it works:\n  1. Create a table (usually an array or 2D array) to store results.\n  2. Fill in the initial values for the smallest possible subproblems (base cases).\n  3. Iterate through the table, using the results of previous entries to compute the result for the current entry.\n  4. The final entry in the table is the solution to the main problem.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "How to Solve a DP Problem",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "A 4-Step Guide",
+                            "tags": [
+                                "dsa",
+                                "dp",
+                                "problem solving",
+                                "guide",
+                                "recurrence"
+                            ],
+                            "language": "text",
+                            "code": "1. Identify if it's a DP problem: Look for optimization questions involving 'max/min', 'count all ways', or 'find if possible'.\n2. Define the state: Determine the variables needed to uniquely identify a subproblem (e.g., `dp[i]` could be the max value up to index `i`).\n3. Formulate the recurrence relation: Express the solution for a state in terms of the solutions of its sub-states (e.g., `dp[i] = dp[i-1] + dp[i-2]`).\n4. Define the base cases: Identify the smallest subproblems for which you already know the answer (e.g., `dp[0] = 0`, `dp[1] = 1`).",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Classic DP Problems",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Common Examples",
+                            "tags": [
+                                "dsa",
+                                "dp",
+                                "fibonacci",
+                                "knapsack",
+                                "lcs",
+                                "examples"
+                            ],
+                            "language": "text",
+                            "code": "- Fibonacci Sequence: The classic introductory problem.\n- 0/1 Knapsack Problem: Choose items with given weights and values to maximize total value in a knapsack of limited capacity.\n- Longest Common Subsequence (LCS): Find the longest subsequence common to two sequences.\n- Coin Change Problem: Find the minimum number of coins required to make a specific amount.",
+                            "output": null
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "parent_category": "DSA",
+        "category": "Algorithms",
+        "title": "Greedy Algorithms",
+        "description": "An introduction to Greedy Algorithms, an approach that makes the locally optimal choice at each step with the hope of finding a global optimum.",
+        "content": {
+            "sections": [
+                {
+                    "section_title": "What is a Greedy Algorithm? \ud83e\udd11",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Core Concept",
+                            "tags": [
+                                "dsa",
+                                "greedy algorithms",
+                                "optimization",
+                                "local optimum"
+                            ],
+                            "language": "text",
+                            "code": "A greedy algorithm is an algorithmic paradigm that builds up a solution piece by piece, always choosing the next piece that offers the most obvious and immediate benefit.\n\n- It makes the choice that seems best at the moment without considering future consequences.\n- The hope is that by making a series of locally optimal choices, we will end up with a globally optimal solution.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "When Do Greedy Algorithms Work?",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Key Properties",
+                            "tags": [
+                                "dsa",
+                                "greedy",
+                                "greedy choice",
+                                "optimal substructure"
+                            ],
+                            "language": "text",
+                            "code": "A problem can be solved with a greedy approach only if it possesses two key properties:\n\n1.  Greedy Choice Property: A globally optimal solution can be arrived at by making a locally optimal choice. The choice made at the current step must be the best one and should not be reconsidered later.\n\n2.  Optimal Substructure: The optimal solution to the problem contains the optimal solutions to its subproblems (similar to DP).",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Greedy vs. Dynamic Programming",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Key Differences",
+                            "tags": [
+                                "dsa",
+                                "greedy",
+                                "dynamic programming",
+                                "comparison"
+                            ],
+                            "language": "text",
+                            "code": "- Greedy: Makes a choice and commits to it. It never reconsiders past choices.\n- Dynamic Programming (DP): Explores all possible choices to find the optimal one. It often solves all subproblems and then builds a solution.\n\n- Example (Knapsack Problem):\n  - Fractional Knapsack (Greedy): You can take fractions of items. The greedy choice is to always take the item with the highest value-per-weight ratio first.\n  - 0/1 Knapsack (DP): You must either take an entire item or leave it. The greedy approach doesn't work; you must use DP to determine the optimal combination.",
+                            "output": null
+                        }
+                    ]
+                },
+                {
+                    "section_title": "Classic Greedy Problems",
+                    "sub_sections": [
+                        {
+                            "sub_section_heading": "Common Examples",
+                            "tags": [
+                                "dsa",
+                                "greedy",
+                                "activity selection",
+                                "fractional knapsack",
+                                "huffman coding",
+                                "examples"
+                            ],
+                            "language": "text",
+                            "code": "- Activity Selection Problem: Select the maximum number of non-overlapping activities from a list. Greedy Choice: Always pick the activity that finishes earliest.\n\n- Fractional Knapsack: Maximize the value of items in a knapsack. Greedy Choice: Always pick the item with the highest value-to-weight ratio.\n\n- Huffman Coding: A lossless data compression algorithm. Greedy Choice: Repeatedly merge the two nodes with the lowest frequencies.\n\n- Dijkstra's Algorithm & Prim's/Kruskal's MST Algorithms: These famous graph algorithms are all greedy.",
+                            "output": null
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+]

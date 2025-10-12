@@ -18,7 +18,7 @@ def landing_page(request):
 def category_list(request):
     categories = Category.objects.filter(parent=None).annotate(
         cheatsheet_count=Count('cheatsheets', filter=Q(cheatsheets__status='APPROVED'))
-    )
+    ).order_by('order')
     context = {
         'categories': categories
     }
@@ -124,7 +124,7 @@ def contribute(request):
                             description=item.get('description', ''),
                             content=item.get('content', {}),
                             status='PENDING'
-                        ).order_by('id')
+                        )
                 
                 messages.success(request, f'Thank you! Your submission of {len(data_list)} cheatsheet(s) is awaiting review.')
                 return redirect('category_list')
